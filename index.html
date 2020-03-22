@@ -20,6 +20,10 @@
     <div class="container" id="container">
       <h5>Upload a local file (only JPEG) to read Exif data.</h5>
 
+        
+      <label class="button" for="photos">Wybierz zdjęcie</label>
+        <input type="file" id="photos" multiple="multiple" type="file" id="file-input" onchange="readURL(this);" accept="image/jpeg"/>
+        
       <div class="choose-file">
         <div class="custom-file">
           <input
@@ -44,8 +48,6 @@
 
       </div>
 
-    </div>
-
     <script type="text/javascript" src="exif.js"></script>
     <script>
       function readURL(input) {
@@ -54,7 +56,7 @@
           reader.onload = function(event) {
             var img = document.createElement("img"); // create new image
             img.src = event.target.result; // source = uploaded file
-            document.getElementById("images").appendChild(img); // append the image
+            document.getElementById("images").prepend(img); // prepend - insert image to the beginning of images element
             document.getElementById("FileAttachment").innerHTML =
               "Last added: " + input.files[input.files.length - 1].name;
           };
