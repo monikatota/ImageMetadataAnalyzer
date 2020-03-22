@@ -1,0 +1,26 @@
+.choose-file {
+  margin: left;
+  width: 430px;
+  background: #fff;
+}
+
+h6 {
+  margin-bottom: 30px;
+  color: gray;
+  text-align: left;
+  padding: 10px;
+}
+
+img {
+  /*        to do */
+  border-radius: 8px; /*to wg mnie wygląda ładnie, ale można się pobawić */
+  margin-left: 1.5vw; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  margin-right: 1.5vw; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  max-width: 15%; /* chyba ok, ale można jakoś to dopasować */
+  margin-top: 3vh; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  margin-bottom: 2vh; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  /*plus coś z wysokością zrobić, i na co tam jeszcze wpadniesz :) */
+  width: 16vw;
+  height: 27vh;
+  object-fit: cover;
+}

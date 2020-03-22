@@ -1,76 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
+  <head>
     <title>Image Metadata Viewer</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-    
-<style>
-    .choose-file{
-      margin: left;
-      width: 430px;
-      background: #fff;}
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
 
-    h6{
-      margin-bottom: 30px;
-      color: gray;
-      text-align: left;
-      padding: 10px; }
-        
-    img {
-/*        to do */
-      border-radius: 8px;  /*to wg mnie wygląda ładnie, ale można się pobawić */
-      margin-left: 20px; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-      margin-right: 20px; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-      max-width: 15%; /* chyba ok, ale można jakoś to dopasować */
-      margin-top: 20px; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-      margin-bottom: 20px; /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */        
-      /*plus coś z wysokością zrobić, i na co tam jeszcze wpadniesz :) */  
-    }  
-</style>   
-
-<body id="body">
+  <body id="body">
     <div class="jumbotron text-center">
       <h2>Image Metadata Viewer</h2>
     </div>
-  
+
     <div class="container" id="container">
+      <h5>Upload a local file (only JPEG) to read Exif data.</h5>
 
-      <h5>Upload a local file (only JPEG) to read Exif data.</h5> 
-
-    <div class="choose-file">
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="file-input" multiple="multiple" onchange="readURL(this);" accept="image/jpeg" aria-describedby="inputGroupFileAddon04" >
-        <label class="custom-file-label" for="inputGroupFile04" id="FileAttachment">Choose file</label>
+      <div class="choose-file">
+        <div class="custom-file">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="file-input"
+            multiple="multiple"
+            onchange="readURL(this);"
+            accept="image/jpeg"
+            aria-describedby="inputGroupFileAddon04"
+          />
+          <label
+            class="custom-file-label"
+            for="inputGroupFile04"
+            id="FileAttachment"
+            >Choose file</label
+          >
+        </div>
       </div>
+      <!--            <h6 id="make" ></h6> -->
+      <div class="images" id="images"></div>
+
+      </div>
+
     </div>
-<!--            <h6 id="make" ></h6> -->
-        
-    </div>
+
     <script type="text/javascript" src="exif.js"></script>
     <script>
-    function readURL(input) {
-        for(let i=0; i < input.files.length; i++){
-            var reader = new FileReader();
-            reader.onload = function (event) {
-                var img = document.createElement('img'); // create new image
-                img.src =  event.target.result; // source = uploaded file
-                document.getElementById('container').appendChild(img); // append the image
-                document.getElementById('FileAttachment').innerHTML= "Last added: " + input.files[input.files.length-1].name;
-            }; 
-            reader.readAsDataURL(input.files[i]);
-//            EXIF.getData(input.files[0], function() {
-//                    var exifData = EXIF.pretty(this);
-//                    if (exifData) {
-//                       document.getElementById("make").innerHTML= exifData;
-//                    } else {
-//                        alert("No EXIF data found in image '" + input.files[0].name + "'.");
-//                    }
-//                });            
+      function readURL(input) {
+        for (let i = 0; i < input.files.length; i++) {
+          var reader = new FileReader();
+          reader.onload = function(event) {
+            var img = document.createElement("img"); // create new image
+            img.src = event.target.result; // source = uploaded file
+            document.getElementById("images").appendChild(img); // append the image
+            document.getElementById("FileAttachment").innerHTML =
+              "Last added: " + input.files[input.files.length - 1].name;
+          };
+          reader.readAsDataURL(input.files[i]);
+          //            EXIF.getData(input.files[0], function() {
+          //                    var exifData = EXIF.pretty(this);
+          //                    if (exifData) {
+          //                       document.getElementById("make").innerHTML= exifData;
+          //                    } else {
+          //                        alert("No EXIF data found in image '" + input.files[0].name + "'.");
+          //                    }
+          //                });
         }
-    }
-    </script> 
-</body>
+      }
+    </script>
+  </body>
 </html>
