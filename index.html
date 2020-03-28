@@ -243,15 +243,70 @@
 
     <script type="text/javascript" src="exif.js"></script>
     <script>
+        var arrImages = [];
+        var imgID = 0;
         function readURL(input) {
         for (let i = 0; i < input.files.length; i++) {
+            arrImages.push(input.files[i]);
             var reader = new FileReader();
             reader.onload = function (event) {
+                var newDiv = document.createElement("div"); 
+                newDiv.className = "dropdown";
+
                 var img = document.createElement("img"); // create new image
                 img.src = event.target.result; // source = uploaded file
-              document.getElementById("images").prepend(img); // prepend - insert image to the beginning of images element
-                document.getElementById("FileAttachment").innerHTML =
-                "Last added: " + input.files[input.files.length - 1].name;
+                imgID++;
+                img.setAttribute("id", "photo_"+imgID);
+                console.log(img.id)
+                newDiv.appendChild(img);
+
+                var newList = document.createElement("ul"); // dropdown list
+                newList.className = "dropdown-content";
+
+                var button1 = document.createElement("li");
+                var a1 = document.createElement("a");
+                a1.type = "button";
+                a1.textContent = "View Photo"
+                a1.setAttribute("id", imgID);
+                a1.addEventListener("click", function(){ myScript("photo_"+a1.id); });
+                console.log(button1.id);
+                button1.appendChild(a1);
+                newList.appendChild(button1);
+
+                var button2 = document.createElement("li");
+                var a2 = document.createElement("a");
+                a2.type = "button";
+                a2.textContent = "Rename?"
+                a2.setAttribute("id", imgID);
+                button2.appendChild(a2);
+                newList.appendChild(button2);
+
+                var button3 = document.createElement("li");
+                var a3 = document.createElement("a");
+                a3.type = "button";
+                a3.textContent = "View/Edit Details?"
+                a3.setAttribute("id", imgID);
+                button3.appendChild(a3);
+                newList.appendChild(button3);
+
+                var button4 = document.createElement("li");
+                var a4 = document.createElement("a");
+                a4.type = "button";
+                a4.textContent = "Download"
+                a4.setAttribute("id", imgID);
+                button4.appendChild(a4);
+                newList.appendChild(button4);
+
+                var button5 = document.createElement("li");
+                var a5 = document.createElement("a");
+                a5.type = "button";
+                a5.textContent = "Delete"
+                a5.setAttribute("id", imgID);
+                button5.appendChild(a5);
+                newList.appendChild(button5);
+
+                newDiv.appendChild(newList);
+                document.getElementById("images").prepend(newDiv); // prepend - insert newDiv to the beginning of "images" 
             };
             reader.readAsDataURL(input.files[i]);
             //            EXIF.getData(input.files[0], function() {
@@ -265,5 +320,11 @@
             }
          }
     </script>
+    <script>
+        function myScript(photoID)
+        {
+          alert('Hello ' + photoID);
+        }
+      </script>
     </body>
 </html>

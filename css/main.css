@@ -15,25 +15,44 @@ body, html {
     margin-left: 19%;    /* 17%, cause of side navigation bar */
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.5vw; 
+  margin-right: 1.5vw; 
+  margin-top: 3vh; 
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1; /* display in front of the image */
+  list-style: none; /* must be set - li has the same position as ul */
+  padding-left: 0; /* must be set - li has the same position as ul */
+}
+
+.dropdown-content li{
+  color: black; /* text color */
+  padding: 8px 50px; 
+  display: block; /* under the previous element (button) */
+  background-color: #f1f1f1; /* button color */
+  min-width: 14vw; /* szerokość rozwijanej listy? */
+  border: none;
+  font-size: 14px;
+  text-align: center;
+}
+
+.dropdown-content li:hover {background-color: #ddd;} 
+
+.dropdown:hover .dropdown-content {display: block;}
+
+
 img {
-  /*        to do */
-  border-radius: 8px;
-  /*to wg mnie wygląda ładnie, ale można się pobawić */
-  margin-left: 1.5vw;
-  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-  margin-right: 1.5vw;
-  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-  max-width: 15%;
-  /* chyba ok, ale można jakoś to dopasować */
-  margin-top: 3vh;
-  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-  margin-bottom: 2vh;
-  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
-  /*plus coś z wysokością zrobić, i na co tam jeszcze wpadniesz :) */
-  width: 16vw;
+  border-radius: 8px; 
+  margin-bottom: 0; /* must be 0 to be close to the dropdown list */
+  width: 14vw;
   height: 27vh;
   object-fit: cover;
-    
   box-shadow: 10px 10px 5px dimgrey; /* Enable shadow behind image*/
 }
 
