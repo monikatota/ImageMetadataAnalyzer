@@ -1,0 +1,42 @@
+body, html {
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Images section */
+.images {
+    padding: 0px;
+    margin: 0px;
+    padding-left: 0;
+    margin-top: 10%;     /* 15%, cause of top navigation bar */
+    margin-left: 19%;    /* 17%, cause of side navigation bar */
+}
+
+img {
+  /*        to do */
+  border-radius: 8px;
+  /*to wg mnie wygląda ładnie, ale można się pobawić */
+  margin-left: 1.5vw;
+  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  margin-right: 1.5vw;
+  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  max-width: 15%;
+  /* chyba ok, ale można jakoś to dopasować */
+  margin-top: 3vh;
+  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  margin-bottom: 2vh;
+  /*do zastanowienia czy będzie wyglądać dobrze na kazdym monitorze + ew na komórce - ja bym raczej zmieniła, nie dawała stałych wartości */
+  /*plus coś z wysokością zrobić, i na co tam jeszcze wpadniesz :) */
+  width: 16vw;
+  height: 27vh;
+  object-fit: cover;
+    
+  box-shadow: 10px 10px 5px dimgrey; /* Enable shadow behind image*/
+}
+
+input#photos {
+  display: none;
+}

@@ -1,76 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Image Metadata Viewer</title>
-    <meta charset="utf-8" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" type="text/css" href="main.css" />
-  </head>
+<html>
+<head>
+<title>Image Metadata Viewer</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/sideNavBar.css" />
+<link rel="stylesheet" type="text/css" href="css/topNavBar.css" />
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
-  <body id="body">
-    <div class="jumbotron text-center">
-      <h2>Image Metadata Viewer</h2>
+<body style="background-image: url(img/background.png);">
+    <div class="col-12 col-sm-8 col-md-4 col-lg-2">
+        <div class="sideNavBar" align="center">
+            <!--LOGO-->
+            <div id="logo">
+                <img id="logo" src="img/logo.png">
+            </div>
+            <div class="buttonsSection">
+                <!--UPLOAD BUTTON -->
+                <div>
+                    <label class="button" for="photos" align="center">Upload JPEG photo</label>
+                    <p hidden>
+                        <input type="file" id="photos" multiple="multiple" id="file-input" onchange="readURL(this);"
+                       accept="image/jpeg" />
+                    </p>
+                </div>
+            
+                <div>
+                    <h5> Upload a local file (only JPEG) to read Exif data. </h5>
+                </div>
+            
+                <!--FILTER-->
+                <div class="filter">
+                    <h4 align="left">Filter by: </h4>
+                        <div class="btn-group-vertical">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> One - 1 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> Two - 2 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> Three - 3 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> Four - 4 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> Five - 5 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> Six - 6 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
+                                  data-toggle="dropdown"> Seven - 7 </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                        </div>
+                                     </a>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-lg">Filter </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container" id="container">
-      <h5>Upload a local file (only JPEG) to read Exif data.</h5>
-
-        
-      <label class="button" for="photos">Wybierz zdjęcie</label>
-        <input type="file" id="photos" multiple="multiple" type="file" id="file-input" onchange="readURL(this);" accept="image/jpeg"/>
-        
-      <div class="choose-file">
-        <div class="custom-file">
-          <input
-            type="file"
-            class="custom-file-input"
-            id="file-input"
-            multiple="multiple"
-            onchange="readURL(this);"
-            accept="image/jpeg"
-            aria-describedby="inputGroupFileAddon04"
-          />
-          <label
-            class="custom-file-label"
-            for="inputGroupFile04"
-            id="FileAttachment"
-            >Choose file</label
-          >
+    <!--RIGHT PART-->
+    <div class="col-12 col-sm-10 col-md-8 col-lg-10">
+        <!-- Top navigation -->
+        <div class="topNavBar">
+            <!--SORT-->
+            <div class="sort">
+                <h4>Sort by: </h4>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"> Name </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z </a>
+                        <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A </a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"> Date </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Oldest to Newest</a>
+                        <a class="dropdown-item">Newest to Oldest</a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"> Camera model </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z </a>
+                      <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A </a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"> One </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Link 1</a>
+                        <a class="dropdown-item">Link 2</a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"> Two </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Link 1</a>
+                        <a class="dropdown-item">Link 2</a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"> Three </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Link 1</a>
+                        <a class="dropdown-item">Link 2</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!--            <h6 id="make" ></h6> -->
-      <div class="images" id="images"></div>
-
-      </div>
+    </div>
+    
+    <!---UPLOADING ZONE-->
+    <div class="images" id="images"></div>
 
     <script type="text/javascript" src="exif.js"></script>
     <script>
-      function readURL(input) {
+        function readURL(input) {
         for (let i = 0; i < input.files.length; i++) {
-          var reader = new FileReader();
-          reader.onload = function(event) {
-            var img = document.createElement("img"); // create new image
-            img.src = event.target.result; // source = uploaded file
-            document.getElementById("images").prepend(img); // prepend - insert image to the beginning of images element
-            document.getElementById("FileAttachment").innerHTML =
-              "Last added: " + input.files[input.files.length - 1].name;
-          };
-          reader.readAsDataURL(input.files[i]);
-          //            EXIF.getData(input.files[0], function() {
-          //                    var exifData = EXIF.pretty(this);
-          //                    if (exifData) {
-          //                       document.getElementById("make").innerHTML= exifData;
-          //                    } else {
-          //                        alert("No EXIF data found in image '" + input.files[0].name + "'.");
-          //                    }
-          //                });
-        }
-      }
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var img = document.createElement("img"); // create new image
+                img.src = event.target.result; // source = uploaded file
+              document.getElementById("images").prepend(img); // prepend - insert image to the beginning of images element
+                document.getElementById("FileAttachment").innerHTML =
+                "Last added: " + input.files[input.files.length - 1].name;
+            };
+            reader.readAsDataURL(input.files[i]);
+            //            EXIF.getData(input.files[0], function() {
+            //                    var exifData = EXIF.pretty(this);
+            //                    if (exifData) {
+            //                       document.getElementById("make").innerHTML= exifData;
+            //                    } else {
+            //                        alert("No EXIF data found in image '" + input.files[0].name + "'.");
+            //                    }
+            //                });
+            }
+         }
     </script>
-  </body>
+    </body>
 </html>

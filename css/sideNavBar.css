@@ -1,0 +1,97 @@
+/* Side navigation bar */
+.sideNavBar {
+    top :4%;
+    bottom: 2%;                 /* 2% from the bottom */ 
+    left: 2%;                   /* 2% from the left side */ 
+    right: 2%;
+    width: 15%;                 /* width of the sidebar */
+    position: fixed;            /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;                 /* Stay on top */
+    overflow-x: hidden;         /* Disable horizontal scroll */
+}
+
+/* Logo */
+#logo {
+    max-width: 100%;
+    height: auto;
+    margin: 0px !important;
+    padding: 0px !important;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: none;/* Disable shadow behind logo image*/
+}
+
+.buttonsSection{
+    width: 75%;
+    color: grey;
+    text-align: center;
+    margin-top: 5%;
+    border-radius: 25px;
+    background-color: rgba(46,49,49,0.7);
+    box-shadow: 10px 10px 5px dimgrey; /* Enable shadow behind nav bar*/
+}
+
+/* Upload button */
+label.button {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: forestgreen;
+  border: 1px solid #6C6C6C;
+  color: white;
+  padding: 5px 10px;
+  margin: 5px 0;
+  display:inline-block;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -ms-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+/* Upload button while hovering the cursor over */
+label.button:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -ms-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+
+/* All checkboxes */
+.dropdown-toggle.dropdown-toggle-split{
+    background-color: #33ACFF;
+    border-color:royalblue;
+    margin-bottom: 5%;
+}
+
+/* All checkboxes while hovering the cursor over*/
+.dropdown-toggle.dropdown-toggle-split:hover,
+.dropdown-toggle.dropdown-toggle-split:focus,
+.dropdown-toggle.dropdown-toggle-split:active:focus{
+    background-color: #006BB3;
+    border-color:royalblue;
+    margin-bottom: 5%;
+}
+
+/* Filter button */
+.btn-danger.btn-lg{
+    background-color: #E7D81E;
+    border-color: greenyellow;
+    color: #4B4B4B;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+/* Filter button while hovering the cursor over */
+.btn-danger.btn-lg:hover,
+.btn-danger.btn-lg:focus,
+.btn-danger.btn-lg:active:focus{
+    background-color: #CCA300;
+    border-color: greenyellow;
+    color: #4B4B4B;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

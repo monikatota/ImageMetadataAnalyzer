@@ -1,0 +1,37 @@
+/* Top navigation bar */
+.topNavBar {
+    top: 4%;
+    height: 15%;
+    left: 19%;                  /* 19% cause of side navigation bar */
+    right: 2%;
+    position: fixed;            /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;                 /* Stay on top */
+    
+    border-radius: 25px;                    /* Rounding borders */
+    background-color: rgba(46,49,49,0.7);   /* Background RGBA color */
+    box-shadow: 10px 10px 5px dimgrey;      /* Enable shadow behind navigation bar */
+}
+
+/* Text section */
+.sort {
+    color: grey;
+    padding-bottom: 10%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+/* All checkboxes */
+.dropdown-toggle.dropdown-toggle-split{
+    background-color: #33ACFF;
+    border-color:royalblue;
+    margin-left: 7%;
+}
+
+/* All checkboxes while hovering the cursor over */
+.dropdown-toggle.dropdown-toggle-split:hover,
+.dropdown-toggle.dropdown-toggle-split:focus,
+.dropdown-toggle.dropdown-toggle-split:active:focus{
+    background-color: #006BB3;
+    border-color:royalblue;
+    margin-left: 7%;
+}
