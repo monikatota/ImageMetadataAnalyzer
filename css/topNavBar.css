@@ -6,32 +6,30 @@
     right: 2%;
     position: fixed;            /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1;                 /* Stay on top */
-    
+}
+
+/* Top buttons bar */
+.buttonsTopBar{
     border-radius: 25px;                    /* Rounding borders */
     background-color: rgba(46,49,49,0.7);   /* Background RGBA color */
     box-shadow: 10px 10px 5px dimgrey;      /* Enable shadow behind navigation bar */
+    
+    color: grey; /*For h4 "Sort by:" label*/
 }
 
-/* Text section */
-.sort {
-    color: grey;
-    padding-bottom: 10%;
-    margin-left: 2%;
-    margin-bottom: 2%;
+.btn-group.topGroup {
+    width: 100%;
+    margin-bottom: 30%;
 }
 
-/* All checkboxes */
-.dropdown-toggle.dropdown-toggle-split{
-    background-color: #33ACFF;
-    border-color:royalblue;
-    margin-left: 7%;
+.button-container.topGroup {
+    padding: 0;
+    height: 100%;
+	max-width: calc(88%/6);   /* Math on a high level XD -> calc((100%-(buttons num)*(left margin% + right margin%))/(buttons num)) */
+    margin-left: 1%;
 }
 
-/* All checkboxes while hovering the cursor over */
-.dropdown-toggle.dropdown-toggle-split:hover,
-.dropdown-toggle.dropdown-toggle-split:focus,
-.dropdown-toggle.dropdown-toggle-split:active:focus{
-    background-color: #006BB3;
-    border-color:royalblue;
-    margin-left: 7%;
+.btn-responsive {
+    width: 100%;
+    height: 100%;
 }

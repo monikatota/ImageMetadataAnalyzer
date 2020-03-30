@@ -27,419 +27,278 @@
   </head>
 
   <body style="background-image: url(img/background.png);">
-    <div class="col-12 col-sm-8 col-md-4 col-lg-2">
-      <div class="sideNavBar" align="center">
-        <!--LOGO-->
-        <div id="logo">
-          <img id="logo" src="img/logo.png" />
-        </div>
-        <div class="buttonsSection">
-          <!--UPLOAD BUTTON -->
-          <div>
-            <label class="button" for="photos" align="center"
-              >Upload JPEG photo</label
-            >
-            <p hidden>
-              <input
-                type="file"
-                id="photos"
-                multiple="multiple"
-                id="file-input"
-                onchange="readURL(this);"
-                accept="image/jpeg"
-              />
-            </p>
+      <!-- LEFT PART -->
+      <!-- Side naviagtion bar  -->
+      <div class="sideNavBar">
+          <!--LOGO-->
+          <div id="logo" align="center">
+              <img id="logo" src="img/logo.png" />
           </div>
+          
+          <!-- Buttons section -->
+          <div class="container buttonsSideBar" align="center">
+              <!--UPLOAD BUTTON-->
+              <label class="btn btn-primary btn-responsive uploadButton" for="photos" align="center">Upload JPEG photo</label>
+              <input type="file" id="photos" multiple="multiple" id="file-input" onchange="readURL(this);" accept="image/jpeg" display="none"/>
 
-          <div>
-            <h5>Upload a local file (only JPEG) to read Exif data.</h5>
+              <div>
+                  <h5 style="font-size: 0.8vw">Upload a local file (only JPEG) to read Exif data.</h5>
+              </div>
+              
+              <!-- Filter section -->
+              <div>
+                  <h4 align="left" style="font-size: 1.2vw">Filter by: </h4>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> One - 1 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two - 2 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three - 3 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Four - 4 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Five - 5 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Six - 6 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Seven - 7 </button>
+                         <div class="dropdown-menu">
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
+                                 </div>
+                             </a>
+                             <a class="dropdown-item">
+                                 <div class="form-check form-check-inline">
+                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                                 </div>
+                             </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row button-row sideGroup">
+                  <div class="col-xs button-container sideGroup">
+                      <div class="btn-group sideGroup">
+                          <button type="button" class="btn btn-primary btn-responsive filterButton"> Filter </button>
+                      </div>
+                  </div>
+              </div>
           </div>
-
-          <!--FILTER-->
-          <div class="filter">
-            <h4 align="left">Filter by:</h4>
-            <div class="btn-group-vertical">
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  One - 1
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox3"
-                        value="option3"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox3"
-                        >Third</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  Two - 2
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  Three - 3
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  Four - 4
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  Five - 5
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  Six - 6
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="btn-group">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle dropdown-toggle-split btn-block"
-                  data-toggle="dropdown"
-                >
-                  Seven - 7
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox1"
-                        value="option1"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox1"
-                        >First</label
-                      >
-                    </div>
-                  </a>
-                  <a class="dropdown-item">
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      <label class="form-check-label" for="inlineCheckbox2"
-                        >Second</label
-                      >
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <button type="button" class="btn btn-danger btn-lg">
-                Filter
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-
-    <!--RIGHT PART-->
-    <div class="col-12 col-sm-10 col-md-8 col-lg-10">
-      <!-- Top navigation -->
+      
+      <!--RIGHT PART-->
+      <!-- Top navigation bar -->
       <div class="topNavBar">
-        <!--SORT-->
-        <div class="sort">
-          <h4>Sort by:</h4>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-            >
-              Name
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item"
-                ><span class="glyphicon glyphicon-sort-by-alphabet"></span> A -
-                Z
-              </a>
-              <a class="dropdown-item"
-                ><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span>
-                Z -A
-              </a>
-            </div>
+          <div class="container buttonsTopBar">
+              <h4 style="font-size: 1.2vw">Sort by: </h4>
+              <div class="row button-row topGroup">
+                  <div class="col-xs button-container topGroup">
+                      <div class="btn-group topGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Name </button>
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z </a>
+                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A </a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs button-container topGroup">
+                      <div class="btn-group topGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Date </button>
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item">Oldest to Newest</a>
+                              <a class="dropdown-item">Newest to Oldest</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs button-container topGroup">
+                      <div class="btn-group topGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Camera model </button>
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z </a>
+                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A </a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs button-container topGroup">
+                      <div class="btn-group topGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> One </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item"> Link 1 </a>
+                              <a class="dropdown-item"> Link 2 </a>
+                            </div>
+                      </div>
+                  </div>
+                  <div class="col-xs button-container topGroup">
+                      <div class="btn-group topGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item"> Link 1 </a>
+                              <a class="dropdown-item"> Link 2 </a>
+                            </div>
+                      </div>
+                  </div>
+                  <div class="col-xs button-container topGroup">
+                      <div class="btn-group topGroup">
+                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item"> Link 1 </a>
+                              <a class="dropdown-item"> Link 2 </a>
+                            </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-            >
-              Date
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">Oldest to Newest</a>
-              <a class="dropdown-item">Newest to Oldest</a>
-            </div>
-          </div>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-            >
-              Camera model
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item"
-                ><span class="glyphicon glyphicon-sort-by-alphabet"></span> A -
-                Z
-              </a>
-              <a class="dropdown-item"
-                ><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span>
-                Z -A
-              </a>
-            </div>
-          </div>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-            >
-              One
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">Link 1</a>
-              <a class="dropdown-item">Link 2</a>
-            </div>
-          </div>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-            >
-              Two
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">Link 1</a>
-              <a class="dropdown-item">Link 2</a>
-            </div>
-          </div>
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown"
-            >
-              Three
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">Link 1</a>
-              <a class="dropdown-item">Link 2</a>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
 
     <!---UPLOADING ZONE-->
     <div class="images" id="images"></div>
