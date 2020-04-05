@@ -506,6 +506,7 @@
 
             /* EXAMPLE - wartości można zobaczyc w konsoli Fn + F12*/
             console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
+            console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
             console.log(piexif.TAGS["0th"]["306"]["name"]) 
             console.log(exifObj) // tutaj można podejrzeć jakie są numerki
             for (var ifd in exifObj) { // Loop through the properties of an object
