@@ -320,8 +320,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <!-- <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Modal title</h5>
             <button
               type="button"
               class="close"
@@ -330,7 +330,7 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+          </div> -->
           <div class="modal-body">
             <div class="row">
               <div class="col">
@@ -338,7 +338,7 @@
                 <!-- Image miniature above -->
               </div>
               <div class="col">
-                <h5 id="modalInfo"></h5>
+                <h5 id="modalInfo">modal info</h5>
               </div>
             </div>
           </div>
@@ -383,7 +383,7 @@
               console.log("-" + ifd);
               for (var tag in exifObj[ifd]) {
                 // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
-                console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag]);
+                console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag] + " ifd:" + ifd + " tag:" + tag);
               }
             }
 
@@ -427,7 +427,7 @@
             a3.textContent = "View/Edit Details?";
             a3.setAttribute("id", imgID);
             a3.addEventListener("click", function() {
-              displayPopup(img.id, a3);
+              displayPopup(img, img.id, a3);
             });
             //a3.setAttribute("data-toggle", "modal");
             //a3.setAttribute("data-target", "#popupModal");
@@ -480,19 +480,24 @@
         // };
       }
 
-      function displayPopup(photoID, element) {
+      function displayPopup(img, photoID, element) {
+        var exifObj = piexif.load(img.src);
+        console.log(img.src);
+
         element.setAttribute("data-toggle", "modal");
         element.setAttribute("data-target", "#popupModal");
 
         var modalImg = document.getElementById("imgPopup");
         var modalInfo = document.getElementById("modalInfo");
+        //var modalTitle = document.getElementById("modalTitle");
 
         // Get the image and insert it inside the modal
         var img = document.getElementById(photoID);
         modalImg.src = img.src;
 
-        // Get the image info and insert it inside the modal
-        modalInfo = "modal info";
+        modalInfo.innerHTML = 'Date: ' + exifObj["0th"]["306"] + '\n Title: ' + exifObj["0th"]["2"] + '\n Model: ' + exifObj["0th"]["272"];
+        
+        
       }
 
     </script>
