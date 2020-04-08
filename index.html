@@ -438,6 +438,9 @@
             a5.type = "button";
             a5.textContent = "Delete";
             a5.setAttribute("id", imgID);
+            a5.addEventListener("click", function() {
+                deleteImg(img.id);
+            });
             button5.appendChild(a5);
             newList.appendChild(button5);
 
@@ -467,6 +470,12 @@
           modal.style.display = "none";
         };
       }
+    </script>
+    <script>
+        function deleteImg(photoID){
+            var img = document.getElementById(photoID);
+            img.parentNode.parentNode.removeChild(img.parentNode);
+        };
     </script>
   </body>
 </html>
