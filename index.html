@@ -475,6 +475,8 @@
         function deleteImg(photoID){
             var img = document.getElementById(photoID);
             img.parentNode.parentNode.removeChild(img.parentNode);
+            img.parentNode.removeChild(img.parentNode);
+            img.parentNode.removeChild(img);
         };
     </script>
   </body>
