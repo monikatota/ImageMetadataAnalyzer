@@ -349,15 +349,36 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="exif.js"></script>
+    <script src="piexif.js"></script>
     <script>
       var arrImages = [];
+      /* global variable storing exif data of every image */
+      var arrEXIF = [];
       var imgID = 0;
       function readURL(input) {
         for (let i = 0; i < input.files.length; i++) {
           arrImages.push(input.files[i]);
           var reader = new FileReader();
           reader.onload = function(event) {
+            var exifObj = piexif.load(event.target.result);
+            arrEXIF.push(exifObj);
+
+            /* EXAMPLE - wartości można zobaczyc w konsoli Fn + F12*/
+            console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
+            console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
+            console.log(piexif.TAGS["0th"]["306"]["name"]) 
+            console.log(exifObj) // tutaj można podejrzeć jakie są numerki
+            for (var ifd in exifObj) { // Loop through the properties of an object
+              if (ifd == "thumbnail") {
+                continue; // ommit "thumbnail"
+              }
+              console.log("-" + ifd);
+              for (var tag in exifObj[ifd]) {
+                // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
+                console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag]);
+              }
+            }
+
             var newDiv = document.createElement("div");
             newDiv.className = "dropdown";
 
@@ -365,7 +386,6 @@
             img.src = event.target.result; // source = uploaded file
             imgID++;
             img.setAttribute("id", "photo_" + imgID);
-            console.log(img.id);
             img.addEventListener("click", function() {
               displayModal(img.id);
             });
@@ -382,7 +402,6 @@
             a1.addEventListener("click", function() {
               displayModal(img.id);
             });
-            console.log(button1.id);
             button1.appendChild(a1);
             newList.appendChild(button1);
 
@@ -426,14 +445,6 @@
             document.getElementById("images").prepend(newDiv); // prepend - insert newDiv to the beginning of "images"
           };
           reader.readAsDataURL(input.files[i]);
-          //            EXIF.getData(input.files[0], function() {
-          //                    var exifData = EXIF.pretty(this);
-          //                    if (exifData) {
-          //                       document.getElementById("make").innerHTML= exifData;
-          //                    } else {
-          //                        alert("No EXIF data found in image '" + input.files[0].name + "'.");
-          //                    }
-          //                });
         }
       }
     </script>
