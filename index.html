@@ -474,9 +474,62 @@
     <script>
         function deleteImg(photoID){
             var img = document.getElementById(photoID);
-            img.parentNode.parentNode.removeChild(img.parentNode);
-            img.parentNode.removeChild(img.parentNode);
-            img.parentNode.removeChild(img);
+
+            //Deleting from node
+            let node = img.parentNode.parentNode;
+            node.removeChild(img.parentNode);
+
+            //Deleting from global variables
+            arrEXIF.splice(photoID,1);
+            arrImages.splice(photoID,1);
+
+            // //Before changing ID
+            // for (let i = node.childNodes.length - 1; i>=0; --i) {    
+            //     let divNode = node.childNodes[i];                      
+            //     for(let j = 0; j <divNode.childNodes.length; ++j){ 
+            //         if(divNode.childNodes[j].id==""){       
+            //             let listNode = divNode.childNodes[j];  
+            //             for(let k=0; k<listNode.childNodes.length; ++k){
+            //                 console.log("Before: button a"+ k +" id = "+ listNode.childNodes[k].firstChild.id);
+            //             }
+            //         } else{
+            //             console.log("Before: image id = " + divNode.childNodes[j].id);
+            //         }
+            //     }
+            // }
+            
+            //Changing ID
+            imgID = 1;
+            for (let i = node.childNodes.length - 1; i>=0; --i) {           //from last added photo
+                let divNode = node.childNodes[i];                           //get all "div" nodes
+                for(let j = 0; j <divNode.childNodes.length; ++j){ 
+                    if(divNode.childNodes[j].id==""){                       //if so - current node is a buttons list
+                        let listNode = divNode.childNodes[j];               //get all "button" nodes
+                        for(let k=0; k<listNode.childNodes.length; ++k){
+                            listNode.childNodes[k].firstChild.id = imgID;   //change firstChild's id, cause "button" node has only one child
+                        }
+                    }
+                    else{                                                   //if no - current node is a image
+                        divNode.childNodes[j].id = "photo_" + imgID;        //change image's id
+                    }
+                }
+                imgID++;
+            }
+
+            // //After changing ID
+            // for (let i = node.childNodes.length - 1; i>=0; --i) {  
+            //     let divNode = node.childNodes[i];                   
+            //     for(let j = 0; j <divNode.childNodes.length; ++j){ 
+            //         if(divNode.childNodes[j].id==""){                     
+            //             let listNode = divNode.childNodes[j];               
+            //             for(let k=0; k<listNode.childNodes.length; ++k){
+            //                 console.log("After: button a"+ k +" id = "+ listNode.childNodes[k].firstChild.id);
+            //             }
+            //         } else{
+            //             console.log("After: image id = " + divNode.childNodes[j].id);
+            //         }
+            //     }
+            // }
         };
     </script>
   </body>
