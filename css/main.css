@@ -56,6 +56,21 @@ body, html {
 
 .dropdown:hover .dropdown-content {display: block;}
 
+/* Image's right corner "x" button */
+.xButton{
+  display: none;
+  float: right;
+  position: absolute;
+  border-radius: 25px;
+  top: -5%;
+  right: -5%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .xButton{
+  display:inherit;
+}
 
 .images img {
   border-radius: 8px; 
