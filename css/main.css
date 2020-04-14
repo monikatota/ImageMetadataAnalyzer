@@ -72,6 +72,22 @@ body, html {
   display:inherit;
 }
 
+/* Image's right corner - rotation button */
+.rButton{
+  display: none;
+  float: right;
+  position: absolute;
+  border-radius: 25px;
+  top: -5%;
+  right: 10%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .rButton{
+  display:inherit;
+}
+
 .images img {
   border-radius: 8px; 
   margin-bottom: 0; /* must be 0 to be close to the dropdown list */
