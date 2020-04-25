@@ -311,26 +311,18 @@
 
     <!-- Popup modal Detail-->
     <div
-      class="modal fade"
+      class="modal fade bd-example-modal-lg"
       id="popupModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-          <!-- <div class="modal-header">
+          <div class="modal-header">
             <h5 class="modal-title" id="modalTitle">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div> -->
+          </div> 
           <div class="modal-body">
             <div class="row">
               <div class="col">
@@ -338,7 +330,36 @@
                 <!-- Image miniature above -->
               </div>
               <div class="col">
-                <h5 id="modalInfo">modal info</h5>
+                <div class="form-group row">
+                    <label for="modalDate" class="col-4 col-form-label">Date Taken: </label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="modalDate" placeholder="YYYY/MM/DD">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-md-center">
+                    <label for="modalGPS" class="col-4 col-form-label">Coordinates: </label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="modalGPS" placeholder="22°22'">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-md-center">
+                    <label for="modalDevice" class="col-4 col-form-label">Device: </label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="modalDevice" placeholder="Device">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-md-center">
+                    <label for="modalIso" class="col-4 col-form-label">ISO: </label>
+                    <div class="col-8">
+                      <input type="text" class="form-control" id="modalIso" placeholder="0">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-md-center">
+                    <label for="modalExposure" class="col-4 col-form-label">Exposure Time: </label>
+                    <div class="col-8">
+                      <input type="number" class="form-control" id="modalExposure" placeholder="10">
+                    </div>
+                </div>
               </div>
             </div>
           </div>
@@ -482,22 +503,28 @@
 
       function displayPopup(img, photoID, element) {
         var exifObj = piexif.load(img.src);
-        console.log(img.src);
 
         element.setAttribute("data-toggle", "modal");
         element.setAttribute("data-target", "#popupModal");
 
         var modalImg = document.getElementById("imgPopup");
-        var modalInfo = document.getElementById("modalInfo");
+        var modalDate = document.getElementById("modalDate");
+        var modalDevice = document.getElementById("modalDevice");
         //var modalTitle = document.getElementById("modalTitle");
 
         // Get the image and insert it inside the modal
         var img = document.getElementById(photoID);
         modalImg.src = img.src;
 
-        modalInfo.innerHTML = 'Date: ' + exifObj["0th"]["306"] + '\n Title: ' + exifObj["0th"]["2"] + '\n Model: ' + exifObj["0th"]["272"];
-        
-        
+        var id = img.id.substring(6)-1; //Image index in arrEXIF
+
+        console.log(arrImages);
+
+        modalTitle.innerHTML = arrImages[id].name;
+        modalDate.placeholder = arrEXIF[id]["0th"]["306"];
+        modalDevice.placeholder = arrEXIF[id]["0th"]["272"];
+        //'Date: ' + arrEXIF[id]["0th"]["306"] + '\n Title: ' + arrEXIF[id]["0th"]["2"] + '\n Model: ' + arrEXIF[id]["0th"]["272"];
+        //modalInfo.innerHTML = 'Date: ' + exifObj["0th"]["306"] + '\n Title: ' + exifObj["0th"]["2"] + '\n Model: ' + exifObj["0th"]["272"];        
       }
 
     </script>
