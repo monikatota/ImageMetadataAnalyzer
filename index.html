@@ -498,9 +498,9 @@
       var imgID = 0;
       function readURL(input) {
         for (let i = 0; i < input.files.length; i++) {
-          arrImages.push(input.files[i]);
           var reader = new FileReader();
           reader.onload = function(event) {
+            arrImages.push(input.files[i]);
             var exifObj = piexif.load(event.target.result);
             arrEXIF.push(exifObj);
 
