@@ -343,21 +343,41 @@
                     </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalDevice" class="col-4 col-form-label">Device: </label>
-                    <div class="col-8">
+                    <label for="modalModel" class="col-4 col-form-label">Model and device: </label>
+                    <div class="col-4">
+                        <input type="text" class="form-control" id="modalModel" placeholder="Model">
+                      </div>
+                    <div class="col-4">
                       <input type="text" class="form-control" id="modalDevice" placeholder="Device">
                     </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalIso" class="col-4 col-form-label">ISO: </label>
+                    <label for="modalIso" class="col-4 col-form-label">ISO Speed Ratings: </label>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="modalIso" placeholder="0">
+                      <input type="number" class="form-control" id="modalIso" placeholder="0">
                     </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
                     <label for="modalExposure" class="col-4 col-form-label">Exposure Time: </label>
                     <div class="col-8">
-                      <input type="number" class="form-control" id="modalExposure" placeholder="10">
+                      <input type="text" class="form-control" id="modalExposure" placeholder="10">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-md-center">
+                    <label for="modalExposure" class="col-4 col-form-label">Flash: </label>
+                    <div class="col-4">
+                        <select class="custom-select mr-sm-2" id="modalFleshType">
+                            <!-- <option selected>Choose...</option> -->
+                            <option value="1">Auto</option>
+                            <option value="2">Copumlsory Flash Firing</option>
+                            <option value="3">Compulsory Flash Suppression</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select class="custom-select mr-sm-2" id="modalFleshFired">
+                            <option value="1">Flash fired</option>
+                            <option value="2">Flash didn't fired</option>
+                        </select>
                     </div>
                 </div>
               </div>
@@ -501,6 +521,11 @@
         // };
       }
 
+      function calculateFlash(num) {
+          var binNum = (num >>> 0).toString(2);
+          return binNum;
+      }
+
       function displayPopup(img, photoID, element) {
         var exifObj = piexif.load(img.src);
 
@@ -510,6 +535,12 @@
         var modalImg = document.getElementById("imgPopup");
         var modalDate = document.getElementById("modalDate");
         var modalDevice = document.getElementById("modalDevice");
+        var modalIso = document.getElementById("modalIso");
+        var modalExposure = document.getElementById("modalExposure");
+        var modalGPS = document.getElementById("modalGPS");
+        var modalModel = document.getElementById("modalModel");
+        var modalFleshFired = document.getElementById("modalFleshFired");
+        var modalFleshType = document.getElementById("modalFleshType");
         //var modalTitle = document.getElementById("modalTitle");
 
         // Get the image and insert it inside the modal
@@ -521,8 +552,40 @@
         console.log(arrImages);
 
         modalTitle.innerHTML = arrImages[id].name;
-        modalDate.placeholder = arrEXIF[id]["0th"]["306"];
-        modalDevice.placeholder = arrEXIF[id]["0th"]["272"];
+
+        modalDate.value = arrEXIF[id]["0th"]["306"];
+        modalModel.value = arrEXIF[id]["0th"]["271"];
+        modalDevice.value = arrEXIF[id]["0th"]["272"];
+        modalIso.value = arrEXIF[id]["Exif"]["34855"];
+        modalExposure.value = (arrEXIF[id]["Exif"]["33434"]).toString().replace(",","/");
+
+        var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
+
+        // Check last bit if flash fired
+        if (flashVal.substr(flashVal.length - 1) == 1)
+        {
+            modalFleshFired.value = 1;
+        }
+        else
+        {
+            modalFleshFired.value = 2;
+        }
+
+        // Check flash type
+        if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) 
+        {
+            modalFleshType.value = 1; // auto
+        }
+        else if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01)
+        {
+            modalFleshType.value = 2; // compulsory flash firing
+        }
+        else if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10)
+        {
+            modalFleshType.value = 3; // compulsory flash suppression
+        }
+        
+
         //'Date: ' + arrEXIF[id]["0th"]["306"] + '\n Title: ' + arrEXIF[id]["0th"]["2"] + '\n Model: ' + arrEXIF[id]["0th"]["272"];
         //modalInfo.innerHTML = 'Date: ' + exifObj["0th"]["306"] + '\n Title: ' + exifObj["0th"]["2"] + '\n Model: ' + exifObj["0th"]["272"];        
       }
