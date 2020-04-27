@@ -378,20 +378,20 @@
                     arrEXIF.push(exifObj);
 
                     /* EXAMPLE - wartości można zobaczyc w konsoli Fn + F12*/
-                    console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
-                    console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
-                    console.log(piexif.TAGS["0th"]["306"]["name"])
-                    console.log(exifObj) // tutaj można podejrzeć jakie są numerki
-                    for (var ifd in exifObj) { // Loop through the properties of an object
-                        if (ifd == "thumbnail") {
-                            continue; // ommit "thumbnail"
-                        }
-                        console.log("-" + ifd);
-                        for (var tag in exifObj[ifd]) {
-                            // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
-                            console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag]);
-                        }
-                    }
+                    // console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
+                    // console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
+                    // console.log(piexif.TAGS["0th"]["306"]["name"])
+                    // console.log(exifObj) // tutaj można podejrzeć jakie są numerki
+                    // for (var ifd in exifObj) { // Loop through the properties of an object
+                    //     if (ifd == "thumbnail") {
+                    //         continue; // ommit "thumbnail"
+                    //     }
+                    //     console.log("-" + ifd);
+                    //     for (var tag in exifObj[ifd]) {
+                    //         // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
+                    //         console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag]);
+                    //     }
+                    // }
 
                     var newDiv = document.createElement("div");
                     newDiv.className = "dropdown";
@@ -500,30 +500,6 @@
             //Deleting from node
             let node = img.parentNode.parentNode;
             node.removeChild(img.parentNode);
-
-            //Deleting from global variables
-            arrEXIF.splice(numID, 1);
-            arrImages.splice(numID, 1);
-
-            //Changing ID
-            imgID = 1;
-            for (let i = node.childNodes.length - 1; i >= 0; --i) {           //from last added photo
-                let divNode = node.childNodes[i];                           //get all "div" nodes
-                for (let j = 0; j < divNode.childNodes.length; ++j) {
-                    if (divNode.childNodes[j].id == "") {                       //if so - current node is a buttons list
-                        let listNode = divNode.childNodes[j];               //get all "list-button" nodes
-                        for (let k = 0; k < listNode.childNodes.length; ++k) {
-                            listNode.childNodes[k].firstChild.id = imgID;   //change firstChild's id, cause "button" node has only one child
-                        }
-                    } else if (parseInt(divNode.childNodes[j].id)) {          //if so - current node is a "x"-button
-                        divNode.childNodes[j].id = imgID;                   //change "x"-button id 
-                    }
-                    else {                                                   //if no - current node is an image
-                        divNode.childNodes[j].id = "photo_" + imgID;        //change image's id
-                    }
-                }
-                imgID++;
-            }
         };
 
         function rotateImg(photoID) {
@@ -556,45 +532,49 @@
             var parentDivImagesSorted = [];
             for(let i=0; i<parentDivImages.length; i++)
             {
-            let ID = parentDivImages[i].id;
-            switch (sortBy) {
-                case "name":
-                var obj = { "id": ID, "name": arrImages[ID.substring(6)-1].name};
-                break;
-                case "date":
-                var obj = { "id": ID, "date": arrEXIF[ID.substring(6)-1]["0th"]["306"]};
-                break;
-                default:
-                /* ? */
+                /* get image's id (format: photo_+nr */
+                let ID = parentDivImages[i].id;
+                switch (sortBy) {
+                    case "name":                         /* get number from id */
+                    var obj = { "id": ID, "name": arrImages[ID.substring(6)-1].name};
+                    break;
+                    case "date":
+                    var obj = { "id": ID, "date": arrEXIF[ID.substring(6)-1]["0th"]["306"]};
+                    break;
+                    default:
+                    /* ? */
+                }
+                parentDivImagesSorted.push(obj);
             }
-            parentDivImagesSorted.push(obj);
-            }
+            console.log(arrImages)
+            console.log(arrEXIF)
+            console.log(parentDivImagesSorted)
             /* sort with a desired order */
             parentDivImagesSorted.sort(compareValues(sortBy,order));
             for(let img in parentDivImagesSorted) 
             {
-            let imgDiv = document.getElementById(parentDivImagesSorted[img].id).parentNode;
-            /* change order of div elements */
-            parentDiv.appendChild(imgDiv);
+                let imgDiv = document.getElementById(parentDivImagesSorted[img].id).parentNode;
+                /* change order of div elements */
+                // parentDiv.appendChild(imgDiv);
             }
         }
     
         function compareValues(key, order = 'asc') { //'asc' by default
             return function innerSort(a, b) {
-            const varA = (typeof a[key] === 'string') // for 'string' change to upper case (comparison is not case sensitive)
-                ? a[key].toUpperCase() : a[key];
-            const varB = (typeof b[key] === 'string') 
-                ? b[key].toUpperCase() : b[key];
-    
-            let comparison = 0;
-            if (varA > varB) { // e.g. for strings S>P
-                comparison = 1;
-            } else if (varA < varB) {
-                comparison = -1;
-            }
-            return (
-                (order === 'desc') ? (comparison * -1) : comparison
-            );
+                const varA = (typeof a[key] === 'string') // for 'string' change to upper case (comparison is not case sensitive)
+                    ? a[key].toUpperCase() : a[key];
+                const varB = (typeof b[key] === 'string') 
+                    ? b[key].toUpperCase() : b[key];
+        
+                let comparison = 0;
+                if (varA > varB) { // e.g. for strings S>P
+                    comparison = 1;
+                } else if (varA < varB) {
+                    comparison = -1;
+                }
+                return (
+                    (order === 'desc') ? (comparison * -1) : comparison
+                );
             };
         }
     </script>
