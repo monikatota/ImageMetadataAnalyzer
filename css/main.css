@@ -152,7 +152,14 @@ input {
   text-align: center; 
 } 
 
-
+input.form-fixer {
+  padding: 0.5px;
+  width: 150%;
+}
+select.form-fixer2 {
+  padding: 0.5px;
+  width: 120%;
+}
 
 /* @media screen and (min-width: 50em) {
   #imgPopup {
