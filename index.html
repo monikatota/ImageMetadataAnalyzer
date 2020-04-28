@@ -579,7 +579,7 @@
                     var obj = { "id": ID, "focalRatio": arrEXIF[ID.substring(6)-1]["Exif"]["33437"][0]};
                     break;
                     case "shutter":
-                    var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6)-1]["Exif"]["33434"]};
+                    var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6)-1]["Exif"]["33434"][0]/arrEXIF[ID.substring(6)-1]["Exif"]["33434"][1]}; //exposure time in seconds
                     break;
                     //end
                     case "focalLength":
