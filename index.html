@@ -266,9 +266,11 @@
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
                             data-toggle="dropdown"> Name </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('name','asc')"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z
+                            <a class="dropdown-item" onclick="sortImages('name','asc')"><span
+                                    class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z
                             </a>
-                            <a class="dropdown-item" onclick="sortImages('name','desc')"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A
+                            <a class="dropdown-item" onclick="sortImages('name','desc')"><span
+                                    class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A
                             </a>
                         </div>
                     </div>
@@ -286,7 +288,7 @@
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Modified date </button>
+                            data-toggle="dropdown"> Modification date </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" onclick="sortImages('modDate','asc')">Oldest to Newest</a>
                             <a class="dropdown-item" onclick="sortImages('modDate','desc')">Newest to Oldest</a>
@@ -298,8 +300,10 @@
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
                             data-toggle="dropdown"> Camera model </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('camera','asc')"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z</a>
-                            <a class="dropdown-item" onclick="sortImages('camera','desc')"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A</a>
+                            <a class="dropdown-item" onclick="sortImages('camera','asc')"><span
+                                    class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z</a>
+                            <a class="dropdown-item" onclick="sortImages('camera','desc')"><span
+                                    class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A</a>
                         </div>
                     </div>
                 </div>
@@ -318,8 +322,10 @@
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
                             data-toggle="dropdown"> Focal Ratio </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('focalRatio','asc')"> Narrow depth of field </a>
-                            <a class="dropdown-item" onclick="sortImages('focalRatio','desc')"> Large depth of field </a>
+                            <a class="dropdown-item" onclick="sortImages('focalRatio','asc')"> Narrow depth of field
+                            </a>
+                            <a class="dropdown-item" onclick="sortImages('focalRatio','desc')"> Large depth of field
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -338,9 +344,16 @@
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
                             data-toggle="dropdown"> Focal length </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('focalLength','desc')"> Narrow angle of view </a>
+                            <a class="dropdown-item" onclick="sortImages('focalLength','desc')"> Narrow angle of view
+                            </a>
                             <a class="dropdown-item" onclick="sortImages('focalLength','asc')"> Wide angle of view </a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-xs button-container topGroup">
+                    <div class="btn-group topGroup">
+                        <button type="button" class="btn btn-primary btn-responsive"
+                            onclick="sortImages('defaultSort','desc')"> Default sort </button>
                     </div>
                 </div>
             </div>
@@ -390,7 +403,7 @@
         function readURL(input) {
             for (let i = 0; i < input.files.length; i++) {
                 var reader = new FileReader();
-                reader.onload = function(event) {
+                reader.onload = function (event) {
                     arrImages.push(input.files[i]);
                     var exifObj = piexif.load(event.target.result);
                     arrEXIF.push(exifObj);
@@ -423,10 +436,17 @@
                     });
                     newDiv.appendChild(img);
 
+                    var sortData = document.createElement("div");
+                    sortData.className = "sortData";
+                    sortData.textContent = "";
+                    sortData.style.textAlign = "center";
+                    sortData.setAttribute("id", imgID);
+                    newDiv.appendChild(sortData);
+
                     // rotation button 
                     var rButton = document.createElement("button");
                     rButton.className = "rButton";
-                    rButton.innerHTML = " <span class='glyphicon glyphicon-repeat'></span>  "  ; 
+                    rButton.innerHTML = " <span class='glyphicon glyphicon-repeat'></span>  ";
                     rButton.setAttribute("id", imgID)
                     rButton.addEventListener("click", function () {
                         rotateImg(img.id);
@@ -520,7 +540,7 @@
             node.removeChild(img.parentNode);
         };
 
-  
+
         function rotateImg(photoID) {
             var img = document.getElementById(photoID);
 
@@ -548,45 +568,67 @@
 
     </script>
     <script>
-        function sortImages(sortBy,order) {
-            var parentDiv = document.getElementById("images"); 
+        function sortImages(sortBy, order) {
+            var parentDiv = document.getElementById("images");
             /* get images */
-            var parentDivImages = parentDiv.getElementsByTagName("img"); 
+            var parentDivImages = parentDiv.getElementsByTagName("img");
             /* copy images' ids and theirs names into a list */
             var parentDivImagesSorted = [];
-            for(let i=0; i<parentDivImages.length; i++)
-            {
+            /* get images data areas array */
+            var imageSortData = parentDiv.getElementsByClassName("sortData");
+            for (let i = 0; i < parentDivImages.length; i++) {
                 /* get image's id (format: photo_+nr */
                 let ID = parentDivImages[i].id;
-                switch (sortBy) {
-                    case "name":                         /* get number from id */
-                    var obj = { "id": ID, "name": arrImages[ID.substring(6)-1].name};
-                    break;
-                    case "date":
-                    var obj = { "id": ID, "date": arrEXIF[ID.substring(6)-1]["Exif"]["36867"]};
-                    break;
-                    case "modDate":
-                    var obj = { "id": ID, "modDate": arrEXIF[ID.substring(6)-1]["0th"]["306"]};
-                    break;
-                    case "camera":
-                    var obj = { "id": ID, "camera": arrEXIF[ID.substring(6)-1]["0th"]["271"]+" "+arrEXIF[ID.substring(6)-1]["0th"]["272"]}; //concat of camera manufacturer and model
-                    break;
-                    //Exposure triangle
-                    case "iso":
-                    var obj = { "id": ID, "iso": arrEXIF[ID.substring(6)-1]["Exif"]["34855"]};
-                    break;
-                    case "focalRatio":
-                    var obj = { "id": ID, "focalRatio": arrEXIF[ID.substring(6)-1]["Exif"]["33437"][0]};
-                    break;
-                    case "shutter":
-                    var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6)-1]["Exif"]["33434"][0]/arrEXIF[ID.substring(6)-1]["Exif"]["33434"][1]}; //exposure time in seconds
-                    break;
-                    //end
-                    case "focalLength":
-                    var obj = { "id": ID, "focalLength": arrEXIF[ID.substring(6)-1]["Exif"]["37386"]};
-                    break;
-                    default:
-                    /* ? */
+                try {
+                    switch (sortBy) {
+                        case "name":                         /* get number from id */
+                            var obj = { "id": ID, "name": arrImages[ID.substring(6) - 1].name };
+                            imageSortData[i].textContent = "Name: " + arrImages[ID.substring(6) - 1].name;
+                            console.log(imageSortData[i]);
+                            break;
+                        case "date":
+                            var obj = { "id": ID, "date": arrEXIF[ID.substring(6) - 1]["Exif"]["36867"] };
+                            imageSortData[i].textContent = "Original date: " + arrEXIF[ID.substring(6) - 1]["Exif"]["36867"];
+                            break;
+                        case "modDate":
+                            var obj = { "id": ID, "modDate": arrEXIF[ID.substring(6) - 1]["0th"]["306"] };
+                            imageSortData[i].textContent = "Modification date: " + arrEXIF[ID.substring(6) - 1]["0th"]["306"];
+                            break;
+                        case "camera":
+                            var obj = { "id": ID, "camera": arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"] }; //concat of camera manufacturer and model
+                            imageSortData[i].textContent = "Camera: " + arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"];
+                            break;
+                        //Exposure triangle
+                        case "iso":
+                            var obj = { "id": ID, "iso": arrEXIF[ID.substring(6) - 1]["Exif"]["34855"] };
+                            imageSortData[i].textContent = "ISO: " + arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+                            break;
+                        case "focalRatio":
+                            imageSortData[i].textContent = "Focal ratio: ";
+                            var obj = { "id": ID, "focalRatio": arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1] };
+                            imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1];
+                            break;
+                        case "shutter":
+                            imageSortData[i].textContent = "Exposure time: ";
+                            var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1] }; //exposure time in seconds
+                            imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0] + "/" + arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1] + "sec";
+                            break;
+                        //end
+                        case "focalLength":
+                            imageSortData[i].textContent = "Focal length: ";
+                            var obj = { "id": ID, "focalLength": arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1] };
+                            imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1];
+                            break;
+                        case "defaultSort":
+                            var obj = { "id": ID, "defaultSort": ID };
+                            imageSortData[i].textContent = "";
+                            break;
+                        default:
+                        /* ? */
+                    }
+                } catch (error) {
+                    var obj = { "id": ID, sortBy: "undefined" };
+                    imageSortData[i].textContent += "undefined";
                 }
                 parentDivImagesSorted.push(obj);
             }
@@ -594,27 +636,32 @@
             console.log(arrEXIF)
             console.log(parentDivImagesSorted)
             /* sort with a desired order */
-            parentDivImagesSorted.sort(compareValues(sortBy,order));
-            for(let img in parentDivImagesSorted) 
-            {
+            parentDivImagesSorted.sort(compareValues(sortBy, order));
+            for (let img in parentDivImagesSorted) {
                 let imgDiv = document.getElementById(parentDivImagesSorted[img].id).parentNode;
                 /* change order of div elements */
                 parentDiv.appendChild(imgDiv);
             }
         }
-    
+
         function compareValues(key, order = 'asc') { //'asc' by default
             return function innerSort(a, b) {
                 const varA = (typeof a[key] === 'string') // for 'string' change to upper case (comparison is not case sensitive)
                     ? a[key].toUpperCase() : a[key];
-                const varB = (typeof b[key] === 'string') 
+                const varB = (typeof b[key] === 'string')
                     ? b[key].toUpperCase() : b[key];
-        
+
                 let comparison = 0;
                 if (varA > varB) { // e.g. for strings S>P
                     comparison = 1;
                 } else if (varA < varB) {
                     comparison = -1;
+                 } else {  //Comparison of defined element with undefined one
+                    if (typeof varA === "undefined") {
+                        return 1;
+                    } else if (typeof varB === "undefined") {
+                        return -1;
+                    }
                 }
                 return (
                     (order === 'desc') ? (comparison * -1) : comparison
