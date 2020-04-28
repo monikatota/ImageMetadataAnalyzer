@@ -268,7 +268,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" onclick="sortImages('name','asc')"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z
                             </a>
-                            <a class="dropdown-item" onclick="sortImages('name','desc')"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A
+                            <a class="dropdown-item" onclick="sortImages('name','desc')"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A
                             </a>
                         </div>
                     </div>
@@ -276,7 +276,7 @@
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Date </button>
+                            data-toggle="dropdown"> Original date </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" onclick="sortImages('date','asc')">Oldest to Newest</a>
                             <a class="dropdown-item" onclick="sortImages('date','desc')">Newest to Oldest</a>
@@ -286,42 +286,60 @@
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
+                            data-toggle="dropdown"> Digitized date </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" onclick="sortImages('digDate','asc')">Oldest to Newest</a>
+                            <a class="dropdown-item" onclick="sortImages('digDate','desc')">Newest to Oldest</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs button-container topGroup">
+                    <div class="btn-group topGroup">
+                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
                             data-toggle="dropdown"> Camera model </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z
-                            </a>
-                            <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A
-                            </a>
+                            <a class="dropdown-item" onclick="sortImages('camera','asc')"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z</a>
+                            <a class="dropdown-item" onclick="sortImages('camera','desc')"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> One </button>
+                            data-toggle="dropdown"> ISO </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item"> Link 1 </a>
-                            <a class="dropdown-item"> Link 2 </a>
+                            <a class="dropdown-item" onclick="sortImages('iso','asc')"> Low digital noise </a>
+                            <a class="dropdown-item" onclick="sortImages('iso','desc')"> High digital noise </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Two </button>
+                            data-toggle="dropdown"> Focal Ratio </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item"> Link 1 </a>
-                            <a class="dropdown-item"> Link 2 </a>
+                            <a class="dropdown-item" onclick="sortImages('focalRatio','asc')"> Narrow depth of field </a>
+                            <a class="dropdown-item" onclick="sortImages('focalRatio','desc')"> Large depth of field </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Three </button>
+                            data-toggle="dropdown"> Exposure time </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item"> Link 1 </a>
-                            <a class="dropdown-item"> Link 2 </a>
+                            <a class="dropdown-item" onclick="sortImages('shutter','asc')"> "Frozen" motion </a>
+                            <a class="dropdown-item" onclick="sortImages('shutter','desc')"> Motion blur </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs button-container topGroup">
+                    <div class="btn-group topGroup">
+                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
+                            data-toggle="dropdown"> Focal length </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" onclick="sortImages('focalLength','desc')"> Narrow angle of view </a>
+                            <a class="dropdown-item" onclick="sortImages('focalLength','asc')"> Wide angle of view </a>
                         </div>
                     </div>
                 </div>
@@ -389,7 +407,7 @@
                     //     console.log("-" + ifd);
                     //     for (var tag in exifObj[ifd]) {
                     //         // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
-                    //         console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag]);
+                    //         console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag] + " IFD: " + ifd + " TAG: " + tag);
                     //     }
                     // }
 
@@ -545,7 +563,27 @@
                     var obj = { "id": ID, "name": arrImages[ID.substring(6)-1].name};
                     break;
                     case "date":
-                    var obj = { "id": ID, "date": arrEXIF[ID.substring(6)-1]["0th"]["306"]};
+                    var obj = { "id": ID, "date": arrEXIF[ID.substring(6)-1]["Exif"]["36867"]};
+                    break;
+                    case "digDate":
+                    var obj = { "id": ID, "digDate": arrEXIF[ID.substring(6)-1]["Exif"]["36868"]};
+                    break;
+                    case "camera":
+                    var obj = { "id": ID, "camera": arrEXIF[ID.substring(6)-1]["0th"]["271"]+" "+arrEXIF[ID.substring(6)-1]["0th"]["272"]}; //concat of camera manufacturer and model
+                    break;
+                    //Exposure triangle
+                    case "iso":
+                    var obj = { "id": ID, "iso": arrEXIF[ID.substring(6)-1]["Exif"]["34855"]};
+                    break;
+                    case "focalRatio":
+                    var obj = { "id": ID, "focalRatio": arrEXIF[ID.substring(6)-1]["Exif"]["33437"][0]};
+                    break;
+                    case "shutter":
+                    var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6)-1]["Exif"]["33434"]};
+                    break;
+                    //end
+                    case "focalLength":
+                    var obj = { "id": ID, "focalLength": arrEXIF[ID.substring(6)-1]["Exif"]["37386"]};
                     break;
                     default:
                     /* ? */
@@ -561,7 +599,7 @@
             {
                 let imgDiv = document.getElementById(parentDivImagesSorted[img].id).parentNode;
                 /* change order of div elements */
-                // parentDiv.appendChild(imgDiv);
+                parentDiv.appendChild(imgDiv);
             }
         }
     
