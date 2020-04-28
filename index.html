@@ -286,10 +286,10 @@
                 <div class="col-xs button-container topGroup">
                     <div class="btn-group topGroup">
                         <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Digitized date </button>
+                            data-toggle="dropdown"> Modified date </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('digDate','asc')">Oldest to Newest</a>
-                            <a class="dropdown-item" onclick="sortImages('digDate','desc')">Newest to Oldest</a>
+                            <a class="dropdown-item" onclick="sortImages('modDate','asc')">Oldest to Newest</a>
+                            <a class="dropdown-item" onclick="sortImages('modDate','desc')">Newest to Oldest</a>
                         </div>
                     </div>
                 </div>
@@ -565,8 +565,8 @@
                     case "date":
                     var obj = { "id": ID, "date": arrEXIF[ID.substring(6)-1]["Exif"]["36867"]};
                     break;
-                    case "digDate":
-                    var obj = { "id": ID, "digDate": arrEXIF[ID.substring(6)-1]["Exif"]["36868"]};
+                    case "modDate":
+                    var obj = { "id": ID, "modDate": arrEXIF[ID.substring(6)-1]["0th"]["306"]};
                     break;
                     case "camera":
                     var obj = { "id": ID, "camera": arrEXIF[ID.substring(6)-1]["0th"]["271"]+" "+arrEXIF[ID.substring(6)-1]["0th"]["272"]}; //concat of camera manufacturer and model
