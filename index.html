@@ -27,278 +27,525 @@
   </head>
 
   <body style="background-image: url(img/background.png);">
-      <!-- LEFT PART -->
-      <!-- Side naviagtion bar  -->
-      <div class="sideNavBar">
-          <!--LOGO-->
-          <div id="logo" align="center">
-              <img id="logo" src="img/logo.png" />
-          </div>
-          
-          <!-- Buttons section -->
-          <div class="container buttonsSideBar" align="center">
-              <!--UPLOAD BUTTON-->
-              <label class="btn btn-primary btn-responsive uploadButton" for="photos" align="center">Upload JPEG photo</label>
-              <input type="file" id="photos" multiple="multiple" id="file-input" onchange="readURL(this);" accept="image/jpeg" display="none"/>
+    <!-- LEFT PART -->
+    <!-- Side naviagtion bar  -->
+    <div class="sideNavBar">
+      <!--LOGO-->
+      <div id="logo" align="center">
+        <img id="logo" src="img/logo.png" />
+      </div>
 
-              <div>
-                  <h5 style="font-size: 0.8vw">Upload a local file (only JPEG) to read Exif data.</h5>
-              </div>
-              
-              <!-- Filter section -->
-              <div>
-                  <h4 align="left" style="font-size: 1.2vw">Filter by: </h4>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> One - 1 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
+      <!-- Buttons section -->
+      <div class="container buttonsSideBar" align="center">
+        <!--UPLOAD BUTTON-->
+        <label
+          class="btn btn-primary btn-responsive uploadButton"
+          for="photos"
+          align="center"
+          >Upload JPEG photo</label
+        >
+        <input
+          type="file"
+          id="photos"
+          multiple="multiple"
+          id="file-input"
+          onchange="readURL(this);"
+          accept="image/jpeg"
+          display="none"
+        />
+
+        <div>
+          <h5 style="font-size: 0.8vw;">
+            Upload a local file (only JPEG) to read Exif data.
+          </h5>
+        </div>
+
+        <!-- Filter section -->
+        <div>
+          <h4 align="left" style="font-size: 1.2vw;">Filter by:</h4>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                One - 1
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
                   </div>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two - 2 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
                   </div>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three - 3 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox3"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox3"
+                      >Third</label
+                    >
                   </div>
+                </a>
               </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Four - 4 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Five - 5 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                     <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Six - 6 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Seven - 7 </button>
-                         <div class="dropdown-menu">
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                     <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                 </div>
-                             </a>
-                             <a class="dropdown-item">
-                                 <div class="form-check form-check-inline">
-                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                     <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                 </div>
-                             </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="row button-row sideGroup">
-                  <div class="col-xs button-container sideGroup">
-                      <div class="btn-group sideGroup">
-                          <button type="button" class="btn btn-primary btn-responsive filterButton"> Filter </button>
-                      </div>
-                  </div>
-              </div>
+            </div>
           </div>
-      </div>
-      
-      <!--RIGHT PART-->
-      <!-- Top navigation bar -->
-      <div class="topNavBar">
-          <div class="container buttonsTopBar">
-              <h4 style="font-size: 1.2vw">Sort by: </h4>
-              <div class="row button-row topGroup">
-                  <div class="col-xs button-container topGroup">
-                      <div class="btn-group topGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Name </button>
-                          <div class="dropdown-menu">
-                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z </a>
-                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A </a>
-                          </div>
-                      </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Two - 2
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
                   </div>
-                  <div class="col-xs button-container topGroup">
-                      <div class="btn-group topGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Date </button>
-                          <div class="dropdown-menu">
-                              <a class="dropdown-item">Oldest to Newest</a>
-                              <a class="dropdown-item">Newest to Oldest</a>
-                          </div>
-                      </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
                   </div>
-                  <div class="col-xs button-container topGroup">
-                      <div class="btn-group topGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Camera model </button>
-                          <div class="dropdown-menu">
-                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z </a>
-                              <a class="dropdown-item"><span class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z -A </a>
-                          </div>
-                      </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox3"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox3"
+                      >Third</label
+                    >
                   </div>
-                  <div class="col-xs button-container topGroup">
-                      <div class="btn-group topGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> One </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item"> Link 1 </a>
-                              <a class="dropdown-item"> Link 2 </a>
-                            </div>
-                      </div>
-                  </div>
-                  <div class="col-xs button-container topGroup">
-                      <div class="btn-group topGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item"> Link 1 </a>
-                              <a class="dropdown-item"> Link 2 </a>
-                            </div>
-                      </div>
-                  </div>
-                  <div class="col-xs button-container topGroup">
-                      <div class="btn-group topGroup">
-                          <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item"> Link 1 </a>
-                              <a class="dropdown-item"> Link 2 </a>
-                            </div>
-                      </div>
-                  </div>
+                </a>
               </div>
+            </div>
           </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Three - 3
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox3"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox3"
+                      >Third</label
+                    >
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Four - 4
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox3"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox3"
+                      >Third</label
+                    >
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Five - 5
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox3"
+                      value="option3"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox3"
+                      >Third</label
+                    >
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Six - 6
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Seven - 7
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox1"
+                      value="option1"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox1"
+                      >First</label
+                    >
+                  </div>
+                </a>
+                <a class="dropdown-item">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="inlineCheckbox2"
+                      value="option2"
+                    />
+                    <label class="form-check-label" for="inlineCheckbox2"
+                      >Second</label
+                    >
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row button-row sideGroup">
+          <div class="col-xs button-container sideGroup">
+            <div class="btn-group sideGroup">
+              <button
+                type="button"
+                class="btn btn-primary btn-responsive filterButton"
+              >
+                Filter
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!--RIGHT PART-->
+    <!-- Top navigation bar -->
+    <div class="topNavBar">
+      <div class="container buttonsTopBar">
+        <h4 style="font-size: 1.2vw;">Sort by:</h4>
+        <div class="row button-row topGroup">
+          <div class="col-xs button-container topGroup">
+            <div class="btn-group topGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Name
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"
+                  ><span class="glyphicon glyphicon-sort-by-alphabet"></span> A
+                  - Z
+                </a>
+                <a class="dropdown-item"
+                  ><span
+                    class="glyphicon glyphicon-sort-by-alphabet-alt"
+                  ></span>
+                  Z -A
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs button-container topGroup">
+            <div class="btn-group topGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Date
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">Oldest to Newest</a>
+                <a class="dropdown-item">Newest to Oldest</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs button-container topGroup">
+            <div class="btn-group topGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Camera model
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"
+                  ><span class="glyphicon glyphicon-sort-by-alphabet"></span> A
+                  - Z
+                </a>
+                <a class="dropdown-item"
+                  ><span
+                    class="glyphicon glyphicon-sort-by-alphabet-alt"
+                  ></span>
+                  Z -A
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs button-container topGroup">
+            <div class="btn-group topGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                One
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"> Link 1 </a>
+                <a class="dropdown-item"> Link 2 </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs button-container topGroup">
+            <div class="btn-group topGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Two
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"> Link 1 </a>
+                <a class="dropdown-item"> Link 2 </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs button-container topGroup">
+            <div class="btn-group topGroup">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle btn-responsive"
+                data-toggle="dropdown"
+              >
+                Three
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"> Link 1 </a>
+                <a class="dropdown-item"> Link 2 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!---UPLOADING ZONE-->
     <div class="images" id="images"></div>
@@ -322,7 +569,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalTitle">Modal title</h5>
-          </div> 
+          </div>
           <div class="modal-body">
             <div class="row">
               <div class="col">
@@ -331,90 +578,172 @@
               </div>
               <div class="col">
                 <div class="form-group row">
-                    <label for="modalDate" class="col-4 col-form-label">Date Taken: </label>
-                    <div class="col-8">
-                      <input type="text" class="form-control" id="modalDate" placeholder="YYYY/MM/DD">
-                    </div>
+                  <label for="modalDate" class="col-4 col-form-label"
+                    >Date Taken:
+                  </label>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modalDate"
+                      placeholder="YYYY/MM/DD"
+                    />
+                  </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalGPS" class="col-4 col-form-label">Latitude: </label>
-                    <div class="col">
-                        <input type="number" class="form-control form-fixer" id="modalGPS1" placeholder="00">
-                        °
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control form-fixer" id="modalGPS2" placeholder="00">
-                        '
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control form-fixer" id="modalGPS3" placeholder="00">
-                        "
-                    </div>
-                    <div class="col">
-                        <select class="form-control form-fixer2" id="modalGPS4">
-                            <option value=1>N</option>
-                            <option value=1>S</option>
-                        </select>
-                    </div>
+                  <label for="modalGPS" class="col-4 col-form-label"
+                    >Latitude:
+                  </label>
+                  <div class="col">
+                    <input
+                      type="number"
+                      class="form-control form-fixer"
+                      id="modalGPS1"
+                      placeholder="00"
+                    />
+                    °
+                  </div>
+                  <div class="col">
+                    <input
+                      type="number"
+                      class="form-control form-fixer"
+                      id="modalGPS2"
+                      placeholder="00"
+                    />
+                    '
+                  </div>
+                  <div class="col">
+                    <input
+                      type="number"
+                      class="form-control form-fixer"
+                      id="modalGPS3"
+                      placeholder="00"
+                    />
+                    "
+                  </div>
+                  <div class="col">
+                    <select class="form-control form-fixer2" id="modalGPS4">
+                      <option value="1">N</option>
+                      <option value="2">S</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalGPS" class="col-4 col-form-label">Longitude: </label>
-                    <div class="col">
-                        <input type="number" class="form-control form-fixer" id="modalGPS1" placeholder="00">
-                        °
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control form-fixer" id="modalGPS2" placeholder="00">
-                        '
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control form-fixer" id="modalGPS3" placeholder="00">
-                        "
-                    </div>
-                    <div class="col">
-                        <select class="form-control form-fixer2" id="modalGPS4">
-                            <option value=1>E</option>
-                            <option value=1>W</option>
-                        </select>
-                    </div>
+                  <label for="modalGPS5" class="col-4 col-form-label"
+                    >Longitude:
+                  </label>
+                  <div class="col">
+                    <input
+                      type="number"
+                      class="form-control form-fixer"
+                      id="modalGPS5"
+                      placeholder="00"
+                    />
+                    °
+                  </div>
+                  <div class="col">
+                    <input
+                      type="number"
+                      class="form-control form-fixer"
+                      id="modalGPS6"
+                      placeholder="00"
+                    />
+                    '
+                  </div>
+                  <div class="col">
+                    <input
+                      type="number"
+                      class="form-control form-fixer"
+                      id="modalGPS7"
+                      placeholder="00"
+                    />
+                    "
+                  </div>
+                  <div class="col">
+                    <select class="form-control form-fixer2" id="modalGPS8">
+                      <option value="1">E</option>
+                      <option value="2">W</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalModel" class="col-4 col-form-label">Model and device: </label>
-                    <div class="col-4">
-                        <input type="text" class="form-control" id="modalModel" placeholder="Model">
-                    </div>
-                    <div class="col-4">
-                      <input type="text" class="form-control" id="modalDevice" placeholder="Device">
-                    </div>
+                  <label for="modalModel" class="col-4 col-form-label"
+                    >Model and device:
+                  </label>
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modalModel"
+                      placeholder="Model"
+                    />
+                  </div>
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modalDevice"
+                      placeholder="Device"
+                    />
+                  </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalIso" class="col-4 col-form-label">ISO Speed Ratings: </label>
-                    <div class="col-8">
-                      <input type="number" class="form-control" id="modalIso" placeholder="0">
-                    </div>
+                  <label for="modalIso" class="col-4 col-form-label"
+                    >ISO Speed Ratings:
+                  </label>
+                  <div class="col-8">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="modalIso"
+                      placeholder="0"
+                    />
+                  </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalExposure" class="col-4 col-form-label">Exposure Time: </label>
-                    <div class="col-8">
-                      <input type="text" class="form-control" id="modalExposure" placeholder="10">
-                    </div>
+                  <label for="modalExposure" class="col-4 col-form-label"
+                    >Exposure Time:
+                  </label>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modalExposure"
+                      placeholder="10"
+                    />
+                  </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
-                    <label for="modalExposure" class="col-4 col-form-label">Flash: </label>
-                    <div class="col-4">
-                        <select class="custom-select mr-sm-2" id="modalFleshType">
-                            <!-- <option selected>Choose...</option> -->
-                            <option value="1">Auto</option>
-                            <option value="2">Copumlsory Flash Firing</option>
-                            <option value="3">Compulsory Flash Suppression</option>
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <select class="custom-select mr-sm-2" id="modalFleshFired">
-                            <option value="1">Flash fired</option>
-                            <option value="2">Flash didn't fired</option>
-                        </select>
-                    </div>
+                  <label for="modalLens" class="col-4 col-form-label"
+                    >Lens Model:
+                  </label>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="modalLens"
+                      placeholder="10"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row justify-content-md-center">
+                  <label for="modalExposure" class="col-4 col-form-label"
+                    >Flash:
+                  </label>
+                  <div class="col-4">
+                    <select class="custom-select mr-sm-2" id="modalFleshType">
+                      <!-- <option selected>Choose...</option> -->
+                      <option value="1">Auto</option>
+                      <option value="2">Copumlsory Flash Firing</option>
+                      <option value="3">Compulsory Flash Suppression</option>
+                    </select>
+                  </div>
+                  <div class="col-4">
+                    <select class="custom-select mr-sm-2" id="modalFleshFired">
+                      <option value="1">Flash fired</option>
+                      <option value="2">Flash didn't fired</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -427,7 +756,14 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="downloadButton"
+              value="Submit"
+            >
+              Download Edited Photo
+            </button>
           </div>
         </div>
       </div>
@@ -444,23 +780,33 @@
         for (let i = 0; i < input.files.length; i++) {
           arrImages.push(input.files[i]);
           var reader = new FileReader();
-          reader.onload = function(event) {
+          reader.onload = function (event) {
             var exifObj = piexif.load(event.target.result);
             arrEXIF.push(exifObj);
 
             /* EXAMPLE - wartości można zobaczyc w konsoli Fn + F12*/
-            console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
-            console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
-            console.log(piexif.TAGS["0th"]["306"]["name"]) 
-            console.log(exifObj) // tutaj można podejrzeć jakie są numerki
-            for (var ifd in exifObj) { // Loop through the properties of an object
+            console.log(exifObj["0th"]["306"]); // tak się czyta na przykład datę wykonania
+            console.log(arrEXIF[0]["0th"]["306"]); // a tak ze zmiennej globalnej
+            console.log(piexif.TAGS["0th"]["306"]["name"]);
+            console.log(exifObj); // tutaj można podejrzeć jakie są numerki
+            for (var ifd in exifObj) {
+              // Loop through the properties of an object
               if (ifd == "thumbnail") {
                 continue; // ommit "thumbnail"
               }
               console.log("-" + ifd);
               for (var tag in exifObj[ifd]) {
                 // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
-                console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag] + " ifd:" + ifd + " tag:" + tag);
+                console.log(
+                  "  " +
+                    piexif.TAGS[ifd][tag]["name"] +
+                    ":" +
+                    exifObj[ifd][tag] +
+                    " ifd:" +
+                    ifd +
+                    " tag:" +
+                    tag
+                );
               }
             }
 
@@ -471,7 +817,7 @@
             img.src = event.target.result; // source = uploaded file
             imgID++;
             img.setAttribute("id", "photo_" + imgID);
-            img.addEventListener("click", function() {
+            img.addEventListener("click", function () {
               displayModal(img.id, img);
             });
             newDiv.appendChild(img);
@@ -484,7 +830,7 @@
             a1.type = "button";
             a1.textContent = "View Photo";
             a1.setAttribute("id", imgID);
-            a1.addEventListener("click", function() {
+            a1.addEventListener("click", function () {
               displayModal(img.id, a1);
             });
             button1.appendChild(a1);
@@ -503,7 +849,7 @@
             a3.type = "button";
             a3.textContent = "View/Edit Details?";
             a3.setAttribute("id", imgID);
-            a3.addEventListener("click", function() {
+            a3.addEventListener("click", function () {
               displayPopup(img, img.id, a3);
             });
             //a3.setAttribute("data-toggle", "modal");
@@ -545,21 +891,22 @@
         // Get the image and insert it inside the modal
         var img = document.getElementById(photoID);
 
-        //modal.style.display = "block";
         modalImg.src = img.src;
-
-        // // Get the <span> element that closes the modal
-        // var span = document.getElementsByClassName("close")[0];
-
-        // // When the user clicks on <span> (x), close the modal
-        // span.onclick = function() {
-        //   modal.style.display = "none";
-        // };
       }
 
       function calculateFlash(num) {
-          var binNum = (num >>> 0).toString(2);
-          return binNum;
+        var binNum = (num >>> 0).toString(2);
+        return binNum;
+      }
+
+      function binToDec(num) {
+        return parseInt(num, 2);
+      }
+
+      function replaceAt(string, index, replace) {
+        return (
+          string.substring(0, index) + replace + string.substring(index + 1)
+        );
       }
 
       function displayPopup(img, photoID, element) {
@@ -575,63 +922,242 @@
         var modalExposure = document.getElementById("modalExposure");
         var modalGPS = document.getElementById("modalGPS");
         var modalModel = document.getElementById("modalModel");
+        var modalLens = document.getElementById("modalLens");
         var modalFleshFired = document.getElementById("modalFleshFired");
         var modalFleshType = document.getElementById("modalFleshType");
-        //var modalTitle = document.getElementById("modalTitle");
+        var modalGPS1 = document.getElementById("modalGPS1");
+        var modalGPS2 = document.getElementById("modalGPS2");
+        var modalGPS3 = document.getElementById("modalGPS3");
+        var modalGPS4 = document.getElementById("modalGPS4");
+        var modalGPS5 = document.getElementById("modalGPS5");
+        var modalGPS6 = document.getElementById("modalGPS6");
+        var modalGPS7 = document.getElementById("modalGPS7");
+        var modalGPS8 = document.getElementById("modalGPS8");
+
+        var id = img.id.substring(6) - 1; //Image index in arrEXIF
 
         // Get the image and insert it inside the modal
         var img = document.getElementById(photoID);
         modalImg.src = img.src;
 
-        var id = img.id.substring(6)-1; //Image index in arrEXIF
-
-        console.log(arrImages);
-
-        modalTitle.innerHTML = arrImages[id].name;
+        modalTitle.innerHTML = arrImages[id].name; //Title
 
         modalDate.value = arrEXIF[id]["0th"]["306"];
         modalModel.value = arrEXIF[id]["0th"]["271"];
         modalDevice.value = arrEXIF[id]["0th"]["272"];
         modalIso.value = arrEXIF[id]["Exif"]["34855"];
-        modalExposure.value = (arrEXIF[id]["Exif"]["33434"]).toString().replace(",","/");
+        modalExposure.value = arrEXIF[id]["Exif"]["33434"]
+          .toString()
+          .replace(",", "/");
+        modalLens.value = arrEXIF[id]["Exif"]["42036"];
 
         var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
 
         // Check last bit if flash fired
-        if (flashVal.substr(flashVal.length - 1) == 1)
-        {
-            modalFleshFired.value = 1;
-        }
-        else
-        {
-            modalFleshFired.value = 2;
+        if (flashVal.substr(flashVal.length - 1) == 1) {
+          modalFleshFired.value = 1;
+        } else {
+          modalFleshFired.value = 2; //Didnt fired
         }
 
         // Check flash type
-        if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) 
-        {
-            modalFleshType.value = 1; // auto
+        if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) {
+          modalFleshType.value = 1; // auto
+        } else if (
+          flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01
+        ) {
+          modalFleshType.value = 2; // compulsory flash firing
+        } else if (
+          flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10
+        ) {
+          modalFleshType.value = 3; // compulsory flash suppression
         }
-        else if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01)
-        {
-            modalFleshType.value = 2; // compulsory flash firing
+
+        // ----------------- GPS LAT
+
+        var longitudeRef = arrEXIF[id]["GPS"]["3"];
+
+        if (longitudeRef == "E") {
+          modalGPS8.value = 1;
+        } else {
+          modalGPS8.value = 2; //W
         }
-        else if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10)
-        {
-            modalFleshType.value = 3; // compulsory flash suppression
+
+        var longitude = arrEXIF[id]["GPS"]["4"];
+        var longitudeArray = longitude.toString().split(",");
+        // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
+
+        modalGPS5.value = longitudeArray[0] / longitudeArray[1];
+        modalGPS6.value = longitudeArray[2] / longitudeArray[3];
+        modalGPS7.value = longitudeArray[4] / longitudeArray[5];
+
+        // ----------------- GPS LONG
+
+        var latitudeRef = arrEXIF[id]["GPS"]["1"];
+
+        if (latitudeRef == "N") {
+          modalGPS4.value = 1;
+        } else {
+          modalGPS4.value = 2; //S
         }
-        
-        // ----------------- GPS
 
         var latitude = arrEXIF[id]["GPS"]["2"];
         var latitudeArray = latitude.toString().split(",");
         // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
-        console.log(latitudeArray[0]);
 
-        //'Date: ' + arrEXIF[id]["0th"]["306"] + '\n Title: ' + arrEXIF[id]["0th"]["2"] + '\n Model: ' + arrEXIF[id]["0th"]["272"];
-        //modalInfo.innerHTML = 'Date: ' + exifObj["0th"]["306"] + '\n Title: ' + exifObj["0th"]["2"] + '\n Model: ' + exifObj["0th"]["272"];        
+        modalGPS1.value = latitudeArray[0] / latitudeArray[1];
+        modalGPS2.value = latitudeArray[2] / latitudeArray[3];
+        modalGPS3.value = latitudeArray[4] / latitudeArray[5];
+
+        // ---------------------------------------------- EDIT EXIF
+
+        document.getElementById("downloadButton").onclick = function () {
+          var zeroth = {};
+          var exif = {};
+          var gps = {};
+
+          zeroth[piexif.ImageIFD.ImageDescription] = arrEXIF[id]["0th"]["270"];
+          zeroth[piexif.ImageIFD.Make] = arrEXIF[id]["0th"]["271"];
+          zeroth[piexif.ImageIFD.Model] = arrEXIF[id]["0th"]["272"];
+          zeroth[piexif.ImageIFD.Orientation] = arrEXIF[id]["0th"]["274"];
+          zeroth[piexif.ImageIFD.XResolution] = arrEXIF[id]["0th"]["282"];
+          zeroth[piexif.ImageIFD.YResolution] = arrEXIF[id]["0th"]["283"];
+          zeroth[piexif.ImageIFD.ResolutionUnit] = arrEXIF[id]["0th"]["296"];
+          zeroth[piexif.ImageIFD.Software] = arrEXIF[id]["0th"]["305"];
+          zeroth[piexif.ImageIFD.DateTime] = arrEXIF[id]["0th"]["306"];
+          zeroth[piexif.ImageIFD.HostComputer] = arrEXIF[id]["0th"]["316"];
+          zeroth[piexif.ImageIFD.Copyright] = arrEXIF[id]["0th"]["33432"];
+
+          exif[piexif.ExifIFD.ExposureTime] = arrEXIF[id]["Exif"]["33434"];
+          exif[piexif.ExifIFD.FNumber] = arrEXIF[id]["Exif"]["33437"];
+          exif[piexif.ExifIFD.ExposureProgram] = arrEXIF[id]["Exif"]["34850"];
+          exif[piexif.ExifIFD.ISOSpeedRatings] = arrEXIF[id]["Exif"]["34855"];
+          exif[piexif.ExifIFD.ExifVersion] = arrEXIF[id]["Exif"]["36864"];
+          exif[piexif.ExifIFD.DateTimeOriginal] = arrEXIF[id]["Exif"]["36867"];
+          exif[piexif.ExifIFD.DateTimeDigitized] = arrEXIF[id]["Exif"]["36868"];
+          exif[piexif.ExifIFD.ComponentsConfiguration] = arrEXIF[id]["Exif"]["37121"];
+          exif[piexif.ExifIFD.ShutterSpeedValue] = arrEXIF[id]["Exif"]["37377"];
+          exif[piexif.ExifIFD.ApertureValue] = arrEXIF[id]["Exif"]["37378"];
+          exif[piexif.ExifIFD.BrightnessValue] = arrEXIF[id]["Exif"]["37379"];
+          exif[piexif.ExifIFD.ExposureBiasValue] = arrEXIF[id]["Exif"]["37380"];
+          exif[piexif.ExifIFD.MeteringMode] = arrEXIF[id]["Exif"]["37383"];
+          exif[piexif.ExifIFD.Flash] = arrEXIF[id]["Exif"]["37385"];
+          exif[piexif.ExifIFD.FocalLength] = arrEXIF[id]["Exif"]["37386"];
+          exif[piexif.ExifIFD.SubjectArea] = arrEXIF[id]["Exif"]["37396"];
+          exif[piexif.ExifIFD.MakerNote] = arrEXIF[id]["Exif"]["37500"];
+          exif[piexif.ExifIFD.UserComment] = arrEXIF[id]["Exif"]["37510"];
+          exif[piexif.ExifIFD.SubSecTimeOriginal] = arrEXIF[id]["Exif"]["37521"];
+          exif[piexif.ExifIFD.SubSecTimeDigitized] = arrEXIF[id]["Exif"]["37522"];
+          exif[piexif.ExifIFD.FlashpixVersion] = arrEXIF[id]["Exif"]["40960"];
+          exif[piexif.ExifIFD.ColorSpace] = arrEXIF[id]["Exif"]["40961"];
+          exif[piexif.ExifIFD.PixelXDimension] = arrEXIF[id]["Exif"]["40962"];
+          exif[piexif.ExifIFD.PixelYDimension] = arrEXIF[id]["Exif"]["40963"];
+          exif[piexif.ExifIFD.SensingMethod] = arrEXIF[id]["Exif"]["41495"];
+          exif[piexif.ExifIFD.SceneType] = arrEXIF[id]["Exif"]["41729"];
+          exif[piexif.ExifIFD.ExposureMode] = arrEXIF[id]["Exif"]["41986"];
+          exif[piexif.ExifIFD.WhiteBalance] = arrEXIF[id]["Exif"]["41987"];
+          exif[piexif.ExifIFD.FocalLengthIn35mmFilm] = arrEXIF[id]["Exif"]["41989"];
+          exif[piexif.ExifIFD.SceneCaptureType] = arrEXIF[id]["Exif"]["41990"];
+          exif[piexif.ExifIFD.ImageUniqueID] = arrEXIF[id]["Exif"]["42016"];
+          exif[piexif.ExifIFD.LensSpecification] = arrEXIF[id]["Exif"]["42034"];
+          exif[piexif.ExifIFD.LensMake] = arrEXIF[id]["Exif"]["42035"];
+          exif[piexif.ExifIFD.LensModel] = arrEXIF[id]["Exif"]["42036"];
+
+          gps[piexif.GPSIFD.GPSVersionID] = arrEXIF[id]["GPS"]["0"];
+          gps[piexif.GPSIFD.GPSLatitudeRef] = arrEXIF[id]["GPS"]["1"];
+          gps[piexif.GPSIFD.GPSLatitude] = arrEXIF[id]["GPS"]["2"];
+          gps[piexif.GPSIFD.GPSLongitudeRef] = arrEXIF[id]["GPS"]["3"];
+          gps[piexif.GPSIFD.GPSLongitude] = arrEXIF[id]["GPS"]["4"];
+          gps[piexif.GPSIFD.GPSAltitudeRef] = arrEXIF[id]["GPS"]["5"];
+          gps[piexif.GPSIFD.GPSAltitude] = arrEXIF[id]["GPS"]["6"];
+          gps[piexif.GPSIFD.GPSTimeStamp] = arrEXIF[id]["GPS"]["7"];
+          gps[piexif.GPSIFD.GPSSpeedRef] = arrEXIF[id]["GPS"]["12"];
+          gps[piexif.GPSIFD.GPSSpeed] = arrEXIF[id]["GPS"]["13"];
+          gps[piexif.GPSIFD.GPSImgDirectionRef] = arrEXIF[id]["GPS"]["16"];
+          gps[piexif.GPSIFD.GPSImgDirection] = arrEXIF[id]["GPS"]["17"];
+          gps[piexif.GPSIFD.GPSDestBearingRef] = arrEXIF[id]["GPS"]["23"];
+          gps[piexif.GPSIFD.GPSDestBearing] = arrEXIF[id]["GPS"]["24"];
+          gps[piexif.GPSIFD.GPSDateStamp] = arrEXIF[id]["GPS"]["29"];
+          gps[piexif.GPSIFD.GPSHPositioningError] = arrEXIF[id]["GPS"]["31"];
+
+          // Modified by user
+
+          zeroth[piexif.ImageIFD.DateTime] = modalDate.value;
+          zeroth[piexif.ImageIFD.Make] = modalModel.value;
+          zeroth[piexif.ImageIFD.Model] = modalDevice.value;
+          exif[piexif.ExifIFD.ISOSpeedRatings] = parseInt(modalIso.value);
+          var exposureRes = modalExposure.value.toString().split("/");
+          exif[piexif.ExifIFD.ExposureTime][0] = parseInt(exposureRes[0]);
+          exif[piexif.ExifIFD.ExposureTime][1] = parseInt(exposureRes[1]);
+
+          exif[piexif.ExifIFD.LensModel] = modalLens.value;
+
+          if (modalGPS4.value == 1) {
+            gps[piexif.GPSIFD.GPSLatitudeRef] = "N";
+          } else {
+            gps[piexif.GPSIFD.GPSLatitudeRef] = "S";
+          }
+
+          gps[piexif.GPSIFD.GPSLatitude][0] = [modalGPS1.value / 1, 1];
+          gps[piexif.GPSIFD.GPSLatitude][1] = [modalGPS2.value / 1, 1];
+          gps[piexif.GPSIFD.GPSLatitude][2] = [modalGPS3.value.toString().replace(".", ""),100];
+
+          if (modalGPS8.value == 1) {
+            gps[piexif.GPSIFD.GPSLongitudeRef] = "E";
+          } else {
+            gps[piexif.GPSIFD.GPSLongitudeRef] = "W";
+          }
+
+          gps[piexif.GPSIFD.GPSLongitude][0] = [modalGPS5.value / 1, 1];
+          gps[piexif.GPSIFD.GPSLongitude][1] = [modalGPS6.value / 1, 1];
+          gps[piexif.GPSIFD.GPSLongitude][2] = [modalGPS7.value.toString().replace(".", ""),100];
+
+          //Flash
+          var newFlashval = flashVal;
+
+          if (modalFleshFired.value == 1) {
+            newFlashval = replaceAt(newFlashval, flashVal.length - 1, 1);
+          } else {
+            newFlashval = replaceAt(newFlashval, flashVal.length - 1, 0);
+          }
+          //
+          if (modalFleshType.value == 1) {
+            //auto, na 11
+            newFlashval = replaceAt(newFlashval, 0, 1);
+            newFlashval = replaceAt(newFlashval, 1, 1);
+          } else if (modalFleshType.value == 2) {
+            //compulsory flash firing, na 01
+            newFlashval = replaceAt(newFlashval, 0, 0);
+            newFlashval = replaceAt(newFlashval, 1, 1);
+          } else if (modalFleshType.value == 2) {
+            //compulsory flash suppression, na 10
+            newFlashval = replaceAt(newFlashval, 0, 1);
+            newFlashval = replaceAt(newFlashval, 1, 0);
+          }
+
+          exif[piexif.ExifIFD.Flash] = binToDec(newFlashval);
+
+          var modifiedExifObj = { "0th": zeroth, Exif: exif, GPS: gps };
+          var exifStr = piexif.dump(modifiedExifObj);
+          var inserted = piexif.insert(exifStr, img.src);
+          img.src = inserted;
+          //modalImg.src = inserted; //podmiana zdjęcia na modalu na zmodyfikowane
+
+          //-------------------------------------------------------------
+
+          var modifiedExifObjData = piexif.load(inserted);
+          console.log(modifiedExifObjData); // Only debugging purpose
+
+          var a = document.createElement("a");
+          a.setAttribute("href", inserted);
+          a.setAttribute("download", "modifiedImage");
+
+          var aj = $(a);
+          aj.appendTo("body");
+          aj[0].click();
+          aj.remove();
+        };
       }
-
     </script>
   </body>
 </html>
