@@ -579,15 +579,19 @@
               <div class="col">
                 <div class="form-group row">
                   <label for="modalDate" class="col-4 col-form-label"
-                    >Date Taken:
+                    >Date Taken: <br>[YYYY:MM:DD hh:mm:ss]
                   </label>
                   <div class="col-8">
                     <input
                       type="text"
+                      pattern="^[0-9]{4}:[0-9]{2}:[0-9]{2}[ ][0-9]{2}:[0-9]{2}:[0-9]{2}$"
                       class="form-control"
                       id="modalDate"
-                      placeholder="YYYY/MM/DD"
+                      placeholder="2019:01:31 10:11:12"
                     />
+                    <div class="invalid-feedback">
+                      Please type date in valid format.
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
@@ -599,6 +603,8 @@
                       type="number"
                       class="form-control form-fixer"
                       id="modalGPS1"
+                      pattern="[0-9]*[\.,]?[0-9]*"
+                      step="any"
                       placeholder="00"
                     />
                     °
@@ -609,6 +615,8 @@
                       class="form-control form-fixer"
                       id="modalGPS2"
                       placeholder="00"
+                      step="any"
+                      pattern="[0-9]*[\.,]?[0-9]*"
                     />
                     '
                   </div>
@@ -618,6 +626,8 @@
                       class="form-control form-fixer"
                       id="modalGPS3"
                       placeholder="00"
+                      step="any"
+                      pattern="[0-9]*[\.,]?[0-9]*"
                     />
                     "
                   </div>
@@ -637,6 +647,8 @@
                       type="number"
                       class="form-control form-fixer"
                       id="modalGPS5"
+                      step="any"
+                      pattern="[0-9]*[\.,]?[0-9]*"
                       placeholder="00"
                     />
                     °
@@ -646,6 +658,8 @@
                       type="number"
                       class="form-control form-fixer"
                       id="modalGPS6"
+                      step="any"
+                      pattern="[0-9]*[\.,]?[0-9]*"
                       placeholder="00"
                     />
                     '
@@ -655,6 +669,8 @@
                       type="number"
                       class="form-control form-fixer"
                       id="modalGPS7"
+                      step="any"
+                      pattern="[0-9]*[\.,]?[0-9]*"
                       placeholder="00"
                     />
                     "
@@ -702,12 +718,13 @@
                 </div>
                 <div class="form-group row justify-content-md-center">
                   <label for="modalExposure" class="col-4 col-form-label"
-                    >Exposure Time:
+                    >Exposure Time: <br>[1/value s]
                   </label>
                   <div class="col-8">
                     <input
                       type="text"
                       class="form-control"
+                      pattern="[0-9]+[/]{1}[0-9]+"
                       id="modalExposure"
                       placeholder="10"
                     />
@@ -892,6 +909,21 @@
         var img = document.getElementById(photoID);
 
         modalImg.src = img.src;
+      }
+
+      function countDec(num) {
+        if (Math.floor(num) == num){
+          return 1;
+        }
+        else
+        {
+          val = num.toString().split(".")[1].length || 0; 
+          return Math.pow(10, val);
+        }
+      }
+
+      function mergeDec(num) {
+        return num.replace(/[,.]/g, "");
       }
 
       function calculateFlash(num) {
@@ -1098,9 +1130,9 @@
             gps[piexif.GPSIFD.GPSLatitudeRef] = "S";
           }
 
-          gps[piexif.GPSIFD.GPSLatitude][0] = [modalGPS1.value / 1, 1];
-          gps[piexif.GPSIFD.GPSLatitude][1] = [modalGPS2.value / 1, 1];
-          gps[piexif.GPSIFD.GPSLatitude][2] = [modalGPS3.value.toString().replace(".", ""),100];
+          gps[piexif.GPSIFD.GPSLatitude][0] = [mergeDec(modalGPS1.value), countDec(modalGPS1.value)];
+          gps[piexif.GPSIFD.GPSLatitude][1] = [mergeDec(modalGPS2.value), countDec(modalGPS2.value)];
+          gps[piexif.GPSIFD.GPSLatitude][2] = [mergeDec(modalGPS3.value), countDec(modalGPS3.value)];
 
           if (modalGPS8.value == 1) {
             gps[piexif.GPSIFD.GPSLongitudeRef] = "E";
@@ -1108,9 +1140,9 @@
             gps[piexif.GPSIFD.GPSLongitudeRef] = "W";
           }
 
-          gps[piexif.GPSIFD.GPSLongitude][0] = [modalGPS5.value / 1, 1];
-          gps[piexif.GPSIFD.GPSLongitude][1] = [modalGPS6.value / 1, 1];
-          gps[piexif.GPSIFD.GPSLongitude][2] = [modalGPS7.value.toString().replace(".", ""),100];
+          gps[piexif.GPSIFD.GPSLongitude][0] = [mergeDec(modalGPS5.value), countDec(modalGPS5.value)];
+          gps[piexif.GPSIFD.GPSLongitude][1] = [mergeDec(modalGPS6.value), countDec(modalGPS6.value)];
+          gps[piexif.GPSIFD.GPSLongitude][2] = [mergeDec(modalGPS7.value), countDec(modalGPS7.value)];
 
           //Flash
           var newFlashval = flashVal;
