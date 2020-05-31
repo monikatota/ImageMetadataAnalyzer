@@ -589,9 +589,6 @@
                       id="modalDate"
                       placeholder="2019:01:31 10:11:12"
                     />
-                    <div class="invalid-feedback">
-                      Please type date in valid format.
-                    </div>
                   </div>
                 </div>
                 <div class="form-group row justify-content-md-center">
@@ -941,6 +938,10 @@
         );
       }
 
+      function invalidForm() {
+        document.getElementById("downloadButton").disabled = true;
+      }
+
       function displayPopup(img, photoID, element) {
         var exifObj = piexif.load(img.src);
 
@@ -1040,6 +1041,22 @@
         modalGPS1.value = latitudeArray[0] / latitudeArray[1];
         modalGPS2.value = latitudeArray[2] / latitudeArray[3];
         modalGPS3.value = latitudeArray[4] / latitudeArray[5];
+
+        //------- Validity check
+
+        modalDate.addEventListener('keyup', (e)=>{
+          if(modalDate.checkValidity()) {
+            document.getElementById("downloadButton").disabled = false;
+          } else {
+            document.getElementById("downloadButton").disabled = true;
+          }});
+
+          modalExposure.addEventListener('keyup', (e)=>{
+          if(modalExposure.checkValidity()) {
+            document.getElementById("downloadButton").disabled = false;
+          } else {
+            document.getElementById("downloadButton").disabled = true;
+            }});
 
         // ---------------------------------------------- EDIT EXIF
 
@@ -1178,8 +1195,9 @@
           //-------------------------------------------------------------
 
           var modifiedExifObjData = piexif.load(inserted);
-          console.log(modifiedExifObjData); // Only debugging purpose
+          // console.log(modifiedExifObjData); // Only debugging purpose
 
+          // Trigger download
           var a = document.createElement("a");
           a.setAttribute("href", inserted);
           a.setAttribute("download", "modifiedImage");
