@@ -579,7 +579,7 @@
               <div class="col">
                 <div class="form-group row">
                   <label for="modalDate" class="col-4 col-form-label"
-                    >Date Taken: <br>[YYYY:MM:DD hh:mm:ss]
+                    >Date Taken: <br />[YYYY:MM:DD hh:mm:ss]
                   </label>
                   <div class="col-8">
                     <input
@@ -715,7 +715,7 @@
                 </div>
                 <div class="form-group row justify-content-md-center">
                   <label for="modalExposure" class="col-4 col-form-label"
-                    >Exposure Time: <br>[1/value s]
+                    >Exposure Time: <br />[1/value s]
                   </label>
                   <div class="col-8">
                     <input
@@ -909,12 +909,10 @@
       }
 
       function countDec(num) {
-        if (Math.floor(num) == num){
+        if (Math.floor(num) == num) {
           return 1;
-        }
-        else
-        {
-          val = num.toString().split(".")[1].length || 0; 
+        } else {
+          val = num.toString().split(".")[1].length || 0;
           return Math.pow(10, val);
         }
       }
@@ -979,36 +977,43 @@
         modalModel.value = arrEXIF[id]["0th"]["271"];
         modalDevice.value = arrEXIF[id]["0th"]["272"];
         modalIso.value = arrEXIF[id]["Exif"]["34855"];
-        modalExposure.value = arrEXIF[id]["Exif"]["33434"]
-          .toString()
-          .replace(",", "/");
+        if (arrEXIF[id]["Exif"]["33434"]) {
+          modalExposure.value = arrEXIF[id]["Exif"]["33434"]
+            .toString()
+            .replace(",", "/");
+        }
         modalLens.value = arrEXIF[id]["Exif"]["42036"];
 
-        var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
+        if (arrEXIF[id]["Exif"]["37385"]) {
+          var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
 
-        // Check last bit if flash fired
-        if (flashVal.substr(flashVal.length - 1) == 1) {
-          modalFleshFired.value = 1;
+          // Check last bit if flash fired
+          if (flashVal.substr(flashVal.length - 1) == 1) {
+            modalFleshFired.value = 1;
+          } else {
+            modalFleshFired.value = 2; //Didnt fired
+          }
+
+          // Check flash type
+          if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) {
+            modalFleshType.value = 1; // auto
+          } else if (
+            flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01
+          ) {
+            modalFleshType.value = 2; // compulsory flash firing
+          } else if (
+            flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10
+          ) {
+            modalFleshType.value = 3; // compulsory flash suppression
+          }
         } else {
-          modalFleshFired.value = 2; //Didnt fired
-        }
-
-        // Check flash type
-        if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) {
-          modalFleshType.value = 1; // auto
-        } else if (
-          flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01
-        ) {
-          modalFleshType.value = 2; // compulsory flash firing
-        } else if (
-          flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10
-        ) {
-          modalFleshType.value = 3; // compulsory flash suppression
+          // TO DO: undefined on popup
         }
 
         // ----------------- GPS LAT
 
         var longitudeRef = arrEXIF[id]["GPS"]["3"];
+        var gpsLongFlag = 0;
 
         if (longitudeRef == "E") {
           modalGPS8.value = 1;
@@ -1016,17 +1021,25 @@
           modalGPS8.value = 2; //W
         }
 
-        var longitude = arrEXIF[id]["GPS"]["4"];
-        var longitudeArray = longitude.toString().split(",");
-        // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
+        if (arrEXIF[id]["GPS"]["4"]) {
+          var longitude = arrEXIF[id]["GPS"]["4"];
+          var longitudeArray = longitude.toString().split(",");
+          // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
 
-        modalGPS5.value = longitudeArray[0] / longitudeArray[1];
-        modalGPS6.value = longitudeArray[2] / longitudeArray[3];
-        modalGPS7.value = longitudeArray[4] / longitudeArray[5];
+          modalGPS5.value = longitudeArray[0] / longitudeArray[1];
+          modalGPS6.value = longitudeArray[2] / longitudeArray[3];
+          modalGPS7.value = longitudeArray[4] / longitudeArray[5];
+          var gpsLongFlag = 1;
+        } else {
+          modalGPS5.value = null;
+          modalGPS6.value = null;
+          modalGPS7.value = null;
+        }
 
         // ----------------- GPS LONG
 
         var latitudeRef = arrEXIF[id]["GPS"]["1"];
+        var gpsLatFlag = 0;
 
         if (latitudeRef == "N") {
           modalGPS4.value = 1;
@@ -1034,29 +1047,39 @@
           modalGPS4.value = 2; //S
         }
 
-        var latitude = arrEXIF[id]["GPS"]["2"];
-        var latitudeArray = latitude.toString().split(",");
-        // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
+        if (arrEXIF[id]["GPS"]["2"]) {
+          var latitude = arrEXIF[id]["GPS"]["2"];
+          var latitudeArray = latitude.toString().split(",");
+          // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
 
-        modalGPS1.value = latitudeArray[0] / latitudeArray[1];
-        modalGPS2.value = latitudeArray[2] / latitudeArray[3];
-        modalGPS3.value = latitudeArray[4] / latitudeArray[5];
+          modalGPS1.value = latitudeArray[0] / latitudeArray[1];
+          modalGPS2.value = latitudeArray[2] / latitudeArray[3];
+          modalGPS3.value = latitudeArray[4] / latitudeArray[5];
+          gpsLatFlag = 1;
+        } else {
+          console.log("no GPS");
+          modalGPS1.value = null;
+          modalGPS2.value = null;
+          modalGPS3.value = null;
+        }
 
         //------- Validity check
 
-        modalDate.addEventListener('keyup', (e)=>{
-          if(modalDate.checkValidity()) {
+        modalDate.addEventListener("keyup", (e) => {
+          if (modalDate.checkValidity()) {
             document.getElementById("downloadButton").disabled = false;
           } else {
             document.getElementById("downloadButton").disabled = true;
-          }});
+          }
+        });
 
-          modalExposure.addEventListener('keyup', (e)=>{
-          if(modalExposure.checkValidity()) {
+        modalExposure.addEventListener("keyup", (e) => {
+          if (modalExposure.checkValidity()) {
             document.getElementById("downloadButton").disabled = false;
           } else {
             document.getElementById("downloadButton").disabled = true;
-            }});
+          }
+        });
 
         // ---------------------------------------------- EDIT EXIF
 
@@ -1084,7 +1107,8 @@
           exif[piexif.ExifIFD.ExifVersion] = arrEXIF[id]["Exif"]["36864"];
           exif[piexif.ExifIFD.DateTimeOriginal] = arrEXIF[id]["Exif"]["36867"];
           exif[piexif.ExifIFD.DateTimeDigitized] = arrEXIF[id]["Exif"]["36868"];
-          exif[piexif.ExifIFD.ComponentsConfiguration] = arrEXIF[id]["Exif"]["37121"];
+          exif[piexif.ExifIFD.ComponentsConfiguration] =
+            arrEXIF[id]["Exif"]["37121"];
           exif[piexif.ExifIFD.ShutterSpeedValue] = arrEXIF[id]["Exif"]["37377"];
           exif[piexif.ExifIFD.ApertureValue] = arrEXIF[id]["Exif"]["37378"];
           exif[piexif.ExifIFD.BrightnessValue] = arrEXIF[id]["Exif"]["37379"];
@@ -1095,8 +1119,10 @@
           exif[piexif.ExifIFD.SubjectArea] = arrEXIF[id]["Exif"]["37396"];
           exif[piexif.ExifIFD.MakerNote] = arrEXIF[id]["Exif"]["37500"];
           exif[piexif.ExifIFD.UserComment] = arrEXIF[id]["Exif"]["37510"];
-          exif[piexif.ExifIFD.SubSecTimeOriginal] = arrEXIF[id]["Exif"]["37521"];
-          exif[piexif.ExifIFD.SubSecTimeDigitized] = arrEXIF[id]["Exif"]["37522"];
+          exif[piexif.ExifIFD.SubSecTimeOriginal] =
+            arrEXIF[id]["Exif"]["37521"];
+          exif[piexif.ExifIFD.SubSecTimeDigitized] =
+            arrEXIF[id]["Exif"]["37522"];
           exif[piexif.ExifIFD.FlashpixVersion] = arrEXIF[id]["Exif"]["40960"];
           exif[piexif.ExifIFD.ColorSpace] = arrEXIF[id]["Exif"]["40961"];
           exif[piexif.ExifIFD.PixelXDimension] = arrEXIF[id]["Exif"]["40962"];
@@ -1105,7 +1131,8 @@
           exif[piexif.ExifIFD.SceneType] = arrEXIF[id]["Exif"]["41729"];
           exif[piexif.ExifIFD.ExposureMode] = arrEXIF[id]["Exif"]["41986"];
           exif[piexif.ExifIFD.WhiteBalance] = arrEXIF[id]["Exif"]["41987"];
-          exif[piexif.ExifIFD.FocalLengthIn35mmFilm] = arrEXIF[id]["Exif"]["41989"];
+          exif[piexif.ExifIFD.FocalLengthIn35mmFilm] =
+            arrEXIF[id]["Exif"]["41989"];
           exif[piexif.ExifIFD.SceneCaptureType] = arrEXIF[id]["Exif"]["41990"];
           exif[piexif.ExifIFD.ImageUniqueID] = arrEXIF[id]["Exif"]["42016"];
           exif[piexif.ExifIFD.LensSpecification] = arrEXIF[id]["Exif"]["42034"];
@@ -1134,32 +1161,70 @@
           zeroth[piexif.ImageIFD.DateTime] = modalDate.value;
           zeroth[piexif.ImageIFD.Make] = modalModel.value;
           zeroth[piexif.ImageIFD.Model] = modalDevice.value;
-          exif[piexif.ExifIFD.ISOSpeedRatings] = parseInt(modalIso.value);
-          var exposureRes = modalExposure.value.toString().split("/");
-          exif[piexif.ExifIFD.ExposureTime][0] = parseInt(exposureRes[0]);
-          exif[piexif.ExifIFD.ExposureTime][1] = parseInt(exposureRes[1]);
+          if (modalIso.value) {
+            exif[piexif.ExifIFD.ISOSpeedRatings] = parseInt(modalIso.value);
+          }
+          if (modalExposure.value) {
+            var exposureRes = modalExposure.value.toString().split("/");
+            exif[piexif.ExifIFD.ExposureTime][0] = parseInt(exposureRes[0]);
+            exif[piexif.ExifIFD.ExposureTime][1] = parseInt(exposureRes[1]);
+          }
 
           exif[piexif.ExifIFD.LensModel] = modalLens.value;
 
-          if (modalGPS4.value == 1) {
-            gps[piexif.GPSIFD.GPSLatitudeRef] = "N";
-          } else {
-            gps[piexif.GPSIFD.GPSLatitudeRef] = "S";
+          if (gpsLatFlag) {
+            if (modalGPS4.value == 1) {
+              gps[piexif.GPSIFD.GPSLatitudeRef] = "N";
+            } else {
+              gps[piexif.GPSIFD.GPSLatitudeRef] = "S";
+            }
           }
 
-          gps[piexif.GPSIFD.GPSLatitude][0] = [mergeDec(modalGPS1.value), countDec(modalGPS1.value)];
-          gps[piexif.GPSIFD.GPSLatitude][1] = [mergeDec(modalGPS2.value), countDec(modalGPS2.value)];
-          gps[piexif.GPSIFD.GPSLatitude][2] = [mergeDec(modalGPS3.value), countDec(modalGPS3.value)];
-
-          if (modalGPS8.value == 1) {
-            gps[piexif.GPSIFD.GPSLongitudeRef] = "E";
-          } else {
-            gps[piexif.GPSIFD.GPSLongitudeRef] = "W";
+          if (modalGPS1.value) {
+            gps[piexif.GPSIFD.GPSLatitude][0] = [
+              mergeDec(modalGPS1.value),
+              countDec(modalGPS1.value),
+            ];
+          }
+          if (modalGPS2.value) {
+            gps[piexif.GPSIFD.GPSLatitude][1] = [
+              mergeDec(modalGPS2.value),
+              countDec(modalGPS2.value),
+            ];
+          }
+          if (modalGPS3.value) {
+            gps[piexif.GPSIFD.GPSLatitude][2] = [
+              mergeDec(modalGPS3.value),
+              countDec(modalGPS3.value),
+            ];
           }
 
-          gps[piexif.GPSIFD.GPSLongitude][0] = [mergeDec(modalGPS5.value), countDec(modalGPS5.value)];
-          gps[piexif.GPSIFD.GPSLongitude][1] = [mergeDec(modalGPS6.value), countDec(modalGPS6.value)];
-          gps[piexif.GPSIFD.GPSLongitude][2] = [mergeDec(modalGPS7.value), countDec(modalGPS7.value)];
+          if (gpsLongFlag) {
+            if (modalGPS8.value == 1) {
+              gps[piexif.GPSIFD.GPSLongitudeRef] = "E";
+            } else {
+              gps[piexif.GPSIFD.GPSLongitudeRef] = "W";
+            }
+          }
+
+          if (modalGPS5.value) {
+            gps[piexif.GPSIFD.GPSLongitude][0] = [
+              mergeDec(modalGPS5.value),
+              countDec(modalGPS5.value),
+            ];
+          }
+          if (modalGPS6.value) {
+            gps[piexif.GPSIFD.GPSLongitude][1] = [
+              mergeDec(modalGPS6.value),
+              countDec(modalGPS6.value),
+            ];
+          }
+          if (modalGPS7.value) {
+            gps[piexif.GPSIFD.GPSLongitude][2] = [
+              mergeDec(modalGPS7.value),
+              countDec(modalGPS7.value),
+            ];
+          }
 
           //Flash
           var newFlashval = flashVal;
