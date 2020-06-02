@@ -23,7 +23,7 @@
     <div class="sideNavBar">
         <!--LOGO-->
         <div id="logo" align="center">
-            <img id="logo" src="img/logo.png" />
+            <img id="logo" src="img/logo_v3.png" />
         </div>
 
         <!-- Buttons section -->
@@ -361,7 +361,10 @@
     </div>
 
     <!---UPLOADING ZONE-->
-    <div class="images" id="images"></div>
+    <div class="container imgContainer">
+        <img id="imgbground" src="img/efish.png">
+        <div class="images" id="images"></div>
+    </div>
 
     <!-- Zoom photo -->
     <div id="myModal" class="modal">
@@ -446,7 +449,7 @@
                     // rotation button 
                     var rButton = document.createElement("button");
                     rButton.className = "rButton";
-                    rButton.innerHTML = " <span class='glyphicon glyphicon-repeat'></span>  ";
+                    rButton.innerHTML = " <span class='glyphicon glyphicon-repeat'></span> ";
                     rButton.setAttribute("id", imgID)
                     rButton.addEventListener("click", function () {
                         rotateImg(img.id);
@@ -455,7 +458,7 @@
 
                     var xButton = document.createElement("button");
                     xButton.className = "xButton";
-                    xButton.textContent = "X";
+                    xButton.innerHTML = " <span class='glyphicon glyphicon-remove'></span>";
                     xButton.setAttribute("id", imgID)
                     xButton.addEventListener("click", function () {
                         deleteImg(img.id, xButton.id);
