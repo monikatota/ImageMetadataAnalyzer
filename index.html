@@ -981,6 +981,7 @@
           modalDate.disabled = false;
         } else {
           modalDate.placeholder = "0000:00:00 00:00:00";
+          modalDate.value = "";
           modalDate.disabled = true;
         }
         
@@ -989,6 +990,7 @@
           modalModel.disabled = false;
         } else {
           modalModel.placeholder = "n/a";
+          modalModel.value = "";
           modalModel.disabled = true;
         }
 
@@ -997,6 +999,7 @@
           modalDevice.disabled = false;
         } else {
           modalDevice.placeholder = "n/a";
+          modalDevice.value = "";
           modalDevice.disabled = true;
         }
 
@@ -1005,6 +1008,7 @@
           modalIso.disabled = false;
         } else {
           modalIso.placeholder = "n/a";
+          modalIso.value = "";
           modalIso.disabled = true;
         }
 
@@ -1014,6 +1018,7 @@
         } else {
           modalExposure.placeholder = "n/a";
           modalExposure.disabled = true;
+          modalExposure.value = "";
         }
 
         if (arrEXIF[id]["Exif"]["42036"]) {
@@ -1022,6 +1027,7 @@
         } else {
           modalLens.placeholder = "n/a";
           modalLens.disabled = true;
+          modalLens.value = "";
         }
 
         if (arrEXIF[id]["Exif"]["37385"]) {
