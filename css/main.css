@@ -161,6 +161,14 @@ select.form-fixer2 {
   width: 120%;
 }
 
+.modal-title {
+  padding: 8px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 80%;
+}
+
 /* @media screen and (min-width: 50em) {
   #imgPopup {
     width: calc(25% - 6px);

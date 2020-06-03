@@ -568,7 +568,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalTitle">Modal title</h5>
+            <input type="text" class="modal-title" id="modalTitle"/>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -584,7 +584,7 @@
                   <div class="col-8">
                     <input
                       type="text"
-                      pattern="^[0-9]{4}:[0-9]{2}:[0-9]{2}[ ][0-9]{2}:[0-9]{2}:[0-9]{2}$"
+                      pattern="^[0-9]{4}:[0-9]{2}:[0-9]{2}[ ][0-9]{2}:[0-9]{2}:[0-9]{2}$|^$"
                       class="form-control"
                       id="modalDate"
                       placeholder="2019:01:31 10:11:12"
@@ -600,7 +600,7 @@
                       type="number"
                       class="form-control form-fixer"
                       id="modalGPS1"
-                      pattern="[0-9]*[\.,]?[0-9]*"
+                      pattern="[0-9]*[\.,]?[0-9]*|^$"
                       step="any"
                       placeholder="00"
                     />
@@ -613,7 +613,7 @@
                       id="modalGPS2"
                       placeholder="00"
                       step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*"
+                      pattern="[0-9]*[\.,]?[0-9]*|^$"
                     />
                     '
                   </div>
@@ -624,7 +624,7 @@
                       id="modalGPS3"
                       placeholder="00"
                       step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*"
+                      pattern="[0-9]*[\.,]?[0-9]*|^$"
                     />
                     "
                   </div>
@@ -632,6 +632,7 @@
                     <select class="form-control form-fixer2" id="modalGPS4">
                       <option value="1">N</option>
                       <option value="2">S</option>
+                      <option value="3">n/a</option>
                     </select>
                   </div>
                 </div>
@@ -645,7 +646,7 @@
                       class="form-control form-fixer"
                       id="modalGPS5"
                       step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*"
+                      pattern="[0-9]*[\.,]?[0-9]*|^$"
                       placeholder="00"
                     />
                     °
@@ -656,7 +657,7 @@
                       class="form-control form-fixer"
                       id="modalGPS6"
                       step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*"
+                      pattern="[0-9]*[\.,]?[0-9]*|^$"
                       placeholder="00"
                     />
                     '
@@ -667,7 +668,7 @@
                       class="form-control form-fixer"
                       id="modalGPS7"
                       step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*"
+                      pattern="[0-9]*[\.,]?[0-9]*|^$"
                       placeholder="00"
                     />
                     "
@@ -676,6 +677,7 @@
                     <select class="form-control form-fixer2" id="modalGPS8">
                       <option value="1">E</option>
                       <option value="2">W</option>
+                      <option value="3">n/a</option>
                     </select>
                   </div>
                 </div>
@@ -721,7 +723,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      pattern="[0-9]+[/]{1}[0-9]+"
+                      pattern="[0-9]+[/]{1}[0-9]+|^$"
                       id="modalExposure"
                       placeholder="10"
                     />
@@ -746,16 +748,17 @@
                   </label>
                   <div class="col-4">
                     <select class="custom-select mr-sm-2" id="modalFleshType">
-                      <!-- <option selected>Choose...</option> -->
                       <option value="1">Auto</option>
                       <option value="2">Copumlsory Flash Firing</option>
                       <option value="3">Compulsory Flash Suppression</option>
+                      <option value="4">n/a</option>
                     </select>
                   </div>
                   <div class="col-4">
                     <select class="custom-select mr-sm-2" id="modalFleshFired">
                       <option value="1">Flash fired</option>
                       <option value="2">Flash didn't fired</option>
+                      <option value="3">n/a</option>
                     </select>
                   </div>
                 </div>
@@ -971,21 +974,60 @@
         var img = document.getElementById(photoID);
         modalImg.src = img.src;
 
-        modalTitle.innerHTML = arrImages[id].name; //Title
+        modalTitle.value = arrImages[id].name; //Title
 
-        modalDate.value = arrEXIF[id]["0th"]["306"];
-        modalModel.value = arrEXIF[id]["0th"]["271"];
-        modalDevice.value = arrEXIF[id]["0th"]["272"];
-        modalIso.value = arrEXIF[id]["Exif"]["34855"];
-        if (arrEXIF[id]["Exif"]["33434"]) {
-          modalExposure.value = arrEXIF[id]["Exif"]["33434"]
-            .toString()
-            .replace(",", "/");
+        if (arrEXIF[id]["0th"]["306"]){
+          modalDate.value = arrEXIF[id]["0th"]["306"];
+          modalDate.disabled = false;
+        } else {
+          modalDate.placeholder = "0000:00:00 00:00:00";
+          modalDate.disabled = true;
         }
-        modalLens.value = arrEXIF[id]["Exif"]["42036"];
+        
+        if (arrEXIF[id]["0th"]["271"]) {
+          modalModel.value = arrEXIF[id]["0th"]["271"];
+          modalModel.disabled = false;
+        } else {
+          modalModel.placeholder = "n/a";
+          modalModel.disabled = true;
+        }
+
+        if (arrEXIF[id]["0th"]["272"]) {
+          modalDevice.value = arrEXIF[id]["0th"]["272"];
+          modalDevice.disabled = false;
+        } else {
+          modalDevice.placeholder = "n/a";
+          modalDevice.disabled = true;
+        }
+
+        if (arrEXIF[id]["Exif"]["34855"]) {
+          modalIso.value = arrEXIF[id]["Exif"]["34855"];
+          modalIso.disabled = false;
+        } else {
+          modalIso.placeholder = "n/a";
+          modalIso.disabled = true;
+        }
+
+        if (arrEXIF[id]["Exif"]["33434"]) {
+          modalExposure.value = 1 + "/" + arrEXIF[id]["Exif"]["33434"][1]/arrEXIF[id]["Exif"]["33434"][0];
+          modalExposure.disabled = false;
+        } else {
+          modalExposure.placeholder = "n/a";
+          modalExposure.disabled = true;
+        }
+
+        if (arrEXIF[id]["Exif"]["42036"]) {
+          modalLens.value = arrEXIF[id]["Exif"]["42036"];
+          modalLens.disabled = false;
+        } else {
+          modalLens.placeholder = "n/a";
+          modalLens.disabled = true;
+        }
 
         if (arrEXIF[id]["Exif"]["37385"]) {
           var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
+          modalFleshType.disabled = false;
+          modalFleshFired.disabled = false;
 
           // Check last bit if flash fired
           if (flashVal.substr(flashVal.length - 1) == 1) {
@@ -1006,8 +1048,11 @@
           ) {
             modalFleshType.value = 3; // compulsory flash suppression
           }
-        } else {
-          // TO DO: undefined on popup
+        } else { // No exif data
+          modalFleshFired.value = 3;
+          modalFleshFired.disabled = true;
+          modalFleshType.value = 4;
+          modalFleshType.disabled = true;
         }
 
         // ----------------- GPS LAT
@@ -1017,13 +1062,19 @@
 
         if (longitudeRef == "E") {
           modalGPS8.value = 1;
+        } else if (longitudeRef == "W") {
+          modalGPS8.value = 2;
         } else {
-          modalGPS8.value = 2; //W
+          modalGPS8.value = 3;
         }
 
         if (arrEXIF[id]["GPS"]["4"]) {
           var longitude = arrEXIF[id]["GPS"]["4"];
           var longitudeArray = longitude.toString().split(",");
+          modalGPS5.disabled = false;
+          modalGPS6.disabled = false;
+          modalGPS7.disabled = false;
+          modalGPS8.disabled = false;
           // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
 
           modalGPS5.value = longitudeArray[0] / longitudeArray[1];
@@ -1034,6 +1085,10 @@
           modalGPS5.value = null;
           modalGPS6.value = null;
           modalGPS7.value = null;
+          modalGPS5.disabled = true;
+          modalGPS6.disabled = true;
+          modalGPS7.disabled = true;
+          modalGPS8.disabled = true;
         }
 
         // ----------------- GPS LONG
@@ -1043,13 +1098,19 @@
 
         if (latitudeRef == "N") {
           modalGPS4.value = 1;
+        } else if (latitudeRef == "S") {
+          modalGPS4.value = 2;
         } else {
-          modalGPS4.value = 2; //S
+          modalGPS4.value = 3;
         }
 
         if (arrEXIF[id]["GPS"]["2"]) {
           var latitude = arrEXIF[id]["GPS"]["2"];
           var latitudeArray = latitude.toString().split(",");
+          modalGPS1.disabled = false;
+          modalGPS2.disabled = false;
+          modalGPS3.disabled = false;
+          modalGPS4.disabled = false;
           // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
 
           modalGPS1.value = latitudeArray[0] / latitudeArray[1];
@@ -1061,6 +1122,10 @@
           modalGPS1.value = null;
           modalGPS2.value = null;
           modalGPS3.value = null;
+          modalGPS1.disabled = true;
+          modalGPS2.disabled = true;
+          modalGPS3.disabled = true;
+          modalGPS4.disabled = true;
         }
 
         //------- Validity check
@@ -1164,13 +1229,22 @@
           if (modalIso.value) {
             exif[piexif.ExifIFD.ISOSpeedRatings] = parseInt(modalIso.value);
           }
+          else {
+            modalIso.disabled = true;
+          }
           if (modalExposure.value) {
             var exposureRes = modalExposure.value.toString().split("/");
             exif[piexif.ExifIFD.ExposureTime][0] = parseInt(exposureRes[0]);
             exif[piexif.ExifIFD.ExposureTime][1] = parseInt(exposureRes[1]);
+          } else {
+            modalExposure.disabled = true;
           }
 
-          exif[piexif.ExifIFD.LensModel] = modalLens.value;
+          if (modalLens.value) {
+            exif[piexif.ExifIFD.LensModel] = modalLens.value;
+          } else {
+            modalLens.disabled = true;
+          }
 
           if (gpsLatFlag) {
             if (modalGPS4.value == 1) {
@@ -1231,7 +1305,7 @@
 
           if (modalFleshFired.value == 1) {
             newFlashval = replaceAt(newFlashval, flashVal.length - 1, 1);
-          } else {
+          } else if (modalFleshFired.value == 2) {
             newFlashval = replaceAt(newFlashval, flashVal.length - 1, 0);
           }
           //
@@ -1243,13 +1317,19 @@
             //compulsory flash firing, na 01
             newFlashval = replaceAt(newFlashval, 0, 0);
             newFlashval = replaceAt(newFlashval, 1, 1);
-          } else if (modalFleshType.value == 2) {
+          } else if (modalFleshType.value == 3) {
             //compulsory flash suppression, na 10
             newFlashval = replaceAt(newFlashval, 0, 1);
             newFlashval = replaceAt(newFlashval, 1, 0);
           }
 
-          exif[piexif.ExifIFD.Flash] = binToDec(newFlashval);
+          if (modalFleshType.value != 4 && modalFleshFired.value != 3) {
+            exif[piexif.ExifIFD.Flash] = binToDec(newFlashval);
+          }
+          if (modalFleshType.value == 4 || modalFleshFired == 3){
+            modalFleshFired.disabled = true;
+            modalFleshType.disabled = true;
+          }
 
           var modifiedExifObj = { "0th": zeroth, Exif: exif, GPS: gps };
           var exifStr = piexif.dump(modifiedExifObj);
@@ -1265,7 +1345,7 @@
           // Trigger download
           var a = document.createElement("a");
           a.setAttribute("href", inserted);
-          a.setAttribute("download", "modifiedImage");
+          a.setAttribute("download", modalTitle.value);
 
           var aj = $(a);
           aj.appendTo("body");
