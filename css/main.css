@@ -6,13 +6,27 @@ body, html {
     background-size: cover;
 }
 
+.imgContainer{
+  position: absolute;
+  margin-top: 10% !important;
+  margin-left: 22% !important;
+  max-height: 90vw;
+}
+
+#imgbground{
+  position: fixed;
+  width: 70%;
+  height: 80%;
+  opacity: 0.5;
+}
+
 /* Images section */
 .images {
     padding: 0px;
     margin: 0px;
     padding-left: 0;
-    margin-top: 10%;     /* 15%, cause of top navigation bar */
-    margin-left: 19%;    /* 17%, cause of side navigation bar */
+    margin-top: 0% !important;     /* 15%, cause of top navigation bar */
+    margin-left: 0% !important;
 }
 
 .dropdown {
@@ -56,6 +70,49 @@ body, html {
 
 .dropdown:hover .dropdown-content {display: block;}
 
+/* Image's right corner "x" button */
+.xButton{
+  display: none;
+  float: right;
+  position: absolute;
+  border-radius: 50%;
+  top: -5%;
+  right: -5%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .xButton{
+  display:inherit;
+}
+
+/* Image's right corner - rotation button */
+.rButton{
+  display: none;
+  float: right;
+  position: absolute;
+  border-radius: 50%;
+  top: -5%;
+  right: 10%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .rButton{
+  display:inherit;
+}
+
+/* Image's sort data*/
+.sortData {
+  float: left;
+  position: absolute;
+  border-radius: 10px;
+  bottom: 5%;
+  left: 2%;
+  right: 2%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
 
 .images img {
   border-radius: 8px; 

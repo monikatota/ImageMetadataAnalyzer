@@ -2,7 +2,7 @@
 .topNavBar {
     top: 4%;
     height: 15%;
-    left: 19%;                  /* 19% cause of side navigation bar */
+    left: 17%;                  /* 19% cause of side navigation bar */
     right: 2%;
     position: fixed;            /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1;                 /* Stay on top */
