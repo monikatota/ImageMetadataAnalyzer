@@ -50,14 +50,14 @@
             <div class="dropdown-menu">
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onchange="handleChange(this);">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onchange="handleChange(this,'iso',100);">
                   <label class="form-check-label">100</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                  <label class="form-check-label">Second</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" onchange="handleChange(this,'iso',400);">
+                  <label class="form-check-label">400</label>
                 </div>
               </a>
               <a class="dropdown-item">
@@ -501,6 +501,7 @@
     /* global variable storing exif data of every image */
     var arrEXIF = [];
     var imgID = 0;
+    var imgIndex = [];
     function readURL(input) {
       for (let i = 0; i < input.files.length; i++) {
         var reader = new FileReader();
@@ -531,6 +532,7 @@
           var img = document.createElement("img"); // create new image
           img.src = event.target.result; // source = uploaded file
           imgID++;
+          imgIndex.push(imgID);
           img.setAttribute("id", "photo_" + imgID);
           img.addEventListener("click", function () {
             displayModal(img.id);
@@ -1082,6 +1084,11 @@
   <script>
     function deleteImg(photoID, numID) {
       var img = document.getElementById(photoID);
+      for(let i=0; i<imgIndex.length; i++)
+      {
+        if(imgIndex[i]==numID)
+          imgIndex.splice(i,1);
+      }
 
       //Deleting from node
       let node = img.parentNode.parentNode;
@@ -1226,60 +1233,33 @@
       };
     }
   </script>
-    <script>
-      function handleChange(checkbox) {
-        // var img = document.getElementById("photo_1");
-        // var imgDiv = document.getElementById("photo_1").parentNode;
-        // var parentDivImages = document.getElementsByTagName("img");
-        // var parentDiv = document.getElementById("images");
-        // /* get images */
-        // var parentDivImages1 = parentDiv.getElementsByTagName("img");
-        // /* copy images' ids and theirs names into a list */
-        // console.log(parentDivImages)
-        // console.log(parentDiv)
-        // console.log(parentDivImages1)
-
-        if(checkbox.checked == true){
-  
-          
-          // var imgElement = document.getElementById("photo_1").parentElement;
-          // imgDiv.hidden = true;
-          // console.log(img)
-          // console.log(imgDiv)
-          // console.log(imgElement)
-
-          // dla wszystkich zdjęć
-          for(let i=1; i<=imgID; i++)
-          {
-            // jeżeli ISO jest różne od wybranego (100)
-            let ID = "photo_"+i;
-            var iso  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
-            if(iso != 100)
-              {
-                //ukryj tego diva
-                var imgDiv = document.getElementById(ID).parentNode;
-                imgDiv.hidden = true;
-              }
-          }
-   
-
-        }else{
-          // dla wszystkich zdjęć
-          for(let i=1; i<=imgID; i++)
-          {
-            // jeżeli ISO jest różne od wybranego (100)
-            let ID = "photo_"+i;
-            var iso  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
-            if(iso != 100)
-              {
-                //pokaż tego diva
-                var imgDiv = document.getElementById(ID).parentNode;
-                imgDiv.hidden = false;
-              }
-          }
+  <script>
+    function handleChange(checkbox,filter,value) {
+      for(let i=0; i<imgIndex.length; i++)
+      {
+        let ID = "photo_"+imgIndex[i];
+        switch (filter) {
+          case 'iso':
+            var exifData  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+            break;
+          case 'Papayas':
+            // to do
+            // var exifData  = 
+            break;
+          default:
+            console.log("Wrong value");
         }
-      } 
-    </script>
+        if(exifData != value)
+          {
+            var imgDiv = document.getElementById(ID).parentNode;
+            if(checkbox.checked == true)
+              imgDiv.hidden = true;
+            else
+              imgDiv.hidden = false;
+          }
+      }
+    } 
+  </script>
 </body>
 
 </html>
