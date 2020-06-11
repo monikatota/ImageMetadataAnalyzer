@@ -2,1343 +2,1234 @@
 <html>
 
 <head>
-    <title>Image Metadata Viewer</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <title>Image Metadata Viewer</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/sideNavBar.css" />
-    <link rel="stylesheet" type="text/css" href="css/topNavBar.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/sideNavBar.css" />
+  <link rel="stylesheet" type="text/css" href="css/topNavBar.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body style="background-image: url(img/background.png);">
-    <!-- LEFT PART -->
-    <!-- Side naviagtion bar  -->
-    <div class="sideNavBar">
-        <!--LOGO-->
-        <div id="logo" align="center">
-            <img id="logo" src="img/logo_v3.png" />
-        </div>
-
-        <!-- Buttons section -->
-        <div class="container buttonsSideBar" align="center">
-            <!--UPLOAD BUTTON-->
-            <label class="btn btn-primary btn-responsive uploadButton" for="photos" align="center">Upload JPEG
-                photo</label>
-            <input type="file" id="photos" multiple="multiple" id="file-input" onchange="readURL(this);"
-                accept="image/jpeg" display="none" />
-
-            <div>
-                <h5 style="font-size: 0.8vw">Upload a local file (only JPEG) to read Exif data.</h5>
-            </div>
-
-            <!-- Filter section -->
-            <div>
-                <h4 align="left" style="font-size: 1.2vw">Filter by: </h4>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> One - 1 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                        value="option3">
-                                    <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Two - 2 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                        value="option3">
-                                    <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Three - 3 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                        value="option3">
-                                    <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Four - 4 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                        value="option3">
-                                    <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Five - 5 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                        value="option3">
-                                    <label class="form-check-label" for="inlineCheckbox3">Third</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Six - 6 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Seven - 7 </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                        value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">First</label>
-                                </div>
-                            </a>
-                            <a class="dropdown-item">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                        value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">Second</label>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button-row sideGroup">
-                <div class="col-xs button-container sideGroup">
-                    <div class="btn-group sideGroup">
-                        <button type="button" class="btn btn-primary btn-responsive filterButton"> Filter </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- LEFT PART -->
+  <!-- Side naviagtion bar  -->
+  <div class="sideNavBar">
+    <!--LOGO-->
+    <div id="logo" align="center">
+      <img id="logo" src="img/logo_v3.png" />
     </div>
 
-    <!--RIGHT PART-->
-    <!-- Top navigation bar -->
-    <div class="topNavBar">
-        <div class="container buttonsTopBar">
-            <h4 style="font-size: 1.2vw">Sort by: </h4>
-            <div class="row button-row topGroup">
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Name </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('name','asc')"><span
-                                    class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z
-                            </a>
-                            <a class="dropdown-item" onclick="sortImages('name','desc')"><span
-                                    class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Original date </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('date','asc')">Oldest to Newest</a>
-                            <a class="dropdown-item" onclick="sortImages('date','desc')">Newest to Oldest</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Modification date </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('modDate','asc')">Oldest to Newest</a>
-                            <a class="dropdown-item" onclick="sortImages('modDate','desc')">Newest to Oldest</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Camera model </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('camera','asc')"><span
-                                    class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z</a>
-                            <a class="dropdown-item" onclick="sortImages('camera','desc')"><span
-                                    class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> ISO </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('iso','asc')"> Low digital noise </a>
-                            <a class="dropdown-item" onclick="sortImages('iso','desc')"> High digital noise </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Focal Ratio </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('focalRatio','asc')"> Narrow depth of field
-                            </a>
-                            <a class="dropdown-item" onclick="sortImages('focalRatio','desc')"> Large depth of field
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Exposure time </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('shutter','asc')"> "Frozen" motion </a>
-                            <a class="dropdown-item" onclick="sortImages('shutter','desc')"> Motion blur </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-responsive"
-                            data-toggle="dropdown"> Focal length </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" onclick="sortImages('focalLength','desc')"> Narrow angle of view
-                            </a>
-                            <a class="dropdown-item" onclick="sortImages('focalLength','asc')"> Wide angle of view </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs button-container topGroup">
-                    <div class="btn-group topGroup">
-                        <button type="button" class="btn btn-primary btn-responsive"
-                            onclick="sortImages('defaultSort','desc')"> Default sort </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Buttons section -->
+    <div class="container buttonsSideBar" align="center">
+      <!--UPLOAD BUTTON-->
+      <label class="btn btn-primary btn-responsive uploadButton" for="photos" align="center">Upload JPEG
+        photo</label>
+      <input type="file" id="photos" multiple="multiple" id="file-input" onchange="readURL(this);" accept="image/jpeg"
+        display="none" />
 
-    <!---UPLOADING ZONE-->
-    <div class="container imgContainer">
-        <img id="imgbground" src="img/efish.png">
-        <div class="images" id="images"></div>
-    </div>
+      <div>
+        <h5 style="font-size: 0.8vw">Upload a local file (only JPEG) to read Exif data.</h5>
+      </div>
 
-    <!-- Zoom photo modal -->
-    <div id="myModal" class="modal">
-        <img class="modal-content" id="img01" />
-        <div id="caption"></div>
-    </div>
-
-    <!-- Popup modal Detail-->
-    <div
-      class="modal fade bd-example-modal-lg"
-      id="popupModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <input type="text" class="modal-title" id="modalTitle"/>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col">
-                <img class="modal-popup-content" id="imgPopup" />
-                <!-- Image miniature above -->
-              </div>
-              <div class="col">
-                <div class="form-group row">
-                  <label for="modalDate" class="col-4 col-form-label"
-                    >Date Taken: <br />[YYYY:MM:DD hh:mm:ss]
-                  </label>
-                  <div class="col-8">
-                    <input
-                      type="text"
-                      pattern="^[0-9]{4}:[0-9]{2}:[0-9]{2}[ ][0-9]{2}:[0-9]{2}:[0-9]{2}$|^$"
-                      class="form-control"
-                      id="modalDate"
-                      placeholder="2019:01:31 10:11:12"
-                    />
-                  </div>
+      <!-- Filter section -->
+      <div>
+        <h4 align="left" style="font-size: 1.2vw">Filter by: </h4>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> One - 1
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
                 </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalGPS" class="col-4 col-form-label"
-                    >Latitude:
-                  </label>
-                  <div class="col">
-                    <input
-                      type="number"
-                      class="form-control form-fixer"
-                      id="modalGPS1"
-                      pattern="[0-9]*[\.,]?[0-9]*|^$"
-                      step="any"
-                      placeholder="00"
-                    />
-                    °
-                  </div>
-                  <div class="col">
-                    <input
-                      type="number"
-                      class="form-control form-fixer"
-                      id="modalGPS2"
-                      placeholder="00"
-                      step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*|^$"
-                    />
-                    '
-                  </div>
-                  <div class="col">
-                    <input
-                      type="number"
-                      class="form-control form-fixer"
-                      id="modalGPS3"
-                      placeholder="00"
-                      step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*|^$"
-                    />
-                    "
-                  </div>
-                  <div class="col">
-                    <select class="form-control form-fixer2" id="modalGPS4">
-                      <option value="1">N</option>
-                      <option value="2">S</option>
-                      <option value="3">n/a</option>
-                    </select>
-                  </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
                 </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalGPS5" class="col-4 col-form-label"
-                    >Longitude:
-                  </label>
-                  <div class="col">
-                    <input
-                      type="number"
-                      class="form-control form-fixer"
-                      id="modalGPS5"
-                      step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*|^$"
-                      placeholder="00"
-                    />
-                    °
-                  </div>
-                  <div class="col">
-                    <input
-                      type="number"
-                      class="form-control form-fixer"
-                      id="modalGPS6"
-                      step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*|^$"
-                      placeholder="00"
-                    />
-                    '
-                  </div>
-                  <div class="col">
-                    <input
-                      type="number"
-                      class="form-control form-fixer"
-                      id="modalGPS7"
-                      step="any"
-                      pattern="[0-9]*[\.,]?[0-9]*|^$"
-                      placeholder="00"
-                    />
-                    "
-                  </div>
-                  <div class="col">
-                    <select class="form-control form-fixer2" id="modalGPS8">
-                      <option value="1">E</option>
-                      <option value="2">W</option>
-                      <option value="3">n/a</option>
-                    </select>
-                  </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                  <label class="form-check-label" for="inlineCheckbox3">Third</label>
                 </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalModel" class="col-4 col-form-label"
-                    >Model and device:
-                  </label>
-                  <div class="col-4">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="modalModel"
-                      placeholder="Model"
-                    />
-                  </div>
-                  <div class="col-4">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="modalDevice"
-                      placeholder="Device"
-                    />
-                  </div>
-                </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalIso" class="col-4 col-form-label"
-                    >ISO Speed Ratings:
-                  </label>
-                  <div class="col-8">
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="modalIso"
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalExposure" class="col-4 col-form-label"
-                    >Exposure Time: <br />[1/value s]
-                  </label>
-                  <div class="col-8">
-                    <input
-                      type="text"
-                      class="form-control"
-                      pattern="[0-9]+[/]{1}[0-9]+|^$"
-                      id="modalExposure"
-                      placeholder="10"
-                    />
-                  </div>
-                </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalLens" class="col-4 col-form-label"
-                    >Lens Model:
-                  </label>
-                  <div class="col-8">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="modalLens"
-                      placeholder="10"
-                    />
-                  </div>
-                </div>
-                <div class="form-group row justify-content-md-center">
-                  <label for="modalExposure" class="col-4 col-form-label"
-                    >Flash:
-                  </label>
-                  <div class="col-4">
-                    <select class="custom-select mr-sm-2" id="modalFleshType">
-                      <option value="1">Auto</option>
-                      <option value="2">Copumlsory Flash Firing</option>
-                      <option value="3">Compulsory Flash Suppression</option>
-                      <option value="4">n/a</option>
-                    </select>
-                  </div>
-                  <div class="col-4">
-                    <select class="custom-select mr-sm-2" id="modalFleshFired">
-                      <option value="1">Flash fired</option>
-                      <option value="2">Flash didn't fired</option>
-                      <option value="3">n/a</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two - 2
             </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="downloadButton"
-              value="Submit"
-            >
-              Download Edited Photo
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                  <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three -
+              3 </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                  <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Four -
+              4 </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                  <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Five -
+              5 </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                  <label class="form-check-label" for="inlineCheckbox3">Third</label>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Six - 6
             </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Seven -
+              7 </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">First</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Second</label>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary btn-responsive filterButton"> Filter </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!--End of modal-->
-    <script src="piexif.js"></script>
-    <script>
-        var arrImages = [];
-        /* global variable storing exif data of every image */
-        var arrEXIF = [];
-        var imgID = 0;
-        function readURL(input) {
-            for (let i = 0; i < input.files.length; i++) {
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    arrImages.push(input.files[i]);
-                    var exifObj = piexif.load(event.target.result);
-                    arrEXIF.push(exifObj);
+  <!--RIGHT PART-->
+  <!-- Top navigation bar -->
+  <div class="topNavBar">
+    <div class="container buttonsTopBar">
+      <h4 style="font-size: 1.2vw">Sort by: </h4>
+      <div class="row button-row topGroup">
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Name
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('name','asc')"><span
+                  class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z
+              </a>
+              <a class="dropdown-item" onclick="sortImages('name','desc')"><span
+                  class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown">
+              Original date </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('date','asc')">Oldest to Newest</a>
+              <a class="dropdown-item" onclick="sortImages('date','desc')">Newest to Oldest</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown">
+              Modification date </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('modDate','asc')">Oldest to Newest</a>
+              <a class="dropdown-item" onclick="sortImages('modDate','desc')">Newest to Oldest</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Camera
+              model </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('camera','asc')"><span
+                  class="glyphicon glyphicon-sort-by-alphabet"></span> A - Z</a>
+              <a class="dropdown-item" onclick="sortImages('camera','desc')"><span
+                  class="glyphicon glyphicon-sort-by-alphabet-alt"></span> Z - A</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> ISO
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('iso','asc')"> Low digital noise </a>
+              <a class="dropdown-item" onclick="sortImages('iso','desc')"> High digital noise </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Focal
+              Ratio </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('focalRatio','asc')"> Narrow depth of field
+              </a>
+              <a class="dropdown-item" onclick="sortImages('focalRatio','desc')"> Large depth of field
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown">
+              Exposure time </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('shutter','asc')"> "Frozen" motion </a>
+              <a class="dropdown-item" onclick="sortImages('shutter','desc')"> Motion blur </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Focal
+              length </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" onclick="sortImages('focalLength','desc')"> Narrow angle of view
+              </a>
+              <a class="dropdown-item" onclick="sortImages('focalLength','asc')"> Wide angle of view </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs button-container topGroup">
+          <div class="btn-group topGroup">
+            <button type="button" class="btn btn-primary btn-responsive" onclick="sortImages('defaultSort','desc')">
+              Default sort </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                    /* EXAMPLE - wartości można zobaczyc w konsoli Fn + F12*/
-                    // console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
-                    // console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
-                    // console.log(piexif.TAGS["0th"]["306"]["name"])
-                    // console.log(exifObj) // tutaj można podejrzeć jakie są numerki
-                    // for (var ifd in exifObj) { // Loop through the properties of an object
-                    //     if (ifd == "thumbnail") {
-                    //         continue; // ommit "thumbnail"
-                    //     }
-                    //     console.log("-" + ifd);
-                    //     for (var tag in exifObj[ifd]) {
-                    //         // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
-                    //         console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag] + " IFD: " + ifd + " TAG: " + tag);
-                    //     }
-                    // }
+  <!---UPLOADING ZONE-->
+  <div class="container imgContainer">
+    <img id="imgbground" src="img/efish.png">
+    <div class="images" id="images"></div>
+  </div>
 
-                    var newDiv = document.createElement("div");
-                    newDiv.className = "dropdown";
+  <!-- Zoom photo modal -->
+  <div id="myModal" class="modal">
+    <img class="modal-content" id="img01" />
+    <div id="caption"></div>
+  </div>
 
-                    var img = document.createElement("img"); // create new image
-                    img.src = event.target.result; // source = uploaded file
-                    imgID++;
-                    img.setAttribute("id", "photo_" + imgID);
-                    img.addEventListener("click", function () {
-                        displayModal(img.id);
-                    });
-                    newDiv.appendChild(img);
+  <!-- Popup modal Detail-->
+  <div class="modal fade bd-example-modal-lg" id="popupModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <input type="text" class="modal-title" id="modalTitle" />
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col">
+              <img class="modal-popup-content" id="imgPopup" />
+              <!-- Image miniature above -->
+            </div>
+            <div class="col">
+              <div class="form-group row">
+                <label for="modalDate" class="col-4 col-form-label">Date Taken: <br />[YYYY:MM:DD hh:mm:ss]
+                </label>
+                <div class="col-8">
+                  <input type="text" pattern="^[0-9]{4}:[0-9]{2}:[0-9]{2}[ ][0-9]{2}:[0-9]{2}:[0-9]{2}$|^$"
+                    class="form-control" id="modalDate" placeholder="2019:01:31 10:11:12" />
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalGPS" class="col-4 col-form-label">Latitude:
+                </label>
+                <div class="col">
+                  <input type="number" class="form-control form-fixer" id="modalGPS1" pattern="[0-9]*[\.,]?[0-9]*|^$"
+                    step="any" placeholder="00" />
+                  °
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control form-fixer" id="modalGPS2" placeholder="00" step="any"
+                    pattern="[0-9]*[\.,]?[0-9]*|^$" />
+                  '
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control form-fixer" id="modalGPS3" placeholder="00" step="any"
+                    pattern="[0-9]*[\.,]?[0-9]*|^$" />
+                  "
+                </div>
+                <div class="col">
+                  <select class="form-control form-fixer2" id="modalGPS4">
+                    <option value="1">N</option>
+                    <option value="2">S</option>
+                    <option value="3">n/a</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalGPS5" class="col-4 col-form-label">Longitude:
+                </label>
+                <div class="col">
+                  <input type="number" class="form-control form-fixer" id="modalGPS5" step="any"
+                    pattern="[0-9]*[\.,]?[0-9]*|^$" placeholder="00" />
+                  °
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control form-fixer" id="modalGPS6" step="any"
+                    pattern="[0-9]*[\.,]?[0-9]*|^$" placeholder="00" />
+                  '
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control form-fixer" id="modalGPS7" step="any"
+                    pattern="[0-9]*[\.,]?[0-9]*|^$" placeholder="00" />
+                  "
+                </div>
+                <div class="col">
+                  <select class="form-control form-fixer2" id="modalGPS8">
+                    <option value="1">E</option>
+                    <option value="2">W</option>
+                    <option value="3">n/a</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalModel" class="col-4 col-form-label">Model and device:
+                </label>
+                <div class="col-4">
+                  <input type="text" class="form-control" id="modalModel" placeholder="Model" />
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" id="modalDevice" placeholder="Device" />
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalIso" class="col-4 col-form-label">ISO Speed Ratings:
+                </label>
+                <div class="col-8">
+                  <input type="number" class="form-control" id="modalIso" placeholder="0" />
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalExposure" class="col-4 col-form-label">Exposure Time: <br />[1/value s]
+                </label>
+                <div class="col-8">
+                  <input type="text" class="form-control" pattern="[0-9]+[/]{1}[0-9]+|^$" id="modalExposure"
+                    placeholder="10" />
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalLens" class="col-4 col-form-label">Lens Model:
+                </label>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="modalLens" placeholder="10" />
+                </div>
+              </div>
+              <div class="form-group row justify-content-md-center">
+                <label for="modalExposure" class="col-4 col-form-label">Flash:
+                </label>
+                <div class="col-4">
+                  <select class="custom-select mr-sm-2" id="modalFleshType">
+                    <option value="1">Auto</option>
+                    <option value="2">Copumlsory Flash Firing</option>
+                    <option value="3">Compulsory Flash Suppression</option>
+                    <option value="4">n/a</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <select class="custom-select mr-sm-2" id="modalFleshFired">
+                    <option value="1">Flash fired</option>
+                    <option value="2">Flash didn't fired</option>
+                    <option value="3">n/a</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" id="downloadButton" value="Submit">
+            Download Edited Photo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                    var sortData = document.createElement("div");
-                    sortData.className = "sortData";
-                    sortData.textContent = "";
-                    sortData.style.textAlign = "center";
-                    sortData.setAttribute("id", imgID);
-                    newDiv.appendChild(sortData);
+  <!--End of modal-->
+  <script src="piexif.js"></script>
+  <script>
+    var arrImages = [];
+    /* global variable storing exif data of every image */
+    var arrEXIF = [];
+    var imgID = 0;
+    function readURL(input) {
+      for (let i = 0; i < input.files.length; i++) {
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          arrImages.push(input.files[i]);
+          var exifObj = piexif.load(event.target.result);
+          arrEXIF.push(exifObj);
 
-                    // rotation button 
-                    var rButton = document.createElement("button");
-                    rButton.className = "rButton";
-                    rButton.innerHTML = " <span class='glyphicon glyphicon-repeat'></span> ";
-                    rButton.setAttribute("id", imgID)
-                    rButton.addEventListener("click", function () {
-                        rotateImg(img.id);
-                    });
-                    newDiv.appendChild(rButton);
+          /* EXAMPLE - wartości można zobaczyc w konsoli Fn + F12*/
+          // console.log(exifObj["0th"]["306"]) // tak się czyta na przykład datę wykonania
+          // console.log(arrEXIF[0]["0th"]["306"]) // a tak ze zmiennej globalnej
+          // console.log(piexif.TAGS["0th"]["306"]["name"])
+          // console.log(exifObj) // tutaj można podejrzeć jakie są numerki
+          // for (var ifd in exifObj) { // Loop through the properties of an object
+          //     if (ifd == "thumbnail") {
+          //         continue; // ommit "thumbnail"
+          //     }
+          //     console.log("-" + ifd);
+          //     for (var tag in exifObj[ifd]) {
+          //         // a tu można podejrzeć co oznaczają dane numerki - jakie mają nazwy, np. DateTime to 306
+          //         console.log("  " + piexif.TAGS[ifd][tag]["name"] + ":" + exifObj[ifd][tag] + " IFD: " + ifd + " TAG: " + tag);
+          //     }
+          // }
 
-                    var xButton = document.createElement("button");
-                    xButton.className = "xButton";
-                    xButton.innerHTML = " <span class='glyphicon glyphicon-remove'></span>";
-                    xButton.setAttribute("id", imgID)
-                    xButton.addEventListener("click", function () {
-                        deleteImg(img.id, xButton.id);
-                    });
-                    newDiv.appendChild(xButton);
+          var newDiv = document.createElement("div");
+          newDiv.className = "dropdown";
 
-                    var newList = document.createElement("ul"); // dropdown list
-                    newList.className = "dropdown-content";
+          var img = document.createElement("img"); // create new image
+          img.src = event.target.result; // source = uploaded file
+          imgID++;
+          img.setAttribute("id", "photo_" + imgID);
+          img.addEventListener("click", function () {
+            displayModal(img.id);
+          });
+          newDiv.appendChild(img);
 
-            var button1 = document.createElement("li");
-            var a1 = document.createElement("a");
-            a1.type = "button";
-            a1.textContent = "View Photo";
-            a1.setAttribute("id", imgID);
-            a1.addEventListener("click", function () {
-              displayModal(img.id, a1);
-            });
-            button1.appendChild(a1);
-            newList.appendChild(button1);
+          var sortData = document.createElement("div");
+          sortData.className = "sortData";
+          sortData.textContent = "";
+          sortData.style.textAlign = "center";
+          sortData.setAttribute("id", imgID);
+          newDiv.appendChild(sortData);
 
-                    var button2 = document.createElement("li");
-                    var a2 = document.createElement("a");
-                    a2.type = "button";
-                    a2.textContent = "Rename?";
-                    a2.setAttribute("id", imgID);
-                    button2.appendChild(a2);
-                    newList.appendChild(button2);
+          // rotation button 
+          var rButton = document.createElement("button");
+          rButton.className = "rButton";
+          rButton.innerHTML = " <span class='glyphicon glyphicon-repeat'></span> ";
+          rButton.setAttribute("id", imgID)
+          rButton.addEventListener("click", function () {
+            rotateImg(img.id);
+          });
+          newDiv.appendChild(rButton);
 
-            var button3 = document.createElement("li");
-            var a3 = document.createElement("a");
-            a3.type = "button";
-            a3.textContent = "View/Edit Details?";
-            a3.setAttribute("id", imgID);
-            a3.addEventListener("click", function () {
-              displayPopup(img, img.id, a3);
-            });
-            //a3.setAttribute("data-toggle", "modal");
-            //a3.setAttribute("data-target", "#popupModal");
-            button3.appendChild(a3);
-            newList.appendChild(button3);
+          var xButton = document.createElement("button");
+          xButton.className = "xButton";
+          xButton.innerHTML = " <span class='glyphicon glyphicon-remove'></span>";
+          xButton.setAttribute("id", imgID)
+          xButton.addEventListener("click", function () {
+            deleteImg(img.id, xButton.id);
+          });
+          newDiv.appendChild(xButton);
 
-                    //data-toggle="modal" data-target="#exampleModalCenter"
+          var newList = document.createElement("ul"); // dropdown list
+          newList.className = "dropdown-content";
 
-                    var button4 = document.createElement("li");
-                    var a4 = document.createElement("a");
-                    a4.type = "button";
-                    a4.textContent = "Download";
-                    a4.setAttribute("id", imgID);
-                    button4.appendChild(a4);
-                    newList.appendChild(button4);
+          var button1 = document.createElement("li");
+          var a1 = document.createElement("div");
+          a1.type = "button";
+          a1.style.cursor = "pointer";
+          a1.textContent = "View Photo";
+          a1.setAttribute("id", imgID);
+          a1.addEventListener("click", function () {
+            displayModal(img.id, a1);
+          });
+          button1.appendChild(a1);
+          newList.appendChild(button1);
 
-                    newDiv.appendChild(newList);
-                    document.getElementById("images").prepend(newDiv); // prepend - insert newDiv to the beginning of "images"
-                };
-                reader.readAsDataURL(input.files[i]);
-            }
-        }
-    </script>
-    <script>
-      function displayModal(photoID, element) {
-        var modal = document.getElementById("myModal");
-        var modalImg = document.getElementById("img01");
+          var button2 = document.createElement("li");
+          var a2 = document.createElement("div");
+          a2.type = "button";
+          a2.style.cursor = "pointer";
+          a2.textContent = "View/Edit Details";
+          a2.setAttribute("id", imgID);
+          a2.addEventListener("click", function () {
+            displayPopup(img, img.id, a2);
+          });
+          
+          //a2.setAttribute("data-toggle", "modal");
+          //a2.setAttribute("data-target", "#popupModal");
+          button2.appendChild(a2);
+          newList.appendChild(button2);
 
-        element.setAttribute("data-toggle", "modal");
-        element.setAttribute("data-target", "#myModal");
+          //data-toggle="modal" data-target="#exampleModalCenter"
 
-        // Get the image and insert it inside the modal
-        var img = document.getElementById(photoID);
+          var button3 = document.createElement("li");
+          var a3 = document.createElement("div");
+          a3.type = "button";
+          a3.style.cursor = "pointer";
+          a3.textContent = "Delete";
+          a3.setAttribute("id", imgID);
+          a3.addEventListener("click", function () {
+            deleteImg(img.id, a3.id);
+          });
+          button3.appendChild(a3);
+          newList.appendChild(button3);
 
-        modalImg.src = img.src;
+          newDiv.appendChild(newList);
+          document.getElementById("images").prepend(newDiv); // prepend - insert newDiv to the beginning of "images"
+        };
+        reader.readAsDataURL(input.files[i]);
+      }
+    }
+  </script>
+  <script>
+    function displayModal(photoID, element) {
+      var modal = document.getElementById("myModal");
+      var modalImg = document.getElementById("img01");
+
+      element.setAttribute("data-toggle", "modal");
+      element.setAttribute("data-target", "#myModal");
+
+      // Get the image and insert it inside the modal
+      var img = document.getElementById(photoID);
+
+      modalImg.src = img.src;
+    }
+
+    function countDec(num) {
+      if (Math.floor(num) == num) {
+        return 1;
+      } else {
+        val = num.toString().split(".")[1].length || 0;
+        return Math.pow(10, val);
+      }
+    }
+
+    function mergeDec(num) {
+      return num.replace(/[,.]/g, "");
+    }
+
+    function calculateFlash(num) {
+      var binNum = (num >>> 0).toString(2);
+      return binNum;
+    }
+
+    function binToDec(num) {
+      return parseInt(num, 2);
+    }
+
+    function replaceAt(string, index, replace) {
+      return (
+        string.substring(0, index) + replace + string.substring(index + 1)
+      );
+    }
+
+    function invalidForm() {
+      document.getElementById("downloadButton").disabled = true;
+    }
+
+    function displayPopup(img, photoID, element) {
+      var exifObj = piexif.load(img.src);
+
+      element.setAttribute("data-toggle", "modal");
+      element.setAttribute("data-target", "#popupModal");
+
+      var modalImg = document.getElementById("imgPopup");
+      var modalDate = document.getElementById("modalDate");
+      var modalDevice = document.getElementById("modalDevice");
+      var modalIso = document.getElementById("modalIso");
+      var modalExposure = document.getElementById("modalExposure");
+      var modalGPS = document.getElementById("modalGPS");
+      var modalModel = document.getElementById("modalModel");
+      var modalLens = document.getElementById("modalLens");
+      var modalFleshFired = document.getElementById("modalFleshFired");
+      var modalFleshType = document.getElementById("modalFleshType");
+      var modalGPS1 = document.getElementById("modalGPS1");
+      var modalGPS2 = document.getElementById("modalGPS2");
+      var modalGPS3 = document.getElementById("modalGPS3");
+      var modalGPS4 = document.getElementById("modalGPS4");
+      var modalGPS5 = document.getElementById("modalGPS5");
+      var modalGPS6 = document.getElementById("modalGPS6");
+      var modalGPS7 = document.getElementById("modalGPS7");
+      var modalGPS8 = document.getElementById("modalGPS8");
+
+      var id = img.id.substring(6) - 1; //Image index in arrEXIF
+
+      // Get the image and insert it inside the modal
+      var img = document.getElementById(photoID);
+      modalImg.src = img.src;
+
+      modalTitle.value = arrImages[id].name; //Title
+
+      if (arrEXIF[id]["0th"]["306"]) {
+        modalDate.value = arrEXIF[id]["0th"]["306"];
+        modalDate.disabled = false;
+      } else {
+        modalDate.placeholder = "0000:00:00 00:00:00";
+        modalDate.value = "";
+        modalDate.disabled = true;
       }
 
-      function countDec(num) {
-        if (Math.floor(num) == num) {
-          return 1;
+      if (arrEXIF[id]["0th"]["271"]) {
+        modalModel.value = arrEXIF[id]["0th"]["271"];
+        modalModel.disabled = false;
+      } else {
+        modalModel.placeholder = "n/a";
+        modalModel.value = "";
+        modalModel.disabled = true;
+      }
+
+      if (arrEXIF[id]["0th"]["272"]) {
+        modalDevice.value = arrEXIF[id]["0th"]["272"];
+        modalDevice.disabled = false;
+      } else {
+        modalDevice.placeholder = "n/a";
+        modalDevice.value = "";
+        modalDevice.disabled = true;
+      }
+
+      if (arrEXIF[id]["Exif"]["34855"]) {
+        modalIso.value = arrEXIF[id]["Exif"]["34855"];
+        modalIso.disabled = false;
+      } else {
+        modalIso.placeholder = "n/a";
+        modalIso.value = "";
+        modalIso.disabled = true;
+      }
+
+      if (arrEXIF[id]["Exif"]["33434"]) {
+        modalExposure.value = 1 + "/" + arrEXIF[id]["Exif"]["33434"][1] / arrEXIF[id]["Exif"]["33434"][0];
+        modalExposure.disabled = false;
+      } else {
+        modalExposure.placeholder = "n/a";
+        modalExposure.disabled = true;
+        modalExposure.value = "";
+      }
+
+      if (arrEXIF[id]["Exif"]["42036"]) {
+        modalLens.value = arrEXIF[id]["Exif"]["42036"];
+        modalLens.disabled = false;
+      } else {
+        modalLens.placeholder = "n/a";
+        modalLens.disabled = true;
+        modalLens.value = "";
+      }
+
+      if (arrEXIF[id]["Exif"]["37385"]) {
+        var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
+        modalFleshType.disabled = false;
+        modalFleshFired.disabled = false;
+
+        // Check last bit if flash fired
+        if (flashVal.substr(flashVal.length - 1) == 1) {
+          modalFleshFired.value = 1;
         } else {
-          val = num.toString().split(".")[1].length || 0;
-          return Math.pow(10, val);
-        }
-      }
-
-      function mergeDec(num) {
-        return num.replace(/[,.]/g, "");
-      }
-
-      function calculateFlash(num) {
-        var binNum = (num >>> 0).toString(2);
-        return binNum;
-      }
-
-      function binToDec(num) {
-        return parseInt(num, 2);
-      }
-
-      function replaceAt(string, index, replace) {
-        return (
-          string.substring(0, index) + replace + string.substring(index + 1)
-        );
-      }
-
-      function invalidForm() {
-        document.getElementById("downloadButton").disabled = true;
-      }
-
-      function displayPopup(img, photoID, element) {
-        var exifObj = piexif.load(img.src);
-
-        element.setAttribute("data-toggle", "modal");
-        element.setAttribute("data-target", "#popupModal");
-
-        var modalImg = document.getElementById("imgPopup");
-        var modalDate = document.getElementById("modalDate");
-        var modalDevice = document.getElementById("modalDevice");
-        var modalIso = document.getElementById("modalIso");
-        var modalExposure = document.getElementById("modalExposure");
-        var modalGPS = document.getElementById("modalGPS");
-        var modalModel = document.getElementById("modalModel");
-        var modalLens = document.getElementById("modalLens");
-        var modalFleshFired = document.getElementById("modalFleshFired");
-        var modalFleshType = document.getElementById("modalFleshType");
-        var modalGPS1 = document.getElementById("modalGPS1");
-        var modalGPS2 = document.getElementById("modalGPS2");
-        var modalGPS3 = document.getElementById("modalGPS3");
-        var modalGPS4 = document.getElementById("modalGPS4");
-        var modalGPS5 = document.getElementById("modalGPS5");
-        var modalGPS6 = document.getElementById("modalGPS6");
-        var modalGPS7 = document.getElementById("modalGPS7");
-        var modalGPS8 = document.getElementById("modalGPS8");
-
-        var id = img.id.substring(6) - 1; //Image index in arrEXIF
-
-        // Get the image and insert it inside the modal
-        var img = document.getElementById(photoID);
-        modalImg.src = img.src;
-
-        modalTitle.value = arrImages[id].name; //Title
-
-        if (arrEXIF[id]["0th"]["306"]){
-          modalDate.value = arrEXIF[id]["0th"]["306"];
-          modalDate.disabled = false;
-        } else {
-          modalDate.placeholder = "0000:00:00 00:00:00";
-          modalDate.value = "";
-          modalDate.disabled = true;
-        }
-        
-        if (arrEXIF[id]["0th"]["271"]) {
-          modalModel.value = arrEXIF[id]["0th"]["271"];
-          modalModel.disabled = false;
-        } else {
-          modalModel.placeholder = "n/a";
-          modalModel.value = "";
-          modalModel.disabled = true;
+          modalFleshFired.value = 2; //Didnt fired
         }
 
-        if (arrEXIF[id]["0th"]["272"]) {
-          modalDevice.value = arrEXIF[id]["0th"]["272"];
-          modalDevice.disabled = false;
-        } else {
-          modalDevice.placeholder = "n/a";
-          modalDevice.value = "";
-          modalDevice.disabled = true;
+        // Check flash type
+        if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) {
+          modalFleshType.value = 1; // auto
+        } else if (
+          flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01
+        ) {
+          modalFleshType.value = 2; // compulsory flash firing
+        } else if (
+          flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10
+        ) {
+          modalFleshType.value = 3; // compulsory flash suppression
         }
+      } else { // No exif data
+        modalFleshFired.value = 3;
+        modalFleshFired.disabled = true;
+        modalFleshType.value = 4;
+        modalFleshType.disabled = true;
+      }
 
-        if (arrEXIF[id]["Exif"]["34855"]) {
-          modalIso.value = arrEXIF[id]["Exif"]["34855"];
-          modalIso.disabled = false;
+      // ----------------- GPS LAT
+
+      var longitudeRef = arrEXIF[id]["GPS"]["3"];
+      var gpsLongFlag = 0;
+
+      if (longitudeRef == "E") {
+        modalGPS8.value = 1;
+      } else if (longitudeRef == "W") {
+        modalGPS8.value = 2;
+      } else {
+        modalGPS8.value = 3;
+      }
+
+      if (arrEXIF[id]["GPS"]["4"]) {
+        var longitude = arrEXIF[id]["GPS"]["4"];
+        var longitudeArray = longitude.toString().split(",");
+        modalGPS5.disabled = false;
+        modalGPS6.disabled = false;
+        modalGPS7.disabled = false;
+        modalGPS8.disabled = false;
+        // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
+
+        modalGPS5.value = longitudeArray[0] / longitudeArray[1];
+        modalGPS6.value = longitudeArray[2] / longitudeArray[3];
+        modalGPS7.value = longitudeArray[4] / longitudeArray[5];
+        var gpsLongFlag = 1;
+      } else {
+        modalGPS5.value = null;
+        modalGPS6.value = null;
+        modalGPS7.value = null;
+        modalGPS5.disabled = true;
+        modalGPS6.disabled = true;
+        modalGPS7.disabled = true;
+        modalGPS8.disabled = true;
+      }
+
+      // ----------------- GPS LONG
+
+      var latitudeRef = arrEXIF[id]["GPS"]["1"];
+      var gpsLatFlag = 0;
+
+      if (latitudeRef == "N") {
+        modalGPS4.value = 1;
+      } else if (latitudeRef == "S") {
+        modalGPS4.value = 2;
+      } else {
+        modalGPS4.value = 3;
+      }
+
+      if (arrEXIF[id]["GPS"]["2"]) {
+        var latitude = arrEXIF[id]["GPS"]["2"];
+        var latitudeArray = latitude.toString().split(",");
+        modalGPS1.disabled = false;
+        modalGPS2.disabled = false;
+        modalGPS3.disabled = false;
+        modalGPS4.disabled = false;
+        // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
+
+        modalGPS1.value = latitudeArray[0] / latitudeArray[1];
+        modalGPS2.value = latitudeArray[2] / latitudeArray[3];
+        modalGPS3.value = latitudeArray[4] / latitudeArray[5];
+        gpsLatFlag = 1;
+      } else {
+        console.log("no GPS");
+        modalGPS1.value = null;
+        modalGPS2.value = null;
+        modalGPS3.value = null;
+        modalGPS1.disabled = true;
+        modalGPS2.disabled = true;
+        modalGPS3.disabled = true;
+        modalGPS4.disabled = true;
+      }
+
+      //------- Validity check
+
+      modalDate.addEventListener("keyup", (e) => {
+        if (modalDate.checkValidity()) {
+          document.getElementById("downloadButton").disabled = false;
         } else {
-          modalIso.placeholder = "n/a";
-          modalIso.value = "";
+          document.getElementById("downloadButton").disabled = true;
+        }
+      });
+
+      modalExposure.addEventListener("keyup", (e) => {
+        if (modalExposure.checkValidity()) {
+          document.getElementById("downloadButton").disabled = false;
+        } else {
+          document.getElementById("downloadButton").disabled = true;
+        }
+      });
+
+      // ---------------------------------------------- EDIT EXIF
+
+      document.getElementById("downloadButton").onclick = function () {
+        var zeroth = {};
+        var exif = {};
+        var gps = {};
+
+        zeroth[piexif.ImageIFD.ImageDescription] = arrEXIF[id]["0th"]["270"];
+        zeroth[piexif.ImageIFD.Make] = arrEXIF[id]["0th"]["271"];
+        zeroth[piexif.ImageIFD.Model] = arrEXIF[id]["0th"]["272"];
+        zeroth[piexif.ImageIFD.Orientation] = arrEXIF[id]["0th"]["274"];
+        zeroth[piexif.ImageIFD.XResolution] = arrEXIF[id]["0th"]["282"];
+        zeroth[piexif.ImageIFD.YResolution] = arrEXIF[id]["0th"]["283"];
+        zeroth[piexif.ImageIFD.ResolutionUnit] = arrEXIF[id]["0th"]["296"];
+        zeroth[piexif.ImageIFD.Software] = arrEXIF[id]["0th"]["305"];
+        zeroth[piexif.ImageIFD.DateTime] = arrEXIF[id]["0th"]["306"];
+        zeroth[piexif.ImageIFD.HostComputer] = arrEXIF[id]["0th"]["316"];
+        zeroth[piexif.ImageIFD.Copyright] = arrEXIF[id]["0th"]["33432"];
+
+        exif[piexif.ExifIFD.ExposureTime] = arrEXIF[id]["Exif"]["33434"];
+        exif[piexif.ExifIFD.FNumber] = arrEXIF[id]["Exif"]["33437"];
+        exif[piexif.ExifIFD.ExposureProgram] = arrEXIF[id]["Exif"]["34850"];
+        exif[piexif.ExifIFD.ISOSpeedRatings] = arrEXIF[id]["Exif"]["34855"];
+        exif[piexif.ExifIFD.ExifVersion] = arrEXIF[id]["Exif"]["36864"];
+        exif[piexif.ExifIFD.DateTimeOriginal] = arrEXIF[id]["Exif"]["36867"];
+        exif[piexif.ExifIFD.DateTimeDigitized] = arrEXIF[id]["Exif"]["36868"];
+        exif[piexif.ExifIFD.ComponentsConfiguration] =
+          arrEXIF[id]["Exif"]["37121"];
+        exif[piexif.ExifIFD.ShutterSpeedValue] = arrEXIF[id]["Exif"]["37377"];
+        exif[piexif.ExifIFD.ApertureValue] = arrEXIF[id]["Exif"]["37378"];
+        exif[piexif.ExifIFD.BrightnessValue] = arrEXIF[id]["Exif"]["37379"];
+        exif[piexif.ExifIFD.ExposureBiasValue] = arrEXIF[id]["Exif"]["37380"];
+        exif[piexif.ExifIFD.MeteringMode] = arrEXIF[id]["Exif"]["37383"];
+        exif[piexif.ExifIFD.Flash] = arrEXIF[id]["Exif"]["37385"];
+        exif[piexif.ExifIFD.FocalLength] = arrEXIF[id]["Exif"]["37386"];
+        exif[piexif.ExifIFD.SubjectArea] = arrEXIF[id]["Exif"]["37396"];
+        exif[piexif.ExifIFD.MakerNote] = arrEXIF[id]["Exif"]["37500"];
+        exif[piexif.ExifIFD.UserComment] = arrEXIF[id]["Exif"]["37510"];
+        exif[piexif.ExifIFD.SubSecTimeOriginal] =
+          arrEXIF[id]["Exif"]["37521"];
+        exif[piexif.ExifIFD.SubSecTimeDigitized] =
+          arrEXIF[id]["Exif"]["37522"];
+        exif[piexif.ExifIFD.FlashpixVersion] = arrEXIF[id]["Exif"]["40960"];
+        exif[piexif.ExifIFD.ColorSpace] = arrEXIF[id]["Exif"]["40961"];
+        exif[piexif.ExifIFD.PixelXDimension] = arrEXIF[id]["Exif"]["40962"];
+        exif[piexif.ExifIFD.PixelYDimension] = arrEXIF[id]["Exif"]["40963"];
+        exif[piexif.ExifIFD.SensingMethod] = arrEXIF[id]["Exif"]["41495"];
+        exif[piexif.ExifIFD.SceneType] = arrEXIF[id]["Exif"]["41729"];
+        exif[piexif.ExifIFD.ExposureMode] = arrEXIF[id]["Exif"]["41986"];
+        exif[piexif.ExifIFD.WhiteBalance] = arrEXIF[id]["Exif"]["41987"];
+        exif[piexif.ExifIFD.FocalLengthIn35mmFilm] =
+          arrEXIF[id]["Exif"]["41989"];
+        exif[piexif.ExifIFD.SceneCaptureType] = arrEXIF[id]["Exif"]["41990"];
+        exif[piexif.ExifIFD.ImageUniqueID] = arrEXIF[id]["Exif"]["42016"];
+        exif[piexif.ExifIFD.LensSpecification] = arrEXIF[id]["Exif"]["42034"];
+        exif[piexif.ExifIFD.LensMake] = arrEXIF[id]["Exif"]["42035"];
+        exif[piexif.ExifIFD.LensModel] = arrEXIF[id]["Exif"]["42036"];
+
+        gps[piexif.GPSIFD.GPSVersionID] = arrEXIF[id]["GPS"]["0"];
+        gps[piexif.GPSIFD.GPSLatitudeRef] = arrEXIF[id]["GPS"]["1"];
+        gps[piexif.GPSIFD.GPSLatitude] = arrEXIF[id]["GPS"]["2"];
+        gps[piexif.GPSIFD.GPSLongitudeRef] = arrEXIF[id]["GPS"]["3"];
+        gps[piexif.GPSIFD.GPSLongitude] = arrEXIF[id]["GPS"]["4"];
+        gps[piexif.GPSIFD.GPSAltitudeRef] = arrEXIF[id]["GPS"]["5"];
+        gps[piexif.GPSIFD.GPSAltitude] = arrEXIF[id]["GPS"]["6"];
+        gps[piexif.GPSIFD.GPSTimeStamp] = arrEXIF[id]["GPS"]["7"];
+        gps[piexif.GPSIFD.GPSSpeedRef] = arrEXIF[id]["GPS"]["12"];
+        gps[piexif.GPSIFD.GPSSpeed] = arrEXIF[id]["GPS"]["13"];
+        gps[piexif.GPSIFD.GPSImgDirectionRef] = arrEXIF[id]["GPS"]["16"];
+        gps[piexif.GPSIFD.GPSImgDirection] = arrEXIF[id]["GPS"]["17"];
+        gps[piexif.GPSIFD.GPSDestBearingRef] = arrEXIF[id]["GPS"]["23"];
+        gps[piexif.GPSIFD.GPSDestBearing] = arrEXIF[id]["GPS"]["24"];
+        gps[piexif.GPSIFD.GPSDateStamp] = arrEXIF[id]["GPS"]["29"];
+        gps[piexif.GPSIFD.GPSHPositioningError] = arrEXIF[id]["GPS"]["31"];
+
+        // Modified by user
+
+        zeroth[piexif.ImageIFD.DateTime] = modalDate.value;
+        zeroth[piexif.ImageIFD.Make] = modalModel.value;
+        zeroth[piexif.ImageIFD.Model] = modalDevice.value;
+        if (modalIso.value) {
+          exif[piexif.ExifIFD.ISOSpeedRatings] = parseInt(modalIso.value);
+        }
+        else {
           modalIso.disabled = true;
         }
-
-        if (arrEXIF[id]["Exif"]["33434"]) {
-          modalExposure.value = 1 + "/" + arrEXIF[id]["Exif"]["33434"][1]/arrEXIF[id]["Exif"]["33434"][0];
-          modalExposure.disabled = false;
+        if (modalExposure.value) {
+          var exposureRes = modalExposure.value.toString().split("/");
+          exif[piexif.ExifIFD.ExposureTime][0] = parseInt(exposureRes[0]);
+          exif[piexif.ExifIFD.ExposureTime][1] = parseInt(exposureRes[1]);
         } else {
-          modalExposure.placeholder = "n/a";
           modalExposure.disabled = true;
-          modalExposure.value = "";
         }
 
-        if (arrEXIF[id]["Exif"]["42036"]) {
-          modalLens.value = arrEXIF[id]["Exif"]["42036"];
-          modalLens.disabled = false;
+        if (modalLens.value) {
+          exif[piexif.ExifIFD.LensModel] = modalLens.value;
         } else {
-          modalLens.placeholder = "n/a";
           modalLens.disabled = true;
-          modalLens.value = "";
         }
 
-        if (arrEXIF[id]["Exif"]["37385"]) {
-          var flashVal = calculateFlash(arrEXIF[id]["Exif"]["37385"]);
-          modalFleshType.disabled = false;
-          modalFleshFired.disabled = false;
-
-          // Check last bit if flash fired
-          if (flashVal.substr(flashVal.length - 1) == 1) {
-            modalFleshFired.value = 1;
+        if (gpsLatFlag) {
+          if (modalGPS4.value == 1) {
+            gps[piexif.GPSIFD.GPSLatitudeRef] = "N";
           } else {
-            modalFleshFired.value = 2; //Didnt fired
+            gps[piexif.GPSIFD.GPSLatitudeRef] = "S";
           }
+        }
 
-          // Check flash type
-          if (flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 11) {
-            modalFleshType.value = 1; // auto
-          } else if (
-            flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 01
-          ) {
-            modalFleshType.value = 2; // compulsory flash firing
-          } else if (
-            flashVal.substr(flashVal.length - 5, flashVal.length - 3) == 10
-          ) {
-            modalFleshType.value = 3; // compulsory flash suppression
+        if (modalGPS1.value) {
+          gps[piexif.GPSIFD.GPSLatitude][0] = [
+            mergeDec(modalGPS1.value),
+            countDec(modalGPS1.value),
+          ];
+        }
+        if (modalGPS2.value) {
+          gps[piexif.GPSIFD.GPSLatitude][1] = [
+            mergeDec(modalGPS2.value),
+            countDec(modalGPS2.value),
+          ];
+        }
+        if (modalGPS3.value) {
+          gps[piexif.GPSIFD.GPSLatitude][2] = [
+            mergeDec(modalGPS3.value),
+            countDec(modalGPS3.value),
+          ];
+        }
+
+        if (gpsLongFlag) {
+          if (modalGPS8.value == 1) {
+            gps[piexif.GPSIFD.GPSLongitudeRef] = "E";
+          } else {
+            gps[piexif.GPSIFD.GPSLongitudeRef] = "W";
           }
-        } else { // No exif data
-          modalFleshFired.value = 3;
+        }
+
+        if (modalGPS5.value) {
+          gps[piexif.GPSIFD.GPSLongitude][0] = [
+            mergeDec(modalGPS5.value),
+            countDec(modalGPS5.value),
+          ];
+        }
+        if (modalGPS6.value) {
+          gps[piexif.GPSIFD.GPSLongitude][1] = [
+            mergeDec(modalGPS6.value),
+            countDec(modalGPS6.value),
+          ];
+        }
+        if (modalGPS7.value) {
+          gps[piexif.GPSIFD.GPSLongitude][2] = [
+            mergeDec(modalGPS7.value),
+            countDec(modalGPS7.value),
+          ];
+        }
+
+        //Flash
+        var newFlashval = flashVal;
+
+        if (modalFleshFired.value == 1) {
+          newFlashval = replaceAt(newFlashval, flashVal.length - 1, 1);
+        } else if (modalFleshFired.value == 2) {
+          newFlashval = replaceAt(newFlashval, flashVal.length - 1, 0);
+        }
+        //
+        if (modalFleshType.value == 1) {
+          //auto, na 11
+          newFlashval = replaceAt(newFlashval, 0, 1);
+          newFlashval = replaceAt(newFlashval, 1, 1);
+        } else if (modalFleshType.value == 2) {
+          //compulsory flash firing, na 01
+          newFlashval = replaceAt(newFlashval, 0, 0);
+          newFlashval = replaceAt(newFlashval, 1, 1);
+        } else if (modalFleshType.value == 3) {
+          //compulsory flash suppression, na 10
+          newFlashval = replaceAt(newFlashval, 0, 1);
+          newFlashval = replaceAt(newFlashval, 1, 0);
+        }
+
+        if (modalFleshType.value != 4 && modalFleshFired.value != 3) {
+          exif[piexif.ExifIFD.Flash] = binToDec(newFlashval);
+        }
+        if (modalFleshType.value == 4 || modalFleshFired == 3) {
           modalFleshFired.disabled = true;
-          modalFleshType.value = 4;
           modalFleshType.disabled = true;
         }
 
-        // ----------------- GPS LAT
+        var modifiedExifObj = { "0th": zeroth, Exif: exif, GPS: gps };
+        var exifStr = piexif.dump(modifiedExifObj);
+        var inserted = piexif.insert(exifStr, img.src);
+        img.src = inserted;
+        //modalImg.src = inserted; //podmiana zdjęcia na modalu na zmodyfikowane
 
-        var longitudeRef = arrEXIF[id]["GPS"]["3"];
-        var gpsLongFlag = 0;
+        //-------------------------------------------------------------
 
-        if (longitudeRef == "E") {
-          modalGPS8.value = 1;
-        } else if (longitudeRef == "W") {
-          modalGPS8.value = 2;
-        } else {
-          modalGPS8.value = 3;
-        }
+        var modifiedExifObjData = piexif.load(inserted);
+        // console.log(modifiedExifObjData); // Only debugging purpose
 
-        if (arrEXIF[id]["GPS"]["4"]) {
-          var longitude = arrEXIF[id]["GPS"]["4"];
-          var longitudeArray = longitude.toString().split(",");
-          modalGPS5.disabled = false;
-          modalGPS6.disabled = false;
-          modalGPS7.disabled = false;
-          modalGPS8.disabled = false;
-          // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
+        // Trigger download
+        var a = document.createElement("a");
+        a.setAttribute("href", inserted);
+        a.setAttribute("download", modalTitle.value);
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-          modalGPS5.value = longitudeArray[0] / longitudeArray[1];
-          modalGPS6.value = longitudeArray[2] / longitudeArray[3];
-          modalGPS7.value = longitudeArray[4] / longitudeArray[5];
-          var gpsLongFlag = 1;
-        } else {
-          modalGPS5.value = null;
-          modalGPS6.value = null;
-          modalGPS7.value = null;
-          modalGPS5.disabled = true;
-          modalGPS6.disabled = true;
-          modalGPS7.disabled = true;
-          modalGPS8.disabled = true;
-        }
+        var aj = $(a);
+        aj.appendTo("body");
+        aj[0].click();
+        aj.remove();
+      };
+    }
+  </script>
+  <script>
+    function deleteImg(photoID, numID) {
+      var img = document.getElementById(photoID);
 
-        // ----------------- GPS LONG
+      //Deleting from node
+      let node = img.parentNode.parentNode;
+      node.removeChild(img.parentNode);
+    };
 
-        var latitudeRef = arrEXIF[id]["GPS"]["1"];
-        var gpsLatFlag = 0;
 
-        if (latitudeRef == "N") {
-          modalGPS4.value = 1;
-        } else if (latitudeRef == "S") {
-          modalGPS4.value = 2;
-        } else {
-          modalGPS4.value = 3;
-        }
+    function rotateImg(photoID) {
+      var img = document.getElementById(photoID);
+      let thumbHeight = "14vw";
+      let thumbWidth = "14vw";
 
-        if (arrEXIF[id]["GPS"]["2"]) {
-          var latitude = arrEXIF[id]["GPS"]["2"];
-          var latitudeArray = latitude.toString().split(",");
-          modalGPS1.disabled = false;
-          modalGPS2.disabled = false;
-          modalGPS3.disabled = false;
-          modalGPS4.disabled = false;
-          // e.g if data in latitudeArray is 55,1,36,1,2554,100 it equals 55° 36' 25.5"
-
-          modalGPS1.value = latitudeArray[0] / latitudeArray[1];
-          modalGPS2.value = latitudeArray[2] / latitudeArray[3];
-          modalGPS3.value = latitudeArray[4] / latitudeArray[5];
-          gpsLatFlag = 1;
-        } else {
-          console.log("no GPS");
-          modalGPS1.value = null;
-          modalGPS2.value = null;
-          modalGPS3.value = null;
-          modalGPS1.disabled = true;
-          modalGPS2.disabled = true;
-          modalGPS3.disabled = true;
-          modalGPS4.disabled = true;
-        }
-
-        //------- Validity check
-
-        modalDate.addEventListener("keyup", (e) => {
-          if (modalDate.checkValidity()) {
-            document.getElementById("downloadButton").disabled = false;
-          } else {
-            document.getElementById("downloadButton").disabled = true;
-          }
-        });
-
-        modalExposure.addEventListener("keyup", (e) => {
-          if (modalExposure.checkValidity()) {
-            document.getElementById("downloadButton").disabled = false;
-          } else {
-            document.getElementById("downloadButton").disabled = true;
-          }
-        });
-
-        // ---------------------------------------------- EDIT EXIF
-
-        document.getElementById("downloadButton").onclick = function () {
-          var zeroth = {};
-          var exif = {};
-          var gps = {};
-
-          zeroth[piexif.ImageIFD.ImageDescription] = arrEXIF[id]["0th"]["270"];
-          zeroth[piexif.ImageIFD.Make] = arrEXIF[id]["0th"]["271"];
-          zeroth[piexif.ImageIFD.Model] = arrEXIF[id]["0th"]["272"];
-          zeroth[piexif.ImageIFD.Orientation] = arrEXIF[id]["0th"]["274"];
-          zeroth[piexif.ImageIFD.XResolution] = arrEXIF[id]["0th"]["282"];
-          zeroth[piexif.ImageIFD.YResolution] = arrEXIF[id]["0th"]["283"];
-          zeroth[piexif.ImageIFD.ResolutionUnit] = arrEXIF[id]["0th"]["296"];
-          zeroth[piexif.ImageIFD.Software] = arrEXIF[id]["0th"]["305"];
-          zeroth[piexif.ImageIFD.DateTime] = arrEXIF[id]["0th"]["306"];
-          zeroth[piexif.ImageIFD.HostComputer] = arrEXIF[id]["0th"]["316"];
-          zeroth[piexif.ImageIFD.Copyright] = arrEXIF[id]["0th"]["33432"];
-
-          exif[piexif.ExifIFD.ExposureTime] = arrEXIF[id]["Exif"]["33434"];
-          exif[piexif.ExifIFD.FNumber] = arrEXIF[id]["Exif"]["33437"];
-          exif[piexif.ExifIFD.ExposureProgram] = arrEXIF[id]["Exif"]["34850"];
-          exif[piexif.ExifIFD.ISOSpeedRatings] = arrEXIF[id]["Exif"]["34855"];
-          exif[piexif.ExifIFD.ExifVersion] = arrEXIF[id]["Exif"]["36864"];
-          exif[piexif.ExifIFD.DateTimeOriginal] = arrEXIF[id]["Exif"]["36867"];
-          exif[piexif.ExifIFD.DateTimeDigitized] = arrEXIF[id]["Exif"]["36868"];
-          exif[piexif.ExifIFD.ComponentsConfiguration] =
-            arrEXIF[id]["Exif"]["37121"];
-          exif[piexif.ExifIFD.ShutterSpeedValue] = arrEXIF[id]["Exif"]["37377"];
-          exif[piexif.ExifIFD.ApertureValue] = arrEXIF[id]["Exif"]["37378"];
-          exif[piexif.ExifIFD.BrightnessValue] = arrEXIF[id]["Exif"]["37379"];
-          exif[piexif.ExifIFD.ExposureBiasValue] = arrEXIF[id]["Exif"]["37380"];
-          exif[piexif.ExifIFD.MeteringMode] = arrEXIF[id]["Exif"]["37383"];
-          exif[piexif.ExifIFD.Flash] = arrEXIF[id]["Exif"]["37385"];
-          exif[piexif.ExifIFD.FocalLength] = arrEXIF[id]["Exif"]["37386"];
-          exif[piexif.ExifIFD.SubjectArea] = arrEXIF[id]["Exif"]["37396"];
-          exif[piexif.ExifIFD.MakerNote] = arrEXIF[id]["Exif"]["37500"];
-          exif[piexif.ExifIFD.UserComment] = arrEXIF[id]["Exif"]["37510"];
-          exif[piexif.ExifIFD.SubSecTimeOriginal] =
-            arrEXIF[id]["Exif"]["37521"];
-          exif[piexif.ExifIFD.SubSecTimeDigitized] =
-            arrEXIF[id]["Exif"]["37522"];
-          exif[piexif.ExifIFD.FlashpixVersion] = arrEXIF[id]["Exif"]["40960"];
-          exif[piexif.ExifIFD.ColorSpace] = arrEXIF[id]["Exif"]["40961"];
-          exif[piexif.ExifIFD.PixelXDimension] = arrEXIF[id]["Exif"]["40962"];
-          exif[piexif.ExifIFD.PixelYDimension] = arrEXIF[id]["Exif"]["40963"];
-          exif[piexif.ExifIFD.SensingMethod] = arrEXIF[id]["Exif"]["41495"];
-          exif[piexif.ExifIFD.SceneType] = arrEXIF[id]["Exif"]["41729"];
-          exif[piexif.ExifIFD.ExposureMode] = arrEXIF[id]["Exif"]["41986"];
-          exif[piexif.ExifIFD.WhiteBalance] = arrEXIF[id]["Exif"]["41987"];
-          exif[piexif.ExifIFD.FocalLengthIn35mmFilm] =
-            arrEXIF[id]["Exif"]["41989"];
-          exif[piexif.ExifIFD.SceneCaptureType] = arrEXIF[id]["Exif"]["41990"];
-          exif[piexif.ExifIFD.ImageUniqueID] = arrEXIF[id]["Exif"]["42016"];
-          exif[piexif.ExifIFD.LensSpecification] = arrEXIF[id]["Exif"]["42034"];
-          exif[piexif.ExifIFD.LensMake] = arrEXIF[id]["Exif"]["42035"];
-          exif[piexif.ExifIFD.LensModel] = arrEXIF[id]["Exif"]["42036"];
-
-          gps[piexif.GPSIFD.GPSVersionID] = arrEXIF[id]["GPS"]["0"];
-          gps[piexif.GPSIFD.GPSLatitudeRef] = arrEXIF[id]["GPS"]["1"];
-          gps[piexif.GPSIFD.GPSLatitude] = arrEXIF[id]["GPS"]["2"];
-          gps[piexif.GPSIFD.GPSLongitudeRef] = arrEXIF[id]["GPS"]["3"];
-          gps[piexif.GPSIFD.GPSLongitude] = arrEXIF[id]["GPS"]["4"];
-          gps[piexif.GPSIFD.GPSAltitudeRef] = arrEXIF[id]["GPS"]["5"];
-          gps[piexif.GPSIFD.GPSAltitude] = arrEXIF[id]["GPS"]["6"];
-          gps[piexif.GPSIFD.GPSTimeStamp] = arrEXIF[id]["GPS"]["7"];
-          gps[piexif.GPSIFD.GPSSpeedRef] = arrEXIF[id]["GPS"]["12"];
-          gps[piexif.GPSIFD.GPSSpeed] = arrEXIF[id]["GPS"]["13"];
-          gps[piexif.GPSIFD.GPSImgDirectionRef] = arrEXIF[id]["GPS"]["16"];
-          gps[piexif.GPSIFD.GPSImgDirection] = arrEXIF[id]["GPS"]["17"];
-          gps[piexif.GPSIFD.GPSDestBearingRef] = arrEXIF[id]["GPS"]["23"];
-          gps[piexif.GPSIFD.GPSDestBearing] = arrEXIF[id]["GPS"]["24"];
-          gps[piexif.GPSIFD.GPSDateStamp] = arrEXIF[id]["GPS"]["29"];
-          gps[piexif.GPSIFD.GPSHPositioningError] = arrEXIF[id]["GPS"]["31"];
-
-          // Modified by user
-
-          zeroth[piexif.ImageIFD.DateTime] = modalDate.value;
-          zeroth[piexif.ImageIFD.Make] = modalModel.value;
-          zeroth[piexif.ImageIFD.Model] = modalDevice.value;
-          if (modalIso.value) {
-            exif[piexif.ExifIFD.ISOSpeedRatings] = parseInt(modalIso.value);
-          }
-          else {
-            modalIso.disabled = true;
-          }
-          if (modalExposure.value) {
-            var exposureRes = modalExposure.value.toString().split("/");
-            exif[piexif.ExifIFD.ExposureTime][0] = parseInt(exposureRes[0]);
-            exif[piexif.ExifIFD.ExposureTime][1] = parseInt(exposureRes[1]);
-          } else {
-            modalExposure.disabled = true;
-          }
-
-          if (modalLens.value) {
-            exif[piexif.ExifIFD.LensModel] = modalLens.value;
-          } else {
-            modalLens.disabled = true;
-          }
-
-          if (gpsLatFlag) {
-            if (modalGPS4.value == 1) {
-              gps[piexif.GPSIFD.GPSLatitudeRef] = "N";
-            } else {
-              gps[piexif.GPSIFD.GPSLatitudeRef] = "S";
-            }
-          }
-
-          if (modalGPS1.value) {
-            gps[piexif.GPSIFD.GPSLatitude][0] = [
-              mergeDec(modalGPS1.value),
-              countDec(modalGPS1.value),
-            ];
-          }
-          if (modalGPS2.value) {
-            gps[piexif.GPSIFD.GPSLatitude][1] = [
-              mergeDec(modalGPS2.value),
-              countDec(modalGPS2.value),
-            ];
-          }
-          if (modalGPS3.value) {
-            gps[piexif.GPSIFD.GPSLatitude][2] = [
-              mergeDec(modalGPS3.value),
-              countDec(modalGPS3.value),
-            ];
-          }
-
-          if (gpsLongFlag) {
-            if (modalGPS8.value == 1) {
-              gps[piexif.GPSIFD.GPSLongitudeRef] = "E";
-            } else {
-              gps[piexif.GPSIFD.GPSLongitudeRef] = "W";
-            }
-          }
-
-          if (modalGPS5.value) {
-            gps[piexif.GPSIFD.GPSLongitude][0] = [
-              mergeDec(modalGPS5.value),
-              countDec(modalGPS5.value),
-            ];
-          }
-          if (modalGPS6.value) {
-            gps[piexif.GPSIFD.GPSLongitude][1] = [
-              mergeDec(modalGPS6.value),
-              countDec(modalGPS6.value),
-            ];
-          }
-          if (modalGPS7.value) {
-            gps[piexif.GPSIFD.GPSLongitude][2] = [
-              mergeDec(modalGPS7.value),
-              countDec(modalGPS7.value),
-            ];
-          }
-
-          //Flash
-          var newFlashval = flashVal;
-
-          if (modalFleshFired.value == 1) {
-            newFlashval = replaceAt(newFlashval, flashVal.length - 1, 1);
-          } else if (modalFleshFired.value == 2) {
-            newFlashval = replaceAt(newFlashval, flashVal.length - 1, 0);
-          }
-          //
-          if (modalFleshType.value == 1) {
-            //auto, na 11
-            newFlashval = replaceAt(newFlashval, 0, 1);
-            newFlashval = replaceAt(newFlashval, 1, 1);
-          } else if (modalFleshType.value == 2) {
-            //compulsory flash firing, na 01
-            newFlashval = replaceAt(newFlashval, 0, 0);
-            newFlashval = replaceAt(newFlashval, 1, 1);
-          } else if (modalFleshType.value == 3) {
-            //compulsory flash suppression, na 10
-            newFlashval = replaceAt(newFlashval, 0, 1);
-            newFlashval = replaceAt(newFlashval, 1, 0);
-          }
-
-          if (modalFleshType.value != 4 && modalFleshFired.value != 3) {
-            exif[piexif.ExifIFD.Flash] = binToDec(newFlashval);
-          }
-          if (modalFleshType.value == 4 || modalFleshFired == 3){
-            modalFleshFired.disabled = true;
-            modalFleshType.disabled = true;
-          }
-
-          var modifiedExifObj = { "0th": zeroth, Exif: exif, GPS: gps };
-          var exifStr = piexif.dump(modifiedExifObj);
-          var inserted = piexif.insert(exifStr, img.src);
-          img.src = inserted;
-          //modalImg.src = inserted; //podmiana zdjęcia na modalu na zmodyfikowane
-
-          //-------------------------------------------------------------
-
-          var modifiedExifObjData = piexif.load(inserted);
-          // console.log(modifiedExifObjData); // Only debugging purpose
-
-          // Trigger download
-          var a = document.createElement("a");
-          a.setAttribute("href", inserted);
-          a.setAttribute("download", modalTitle.value);
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-          var aj = $(a);
-          aj.appendTo("body");
-          aj[0].click();
-          aj.remove();
-        };
+      console.log(img.style.height);
+      if (img.style.transform == "") {
+        img.style.transform = 'rotate(90deg)';
+        img.style.width = thumbHeight; //thumbnail's height and width swap due to rotation
+        img.style.height = thumbWidth; //thumbnail's height and width swap due to rotation
+        img.style.boxShadow = "10px -10px 5px dimgrey";
       }
-    </script>
-    <script>
-        function deleteImg(photoID, numID) {
-            var img = document.getElementById(photoID);
+      else if (img.style.transform == 'rotate(90deg)') {
+        img.style.transform = 'rotate(180deg)';
+        img.style.width = thumbWidth; //thumbnail's height and width swap due to rotation
+        img.style.height = thumbHeight; //thumbnail's height and width swap due to rotation
+        img.style.boxShadow = "-10px -10px 5px dimgrey";
+      }
+      else if (img.style.transform == 'rotate(180deg)') {
+        img.style.transform = 'rotate(270deg)';
+        img.style.width = thumbHeight; //thumbnail's height and width swap due to rotation
+        img.style.height = thumbWidth; //thumbnail's height and width swap due to rotation
+        img.style.boxShadow = "-10px 10px 5px dimgrey";
+      }
+      else if (img.style.transform == 'rotate(270deg)') {
+        img.style.transform = 'rotate(0deg)';
+        img.style.width = thumbWidth;    //thumbnail's height and width swap due to rotation
+        img.style.height = thumbHeight; //thumbnail's height and width swap due to rotation
+        img.style.boxShadow = "10px 10px 5px dimgrey";
+      }
+      else if (img.style.transform == 'rotate(0deg)') {
+        img.style.transform = 'rotate(90deg)';
+        img.style.width = thumbHeight; //thumbnail's height and width swap due to rotation
+        img.style.height = thumbWidth; //thumbnail's height and width swap due to rotation
+        img.style.boxShadow = "10px -10px 5px dimgrey";
+      }
+    };
 
-            //Deleting from node
-            let node = img.parentNode.parentNode;
-            node.removeChild(img.parentNode);
-        };
-
-
-        function rotateImg(photoID) {
-            var img = document.getElementById(photoID);
-            let thumbHeight = "14vw";
-            let thumbWidth = "14vw";
-
-            console.log(img.style.height);
-            if (img.style.transform == "") {
-                img.style.transform = 'rotate(90deg)';
-                img.style.width = thumbHeight; //thumbnail's height and width swap due to rotation
-                img.style.height = thumbWidth; //thumbnail's height and width swap due to rotation
-                img.style.boxShadow = "10px -10px 5px dimgrey";
-            }
-            else if (img.style.transform == 'rotate(90deg)') {
-                img.style.transform = 'rotate(180deg)';
-                img.style.width = thumbWidth; //thumbnail's height and width swap due to rotation
-                img.style.height = thumbHeight; //thumbnail's height and width swap due to rotation
-                img.style.boxShadow = "-10px -10px 5px dimgrey";
-            }
-            else if (img.style.transform == 'rotate(180deg)') {
-                img.style.transform = 'rotate(270deg)';
-                img.style.width = thumbHeight; //thumbnail's height and width swap due to rotation
-                img.style.height = thumbWidth; //thumbnail's height and width swap due to rotation
-                img.style.boxShadow = "-10px 10px 5px dimgrey";
-            }
-            else if (img.style.transform == 'rotate(270deg)') {
-                img.style.transform = 'rotate(0deg)';
-                img.style.width = thumbWidth;    //thumbnail's height and width swap due to rotation
-                img.style.height = thumbHeight; //thumbnail's height and width swap due to rotation
-                img.style.boxShadow = "10px 10px 5px dimgrey";
-            }
-            else if (img.style.transform == 'rotate(0deg)') {
-                img.style.transform = 'rotate(90deg)';
-                img.style.width = thumbHeight; //thumbnail's height and width swap due to rotation
-                img.style.height = thumbWidth; //thumbnail's height and width swap due to rotation
-                img.style.boxShadow = "10px -10px 5px dimgrey";
-            }
-        };
-
-    </script>
-    <script>
-        function sortImages(sortBy, order) {
-            var parentDiv = document.getElementById("images");
-            /* get images */
-            var parentDivImages = parentDiv.getElementsByTagName("img");
-            /* copy images' ids and theirs names into a list */
-            var parentDivImagesSorted = [];
-            /* get images data areas array */
-            var imageSortData = parentDiv.getElementsByClassName("sortData");
-            for (let i = 0; i < parentDivImages.length; i++) {
-                /* get image's id (format: photo_+nr */
-                let ID = parentDivImages[i].id;
-                try {
-                    switch (sortBy) {
-                        case "name":                         /* get number from id */
-                            var obj = { "id": ID, "name": arrImages[ID.substring(6) - 1].name };
-                            imageSortData[i].textContent = "Name: " + arrImages[ID.substring(6) - 1].name;
-                            console.log(imageSortData[i]);
-                            break;
-                        case "date":
-                            var obj = { "id": ID, "date": arrEXIF[ID.substring(6) - 1]["Exif"]["36867"] };
-                            imageSortData[i].textContent = "Original date: " + arrEXIF[ID.substring(6) - 1]["Exif"]["36867"];
-                            break;
-                        case "modDate":
-                            var obj = { "id": ID, "modDate": arrEXIF[ID.substring(6) - 1]["0th"]["306"] };
-                            imageSortData[i].textContent = "Modification date: " + arrEXIF[ID.substring(6) - 1]["0th"]["306"];
-                            break;
-                        case "camera":
-                            var obj = { "id": ID, "camera": arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"] }; //concat of camera manufacturer and model
-                            imageSortData[i].textContent = "Camera: " + arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"];
-                            break;
-                        //Exposure triangle
-                        case "iso":
-                            var obj = { "id": ID, "iso": arrEXIF[ID.substring(6) - 1]["Exif"]["34855"] };
-                            imageSortData[i].textContent = "ISO: " + arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
-                            break;
-                        case "focalRatio":
-                            imageSortData[i].textContent = "Focal ratio: ";
-                            var obj = { "id": ID, "focalRatio": arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1] };
-                            imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1];
-                            break;
-                        case "shutter":
-                            imageSortData[i].textContent = "Exposure time: ";
-                            var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1] }; //exposure time in seconds
-                            imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0] + "/" + arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1] + "sec";
-                            break;
-                        //end
-                        case "focalLength":
-                            imageSortData[i].textContent = "Focal length: ";
-                            var obj = { "id": ID, "focalLength": arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1] };
-                            imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1];
-                            break;
-                        case "defaultSort":
-                            var obj = { "id": ID, "defaultSort": ID };
-                            imageSortData[i].textContent = "";
-                            break;
-                        default:
-                        /* ? */
-                    }
-                } catch (error) {
-                    var obj = { "id": ID, sortBy: "undefined" };
-                    imageSortData[i].textContent += "undefined";
-                }
-                parentDivImagesSorted.push(obj);
-            }
-            console.log(arrImages)
-            console.log(arrEXIF)
-            console.log(parentDivImagesSorted)
-            /* sort with a desired order */
-            parentDivImagesSorted.sort(compareValues(sortBy, order));
-            for (let img in parentDivImagesSorted) {
-                let imgDiv = document.getElementById(parentDivImagesSorted[img].id).parentNode;
-                /* change order of div elements */
-                parentDiv.appendChild(imgDiv);
-            }
+  </script>
+  <script>
+    function sortImages(sortBy, order) {
+      var parentDiv = document.getElementById("images");
+      /* get images */
+      var parentDivImages = parentDiv.getElementsByTagName("img");
+      /* copy images' ids and theirs names into a list */
+      var parentDivImagesSorted = [];
+      /* get images data areas array */
+      var imageSortData = parentDiv.getElementsByClassName("sortData");
+      for (let i = 0; i < parentDivImages.length; i++) {
+        /* get image's id (format: photo_+nr */
+        let ID = parentDivImages[i].id;
+        try {
+          switch (sortBy) {
+            case "name":                         /* get number from id */
+              var obj = { "id": ID, "name": arrImages[ID.substring(6) - 1].name };
+              imageSortData[i].textContent = "Name: " + arrImages[ID.substring(6) - 1].name;
+              console.log(imageSortData[i]);
+              break;
+            case "date":
+              var obj = { "id": ID, "date": arrEXIF[ID.substring(6) - 1]["Exif"]["36867"] };
+              imageSortData[i].textContent = "Original date: " + arrEXIF[ID.substring(6) - 1]["Exif"]["36867"];
+              break;
+            case "modDate":
+              var obj = { "id": ID, "modDate": arrEXIF[ID.substring(6) - 1]["0th"]["306"] };
+              imageSortData[i].textContent = "Modification date: " + arrEXIF[ID.substring(6) - 1]["0th"]["306"];
+              break;
+            case "camera":
+              var obj = { "id": ID, "camera": arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"] }; //concat of camera manufacturer and model
+              imageSortData[i].textContent = "Camera: " + arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"];
+              break;
+            //Exposure triangle
+            case "iso":
+              var obj = { "id": ID, "iso": arrEXIF[ID.substring(6) - 1]["Exif"]["34855"] };
+              imageSortData[i].textContent = "ISO: " + arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+              break;
+            case "focalRatio":
+              imageSortData[i].textContent = "Focal ratio: ";
+              var obj = { "id": ID, "focalRatio": arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1] };
+              imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1];
+              break;
+            case "shutter":
+              imageSortData[i].textContent = "Exposure time: ";
+              var obj = { "id": ID, "shutter": arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1] }; //exposure time in seconds
+              imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0] + "/" + arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1] + "sec";
+              break;
+            //end
+            case "focalLength":
+              imageSortData[i].textContent = "Focal length: ";
+              var obj = { "id": ID, "focalLength": arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1] };
+              imageSortData[i].textContent += arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1];
+              break;
+            case "defaultSort":
+              var obj = { "id": ID, "defaultSort": ID };
+              imageSortData[i].textContent = "";
+              break;
+            default:
+            /* ? */
+          }
+        } catch (error) {
+          var obj = { "id": ID, sortBy: "undefined" };
+          imageSortData[i].textContent += "undefined";
         }
+        parentDivImagesSorted.push(obj);
+      }
+      console.log(arrImages)
+      console.log(arrEXIF)
+      console.log(parentDivImagesSorted)
+      /* sort with a desired order */
+      parentDivImagesSorted.sort(compareValues(sortBy, order));
+      for (let img in parentDivImagesSorted) {
+        let imgDiv = document.getElementById(parentDivImagesSorted[img].id).parentNode;
+        /* change order of div elements */
+        parentDiv.appendChild(imgDiv);
+      }
+    }
 
-        function compareValues(key, order = 'asc') { //'asc' by default
-            return function innerSort(a, b) {
-                const varA = (typeof a[key] === 'string') // for 'string' change to upper case (comparison is not case sensitive)
-                    ? a[key].toUpperCase() : a[key];
-                const varB = (typeof b[key] === 'string')
-                    ? b[key].toUpperCase() : b[key];
+    function compareValues(key, order = 'asc') { //'asc' by default
+      return function innerSort(a, b) {
+        const varA = (typeof a[key] === 'string') // for 'string' change to upper case (comparison is not case sensitive)
+          ? a[key].toUpperCase() : a[key];
+        const varB = (typeof b[key] === 'string')
+          ? b[key].toUpperCase() : b[key];
 
-                let comparison = 0;
-                if (varA > varB) { // e.g. for strings S>P
-                    comparison = 1;
-                } else if (varA < varB) {
-                    comparison = -1;
-                 } else {  //Comparison of defined element with undefined one
-                    if (typeof varA === "undefined") {
-                        return 1;
-                    } else if (typeof varB === "undefined") {
-                        return -1;
-                    }
-                }
-                return (
-                    (order === 'desc') ? (comparison * -1) : comparison
-                );
-            };
+        let comparison = 0;
+        if (varA > varB) { // e.g. for strings S>P
+          comparison = 1;
+        } else if (varA < varB) {
+          comparison = -1;
+        } else {  //Comparison of defined element with undefined one
+          if (typeof varA === "undefined") {
+            return 1;
+          } else if (typeof varB === "undefined") {
+            return -1;
+          }
         }
-    </script>
+        return (
+          (order === 'desc') ? (comparison * -1) : comparison
+        );
+      };
+    }
+  </script>
 </body>
 
 </html>
