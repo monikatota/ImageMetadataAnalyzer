@@ -6,13 +6,28 @@ body, html {
     background-size: cover;
 }
 
+.imgContainer{
+  position: absolute;
+  top: 20%;
+  margin-left: 22% !important;
+  max-height: 80vh;
+  max-width: 78vw;
+}
+
+#imgbground{
+  position: fixed;
+  width: 70%;
+  height: 80%;
+  opacity: 0.5;
+}
+
 /* Images section */
 .images {
     padding: 0px;
     margin: 0px;
     padding-left: 0;
-    margin-top: 10%;     /* 15%, cause of top navigation bar */
-    margin-left: 19%;    /* 17%, cause of side navigation bar */
+    margin-top: 0% !important;     /* 15%, cause of top navigation bar */
+    margin-left: 0% !important;
 }
 
 .dropdown {
@@ -56,12 +71,56 @@ body, html {
 
 .dropdown:hover .dropdown-content {display: block;}
 
+/* Image's right corner "x" button */
+.xButton{
+  display: none;
+  float: right;
+  position: absolute;
+  border-radius: 50%;
+  top: -5%;
+  right: -5%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .xButton{
+  display:inherit;
+}
+
+/* Image's right corner - rotation button */
+.rButton{
+  display: none;
+  float: right;
+  position: absolute;
+  border-radius: 50%;
+  top: -5%;
+  right: 10%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dropdown:hover .rButton{
+  display:inherit;
+}
+
+/* Image's sort data*/
+.sortData {
+  float: left;
+  position: absolute;
+  border-radius: 10px;
+  bottom: 5%;
+  left: 2%;
+  right: 2%;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+  font-size: 1vw;
+}
 
 .images img {
   border-radius: 8px; 
   margin-bottom: 0; /* must be 0 to be close to the dropdown list */
   width: 14vw;
-  height: 27vh;
+  height: 14vw;
   object-fit: cover;
   box-shadow: 10px 10px 5px dimgrey; /* Enable shadow behind image*/
 }
@@ -159,6 +218,14 @@ input.form-fixer {
 select.form-fixer2 {
   padding: 0.5px;
   width: 120%;
+}
+
+.modal-title {
+  padding: 8px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 80%;
 }
 
 /* @media screen and (min-width: 50em) {

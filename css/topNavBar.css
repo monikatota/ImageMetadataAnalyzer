@@ -2,7 +2,7 @@
 .topNavBar {
     top: 4%;
     height: 15%;
-    left: 19%;                  /* 19% cause of side navigation bar */
+    left: 17%;                  /* 19% cause of side navigation bar */
     right: 2%;
     position: fixed;            /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1;                 /* Stay on top */
@@ -19,14 +19,15 @@
 
 .btn-group.topGroup {
     width: 100%;
-    margin-bottom: 30%;
+    margin-bottom: 25%;
 }
 
 .button-container.topGroup {
     padding: 0;
     height: 100%;
-	max-width: calc(88%/6);   /* Math on a high level XD -> calc((100%-(buttons num)*(left margin% + right margin%))/(buttons num)) */
-    margin-left: 1%;
+    width: calc(95%/9);
+    margin-left: 0.25%;
+    margin-right: 0.25%;
 }
 
 .btn-responsive {
