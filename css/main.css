@@ -8,9 +8,10 @@ body, html {
 
 .imgContainer{
   position: absolute;
-  margin-top: 10% !important;
+  top: 20%;
   margin-left: 22% !important;
-  max-height: 90vw;
+  max-height: 80vh;
+  max-width: 78vw;
 }
 
 #imgbground{
@@ -118,7 +119,7 @@ body, html {
   border-radius: 8px; 
   margin-bottom: 0; /* must be 0 to be close to the dropdown list */
   width: 14vw;
-  height: 27vh;
+  height: 14vw;
   object-fit: cover;
   box-shadow: 10px 10px 5px dimgrey; /* Enable shadow behind image*/
 }
