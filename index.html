@@ -50,13 +50,13 @@
             <div class="dropdown-menu">
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onchange="handleChange(this,'iso',100);">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onchange="filterISO(this,100);">
                   <label class="form-check-label">100</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" onchange="handleChange(this,'iso',400);">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" onchange="filterISO(this,400);">
                   <label class="form-check-label">400</label>
                 </div>
               </a>
@@ -229,7 +229,14 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary btn-responsive filterButton"> Filter </button>
+            <button type="button" class="btn btn-primary btn-responsive filterButton" onclick="filterImages();"> Filter </button>
+          </div>
+        </div>
+      </div>
+      <div class="row button-row sideGroup">
+        <div class="col-xs button-container sideGroup">
+          <div class="btn-group sideGroup">
+            <button type="button" class="btn btn-primary btn-responsive filterButton" onclick="resetFilterImages();"> Reset filters </button>
           </div>
         </div>
       </div>
@@ -1234,31 +1241,74 @@
     }
   </script>
   <script>
-    function handleChange(checkbox,filter,value) {
+    checkedISO = [];
+    function filterISO(checkbox,value) {
+      if(checkbox.checked == true)
+      checkedISO.push(value);
+      if(checkbox.checked == false)
+        {
+          for(let i=0; i<checkedISO.length; i++)
+          {
+            if(checkedISO[i]==value)
+              checkedISO.splice(i,1);
+          }
+        }
+      console.log(checkedISO)
+    } 
+  </script>
+  <script>
+    function filterImages()
+    {
+      // for every image which was not deleted (imgIndex) check if... 
       for(let i=0; i<imgIndex.length; i++)
       {
         let ID = "photo_"+imgIndex[i];
-        switch (filter) {
-          case 'iso':
-            var exifData  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
-            break;
-          case 'Papayas':
-            // to do
-            // var exifData  = 
-            break;
-          default:
-            console.log("Wrong value");
-        }
-        if(exifData != value)
+        var exifData  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+
+        var hideImage = true;
+        if(checkedISO.length==0)
+          hideImage = false;
+        else
+        {
+          for(let i=0; i<checkedISO.length; i++)
           {
-            var imgDiv = document.getElementById(ID).parentNode;
-            if(checkbox.checked == true)
-              imgDiv.hidden = true;
-            else
-              imgDiv.hidden = false;
+            if(exifData==checkedISO[i])
+              hideImage = false;
           }
+        }
+        var imgDiv = document.getElementById(ID).parentNode;
+        if(hideImage == true)
+          imgDiv.hidden = true;
+        else
+          imgDiv.hidden = false;
       }
-    } 
+    }
+  </script>
+  <script>
+    function resetFilterImages()
+    {
+      console.log(checkedISO.length)
+      console.log(checkedISO)
+
+      // clear array with cheched parameters 
+      for(let i=checkedISO.length-1; i>=0; i--)
+      {
+        checkedISO.splice(i,1);
+      }
+      console.log(checkedISO.length)
+      console.log(checkedISO)
+      inlineCheckbox1
+      // unhide every image which was not deleted (imgIndex)
+      for(let i=0; i<imgIndex.length; i++)
+      {
+        let ID = "photo_"+imgIndex[i];
+        var imgDiv = document.getElementById(ID).parentNode;
+        imgDiv.hidden = false;  
+      }
+      // clear all the checkboxes
+      document.getElementById("inlineCheckbox1").checked = false;
+      document.getElementById("inlineCheckbox2").checked = false;
+    }
   </script>
 </body>
 
