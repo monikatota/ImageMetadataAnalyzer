@@ -533,7 +533,7 @@
           imgID++;
           img.setAttribute("id", "photo_" + imgID);
           img.addEventListener("click", function () {
-            displayModal(img.id);
+            displayModal(img.id, img);
           });
           newDiv.appendChild(img);
 
