@@ -533,7 +533,7 @@
           imgID++;
           img.setAttribute("id", "photo_" + imgID);
           img.addEventListener("click", function () {
-            displayModal(img.id);
+            displayModal(img.id, img);
           });
           newDiv.appendChild(img);
 
@@ -624,7 +624,7 @@
 
       // Get the image and insert it inside the modal
       var img = document.getElementById(photoID);
-
+	  modalImg.style.transform = img.style.transform; 
       modalImg.src = img.src;
     }
 
