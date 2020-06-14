@@ -40,7 +40,10 @@
 
       <!-- Filter section -->
       <div>
-        <h4 align="left" style="font-size: 1.2vw">Filter by: </h4>
+        <h4 align="center" style="font-size: 1.2vw">Filter by: </h4>
+      </div>
+      <div>
+        <h5 style="font-size: 1vw" id="filterby"></h5>
       </div>
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
@@ -50,20 +53,50 @@
             <div class="dropdown-menu">
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onchange="filterISO(this,100);">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-50" value="option1" onchange="filterISO(this,50);">
+                  <label class="form-check-label">50</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-100" value="option1" onchange="filterISO(this,100);">
                   <label class="form-check-label">100</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" onchange="filterISO(this,400);">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-200" value="option1" onchange="filterISO(this,200);">
+                  <label class="form-check-label">200</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-400" value="option2" onchange="filterISO(this,400);">
                   <label class="form-check-label">400</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                  <label class="form-check-label">Third</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-800" value="option2" onchange="filterISO(this,800);">
+                  <label class="form-check-label">800</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-1600" value="option2" onchange="filterISO(this,1600);">
+                  <label class="form-check-label">1600</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-3200" value="option2" onchange="filterISO(this,3200);">
+                  <label class="form-check-label">3200</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckboxISO-6400" value="option2" onchange="filterISO(this,6400);">
+                  <label class="form-check-label">6400</label>
                 </div>
               </a>
             </div>
@@ -1259,6 +1292,15 @@
   <script>
     function filterImages()
     {
+      // display parameters that has been checked
+      for(let i=0; i<checkedISO.length; i++)
+      {
+        if (i>0)
+          document.getElementById("filterby").textContent+=", ISO " + checkedISO[i];
+        else  
+          document.getElementById("filterby").textContent+="ISO " + checkedISO[i];
+      }
+
       // for every image which was not deleted (imgIndex) check if... 
       for(let i=0; i<imgIndex.length; i++)
       {
@@ -1297,7 +1339,6 @@
       }
       console.log(checkedISO.length)
       console.log(checkedISO)
-      inlineCheckbox1
       // unhide every image which was not deleted (imgIndex)
       for(let i=0; i<imgIndex.length; i++)
       {
@@ -1306,8 +1347,12 @@
         imgDiv.hidden = false;  
       }
       // clear all the checkboxes
-      document.getElementById("inlineCheckbox1").checked = false;
-      document.getElementById("inlineCheckbox2").checked = false;
+      var allCheckBoxes = document.getElementsByClassName("form-check-input");
+      for(let i=0; i<allCheckBoxes.length;i++)
+        allCheckBoxes[i].checked = false;
+
+      // clear info about current filters
+      document.getElementById("filterby").textContent="";
     }
   </script>
 </body>
