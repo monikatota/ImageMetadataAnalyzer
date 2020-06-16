@@ -204,10 +204,16 @@ input#photos {
 }
 
 #imgPopup {
+  margin-top:50%;
+  margin-bottom :50%;
   width: 100%;
-  display: block;
+  display: block;  
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
+}
+
+#imgPopup2 {
+ display: none;
 }
 
 input {  

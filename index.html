@@ -364,7 +364,8 @@
         <div class="modal-body">
           <div class="row">
             <div class="col">
-              <img class="modal-popup-content" id="imgPopup" />
+              <img class="modal-popup-content" id="imgPopup" />  
+              <canvas id="imgPopup2" >  </canvas>    
               <!-- Image miniature above -->
             </div>
             <div class="col">
@@ -690,6 +691,39 @@
       // Get the image and insert it inside the modal
       var img = document.getElementById(photoID);
       modalImg.src = img.src;
+	    modalImg.style.transform = img.style.transform; 
+       
+      var canvas=document.getElementById("imgPopup2");
+      canvas.width="1024";
+       canvas.height="768"; 
+      var ctx=canvas.getContext("2d");
+      ctx.drawImage(document.getElementById(photoID),0,0, 1000, 700);
+
+
+      if( img.style.transform == 'rotate(0deg)') {
+				canvas.setAttribute('width', modalImg.width);
+				canvas.setAttribute('height', modalImg.height);
+				ctx.rotate(0 * Math.PI / 180);
+				ctx.drawImage(modalImg, 0, 0);
+      }
+      else if( img.style.transform == 'rotate(90deg)') { 
+				canvas.setAttribute('width', modalImg.height);
+				canvas.setAttribute('height', modalImg.width);
+				ctx.rotate(90 * Math.PI / 180);
+				ctx.drawImage(modalImg, 0, -modalImg.height);
+      } 
+      else if( img.style.transform == 'rotate(180deg)') { 
+				canvas.setAttribute('width', modalImg.width);
+				canvas.setAttribute('height', modalImg.height);
+				ctx.rotate(180 * Math.PI / 180);
+				ctx.drawImage(modalImg, -modalImg.width, -modalImg.height);
+      			} 
+        else if( img.style.transform == 'rotate(270deg)') { 
+				canvas.setAttribute('width', modalImg.height);
+				canvas.setAttribute('height', modalImg.width);
+				ctx.rotate(270 * Math.PI / 180);
+				ctx.drawImage(modalImg, -modalImg.width, 0);
+        }
 
       modalTitle.value = arrImages[id].name; //Title
 
@@ -1067,8 +1101,9 @@
 
         // Trigger download
         var a = document.createElement("a");
-        a.setAttribute("href", inserted);
+        a.href =canvas.toDataURL("image/jpg"); 
         a.setAttribute("download", modalTitle.value);
+
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
