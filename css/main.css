@@ -1,12 +1,12 @@
 body, html {
-    height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.imgContainer{
+.imgContainer {
   position: absolute;
   top: 20%;
   margin-left: 22% !important;
@@ -14,7 +14,7 @@ body, html {
   max-width: 78vw;
 }
 
-#imgbground{
+#imgbground {
   position: fixed;
   width: 70%;
   height: 80%;
@@ -22,57 +22,66 @@ body, html {
 }
 
 /* Images section */
+
 .images {
-    padding: 0px;
-    margin: 0px;
-    padding-left: 0;
-    margin-top: 0% !important;     /* 15%, cause of top navigation bar */
-    margin-left: 0% !important;
+  padding: 0px;
+  margin: 0px;
+  padding-left: 0;
+  margin-top: 0% !important;
+  /* 15%, cause of top navigation bar */
+  margin-left: 0% !important;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
-
-  margin-left: 1.5vw; 
-  margin-right: 1.5vw; 
-  margin-top: 3vh; 
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  margin-top: 3vh;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-
-  z-index: 1; /* display in front of the image */
-  list-style: none; /* must be set - li has the same position as ul */
-  padding-left: 0; /* must be set - li has the same position as ul */
+  z-index: 1;
+  /* display in front of the image */
+  list-style: none;
+  /* must be set - li has the same position as ul */
+  padding-left: 0;
+  /* must be set - li has the same position as ul */
 }
 
-.dropdown-content li{
-  color: #b3b3b3; /* text color */
+.dropdown-content li {
+  color: #b3b3b3;
+  /* text color */
   /*padding: 8px 50px;*/
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   letter-spacing: 0.05em;
   padding-top: 0.5vh;
   padding-bottom: 0.5vh;
-  display: block; /* under the previous element (button) */
-  background-color: #303030; /* button color */
-  width: 14vw; /* szerokość rozwijanej listy? */
+  display: block;
+  /* under the previous element (button) */
+  background-color: #303030;
+  /* button color */
+  width: 14vw;
+  /* szerokość rozwijanej listy? */
   border: none;
   font-size: calc(0.5em + 0.5vw);
   text-align: center;
-   
 }
 
 .dropdown-content li:hover {
   background-color: #403F3F;
-} 
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 /* Image's right corner "x" button */
-.xButton{
+
+.xButton {
   display: none;
   float: right;
   position: absolute;
@@ -80,15 +89,16 @@ body, html {
   top: -5%;
   right: -5%;
   color: white;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.dropdown:hover .xButton{
-  display:inherit;
+.dropdown:hover .xButton {
+  display: inherit;
 }
 
 /* Image's right corner - rotation button */
-.rButton{
+
+.rButton {
   display: none;
   float: right;
   position: absolute;
@@ -96,14 +106,15 @@ body, html {
   top: -5%;
   right: 10%;
   color: white;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.dropdown:hover .rButton{
-  display:inherit;
+.dropdown:hover .rButton {
+  display: inherit;
 }
 
 /* Image's sort data*/
+
 .sortData {
   float: left;
   position: absolute;
@@ -112,17 +123,19 @@ body, html {
   left: 2%;
   right: 2%;
   color: white;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   font-size: 1vw;
 }
 
 .images img {
-  border-radius: 8px; 
-  margin-bottom: 0; /* must be 0 to be close to the dropdown list */
+  border-radius: 8px;
+  margin-bottom: 0;
+  /* must be 0 to be close to the dropdown list */
   width: 14vw;
   height: 14vw;
   object-fit: cover;
-  box-shadow: 10px 10px 5px dimgrey; /* Enable shadow behind image*/
+  box-shadow: 10px 10px 5px dimgrey;
+  /* Enable shadow behind image*/
 }
 
 input#photos {
@@ -130,25 +143,36 @@ input#photos {
 }
 
 /* The Modal (background) */
+
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
+
 .modal-content {
   margin: auto;
   display: block;
-  width: auto; 
+  width: auto;
   height: 90%;
   /*max-width: 700px;*/
 }
@@ -158,7 +182,8 @@ input#photos {
 } */
 
 /* Add Animation */
-.modal-content, #caption {  
+
+.modal-content, #caption {
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
@@ -169,16 +194,25 @@ input#photos {
 }
 
 @-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)} 
-  to {-webkit-transform:scale(1)}
+  from {
+    -webkit-transform: scale(0)
+  }
+  to {
+    -webkit-transform: scale(1)
+  }
 }
 
 @keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: scale(1)
+  }
 }
 
 /* The Close Button */
+
 .close {
   position: absolute;
   top: 15px;
@@ -189,41 +223,42 @@ input#photos {
   transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+
+@media only screen and (max-width: 700px) {
   .modal-content {
     width: 100%;
   }
 }
 
 #imgPopup {
-  margin-top:50%;
-  margin-bottom :50%;
+  margin-top: 50%;
+  margin-bottom: 50%;
   width: 100%;
-  display: block;  
+  display: block;
   margin-left: auto;
-  margin-right: auto; 
+  margin-right: auto;
 }
 
 #imgPopup2 {
- display: none;
+  display: none;
 }
 
-input {  
-  text-align: center; 
-} 
+input {
+  text-align: center;
+}
 
 input.form-fixer {
   padding: 0.5px;
   width: 150%;
 }
+
 select.form-fixer2 {
   padding: 0.5px;
   width: 120%;
@@ -243,6 +278,6 @@ select.form-fixer2 {
   } */
 
 input:invalid {
-    outline: 2px solid rgb(199, 79, 79);
-    outline-offset: -2px;  
+  outline: 2px solid rgb(199, 79, 79);
+  outline-offset: -2px;
 }
