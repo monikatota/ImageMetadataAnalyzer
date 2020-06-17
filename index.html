@@ -106,25 +106,25 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two - 2
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Focal Ratio
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                  <label class="form-check-label">First</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" onchange="filterFocalRatio(this,4.5);">
+                  <label class="form-check-label">4.5</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-                  <label class="form-check-label">Second</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5" onchange="filterFocalRatio(this,5);">
+                  <label class="form-check-label">5</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
-                  <label class="form-check-label">Third</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6" onchange="filterFocalRatio(this,5.6);">
+                  <label class="form-check-label">5.6</label>
                 </div>
               </a>
             </div>
@@ -134,25 +134,48 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three -
-              3 </button>
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Exposure time </button>
             <div class="dropdown-menu">
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
-                  <label class="form-check-label">First</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7" onchange="filterExposureTime(this,1,4000);">
+                  <label class="form-check-label">1/4000sec</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8">
-                  <label class="form-check-label">Second</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8" onchange="filterExposureTime(this,1,500);">
+                  <label class="form-check-label">1/500sec</label>
                 </div>
               </a>
               <a class="dropdown-item">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9">
-                  <label class="form-check-label">Third</label>
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" onchange="filterExposureTime(this,1,200);">
+                  <label class="form-check-label">1/200sec</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" onchange="filterExposureTime(this,1,60);">
+                  <label class="form-check-label">1/60sec</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" onchange="filterExposureTime(this,1,50);">
+                  <label class="form-check-label">1/50sec</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" onchange="filterExposureTime(this,1,10);">
+                  <label class="form-check-label">1/10sec</label>
+                </div>
+              </a>
+              <a class="dropdown-item">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" onchange="filterExposureTime(this,10,10);">
+                  <label class="form-check-label">10/10sec</label>
                 </div>
               </a>
             </div>
@@ -1290,39 +1313,131 @@
     } 
   </script>
   <script>
+    checkedFocalRatio = [];
+    function filterFocalRatio(checkbox,value) {
+      if(checkbox.checked == true)
+      checkedFocalRatio.push(value);
+      if(checkbox.checked == false)
+        {
+          for(let i=0; i<checkedFocalRatio.length; i++)
+          {
+            if(checkedFocalRatio[i]==value)
+            checkedFocalRatio.splice(i,1);
+          }
+        }
+      console.log(checkedFocalRatio)
+    } 
+  </script>
+  <script>
+    checkedExposureTime1 = []; // eg. 1
+    checkedExposureTime2 = []; // eg. 50 -> 1/50
+
+    function filterExposureTime(checkbox,value1,value2) {
+      if(checkbox.checked == true)
+      {
+        checkedExposureTime1.push(value1);
+        checkedExposureTime2.push(value2);
+      }
+      if(checkbox.checked == false)
+        {
+          for(let i=0; i<checkedExposureTime2.length; i++)
+          {
+            if(checkedExposureTime2[i]==value2)
+            {
+              checkedExposureTime1.splice(i,1);
+              checkedExposureTime2.splice(i,1);
+            }
+          }
+        }
+      console.log(checkedExposureTime1)
+      console.log(checkedExposureTime2)
+    } 
+  </script>
+  <script>
+    function displayParameters(){
+      // display parameters that has been checked
+      for (let i = 0; i < checkedISO.length; i++) {
+        document.getElementById("filterby").textContent += " ISO: " + checkedISO[i];
+      }
+      for (let i = 0; i < checkedFocalRatio.length; i++) {
+        document.getElementById("filterby").textContent += " Focal Ratio: " + checkedFocalRatio[i];
+      }
+      for (let i = 0; i < checkedExposureTime1.length; i++) {
+        document.getElementById("filterby").textContent += " Exposure time: " + checkedExposureTime1[i] + "/" + checkedExposureTime2[i] + "sec";
+      }
+    }
+  </script>
+  <script>
+    counter = 0;
     function filterImages()
     {
-      // display parameters that has been checked
-      for(let i=0; i<checkedISO.length; i++)
+      counter++;
+      if(counter == 1)
       {
-        if (i>0)
-          document.getElementById("filterby").textContent+=", ISO " + checkedISO[i];
-        else  
-          document.getElementById("filterby").textContent+="ISO " + checkedISO[i];
+        displayParameters();
       }
-
+      else 
+      {
+        document.getElementById("filterby").textContent = "";
+        displayParameters();
+      }
+      console.log(counter)
       // for every image which was not deleted (imgIndex) check if... 
       for(let i=0; i<imgIndex.length; i++)
       {
         let ID = "photo_"+imgIndex[i];
-        var exifData  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+        var ISO  =  arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+        var focalRatio = arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1];
+        var exposureTime1 = arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0];
+        var exposureTime2 = arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1];
 
-        var hideImage = true;
+        console.log("focal ratio " +focalRatio)
+        console.log("exposure time " +exposureTime1 + " " + exposureTime2)
+
+        var hideISO = true;
+
         if(checkedISO.length==0)
-          hideImage = false;
+          hideISO = false;
         else
         {
           for(let i=0; i<checkedISO.length; i++)
           {
-            if(exifData==checkedISO[i])
-              hideImage = false;
+            if(ISO==checkedISO[i])
+              hideISO = false; 
           }
         }
+
+        var hideFocalRatio = true;
+        
+        if(checkedFocalRatio.length==0)
+          hideFocalRatio = false;
+          else
+          {
+            for(let i=0; i<checkedFocalRatio.length; i++)
+            {
+              if(focalRatio==checkedFocalRatio[i])
+                hideFocalRatio = false; 
+            }
+          }
+
+        var hideExposureTime = true;
+        
+        if(checkedExposureTime1.length==0 && checkedExposureTime2.length==0)
+          hideExposureTime = false;
+          else
+          {
+            for(let i=0; i<checkedExposureTime1.length; i++)
+            {
+              if(exposureTime1==checkedExposureTime1[i] && exposureTime2==checkedExposureTime2[i])
+                hideExposureTime = false; 
+            }
+          }
+
         var imgDiv = document.getElementById(ID).parentNode;
-        if(hideImage == true)
-          imgDiv.hidden = true;
+        if(hideISO == true || hideFocalRatio == true || hideExposureTime == true)
+          imgDiv.hidden = true; // hide
         else
-          imgDiv.hidden = false;
+          imgDiv.hidden = false; // do not hide
       }
     }
   </script>
@@ -1331,14 +1446,37 @@
     {
       console.log(checkedISO.length)
       console.log(checkedISO)
-
-      // clear array with cheched parameters 
+      console.log(checkedFocalRatio.length)
+      console.log(checkedFocalRatio)
+      console.log(checkedExposureTime1.length)
+      console.log(checkedExposureTime1)
+      console.log(checkedExposureTime2.length)
+      console.log(checkedExposureTime2)
+      // clear arrays with cheched parameters 
       for(let i=checkedISO.length-1; i>=0; i--)
       {
         checkedISO.splice(i,1);
       }
+      for(let i=checkedFocalRatio.length-1; i>=0; i--)
+      {
+        checkedFocalRatio.splice(i,1);
+      }
+      for(let i=checkedExposureTime1.length-1; i>=0; i--)
+      {
+        checkedExposureTime1.splice(i,1);
+        checkedExposureTime2.splice(i,1);
+      }
+      console.log("iso")
       console.log(checkedISO.length)
       console.log(checkedISO)
+      console.log("focal ratio")
+      console.log(checkedFocalRatio.length)
+      console.log(checkedFocalRatio)
+      console.log("exposure time")
+      console.log(checkedExposureTime1.length)
+      console.log(checkedExposureTime1)
+      console.log(checkedExposureTime2.length)
+      console.log(checkedExposureTime2)
       // unhide every image which was not deleted (imgIndex)
       for(let i=0; i<imgIndex.length; i++)
       {
@@ -1353,6 +1491,9 @@
 
       // clear info about current filters
       document.getElementById("filterby").textContent="";
+
+      counter = 0;
+      console.log("counter " + counter)
     }
   </script>
 </body>
