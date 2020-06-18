@@ -521,10 +521,11 @@
         isoDiv.appendChild(isoInput);
         let isoLabel = document.createElement("label");
         isoLabel.className = "form-check-label";
-        isoLabel.textContent = arrEXIF[id]["Exif"]["34855"];
+        isoLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["34855"]);
         isoDiv.appendChild(isoLabel);
         isoItem.appendChild(isoDiv);
         isoMenu.appendChild(isoItem);
+        $("#isoID a").sort((a, b) => a.textContent - b.textContent).appendTo("#isoID");
       }
 
       //Focal ratio filter dropdown list
@@ -552,10 +553,11 @@
         fRatioDiv.appendChild(fRatioInput);
         let fRatioLabel = document.createElement("label");
         fRatioLabel.className = "form-check-label";
-        fRatioLabel.textContent = arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1];
+        fRatioLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
         fRatioDiv.appendChild(fRatioLabel);
         fRatioItem.appendChild(fRatioDiv);
         fRatioMenu.appendChild(fRatioItem);
+        $("#fRatioID a").sort((a, b) => a.textContent - b.textContent).appendTo("#fRatioID");
       }
 
       //Exposure time filter dropdown list
@@ -584,9 +586,11 @@
         let expoTLabel = document.createElement("label");
         expoTLabel.className = "form-check-label";
         expoTLabel.textContent = arrEXIF[id]["Exif"]["33434"][0] + "/" + arrEXIF[id]["Exif"]["33434"][1] + "sec";
+        expoTLabel.setAttribute('attribute', parseFloat(arrEXIF[id]["Exif"]["33434"][0] / arrEXIF[id]["Exif"]["33434"][1]));
         expoTDiv.appendChild(expoTLabel);
         expoTItem.appendChild(expoTDiv);
         expoTMenu.appendChild(expoTItem);
+        //$("#expoTimeID a").sort( ... ).appendTo("#expoTimeID"); //TODO :(
       }
 
       //Focal length filter dropdown list
@@ -614,10 +618,11 @@
         fLengthDiv.appendChild(fLengthInput);
         let fLengthLabel = document.createElement("label");
         fLengthLabel.className = "form-check-label";
-        fLengthLabel.textContent = arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1];
+        fLengthLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
         fLengthDiv.appendChild(fLengthLabel);
         fLengthItem.appendChild(fLengthDiv);
         fLengthMenu.appendChild(fLengthItem);
+        $("#fLengthID a").sort((a, b) => a.textContent - b.textContent).appendTo("#fLengthID");
       }
     }
   </script>
