@@ -1,22 +1,14 @@
 /* Side navigation bar */
-
-.sideNavBar {
-    top: 4%;
-    bottom: 1%;
-    /* 2% from the bottom */
-    left: 2%;
-    /* 2% from the left side */
+.sideNavBar{
+    top :4%;
+    bottom: 1%;                 /* 2% from the bottom */ 
+    left: 2%;                   /* 2% from the left side */ 
     right: 2%;
-    width: 15vw;
-    /* width of the sidebar */
-    position: fixed;
-    /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1;
-    /* Stay on top */
-    overflow-x: hidden;
-    /* Disable horizontal scroll */
-    overflow-y: hidden;
-    /*  Disable vertical scroll */
+    width: 15vw;                 /* width of the sidebar */
+    position: fixed;            /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;                 /* Stay on top */
+    overflow-x: hidden;         /* Disable horizontal scroll */
+    overflow-y: auto;         /*  Disable vertical scroll */
 }
 
 /* Logo */
@@ -113,4 +105,11 @@
     color: #4B4B4B;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+#filterby{
+    border-radius: 25px;
+    background-color: dimgrey;
+    opacity: 0.3;
+    color: khaki;
 }

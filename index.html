@@ -40,32 +40,17 @@
 
       <!-- Filter section -->
       <div>
-        <h4 align="left" style="font-size: 1.2vw">Filter by: </h4>
+        <h4 align="center" style="font-size: 1.2vw">Filter by: </h4>
+      </div>
+      <div>
+        <h5 style="font-size: 1vw" id="filterby"></h5>
       </div>
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> One - 1
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> ISO
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                  <label class="form-check-label">Third</label>
-                </div>
-              </a>
+            <div class="dropdown-menu" id="isoID">
             </div>
           </div>
         </div>
@@ -73,27 +58,10 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Two - 2
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Focal
+              Ratio
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
-                  <label class="form-check-label">Third</label>
-                </div>
-              </a>
+            <div class="dropdown-menu" id="fRatioID">
             </div>
           </div>
         </div>
@@ -101,27 +69,9 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Three -
-              3 </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9">
-                  <label class="form-check-label">Third</label>
-                </div>
-              </a>
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown">
+              Exposure time </button>
+            <div class="dropdown-menu" id="expoTimeID">
             </div>
           </div>
         </div>
@@ -129,27 +79,9 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Four -
-              4 </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option10">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="option11">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="option12">
-                  <label class="form-check-label">Third</label>
-                </div>
-              </a>
+            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Focal
+              length </button>
+            <div class="dropdown-menu" id="fLengthID">
             </div>
           </div>
         </div>
@@ -157,79 +89,16 @@
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Five -
-              5 </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="option13">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox14" value="option14">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox15" value="option15">
-                  <label class="form-check-label">Third</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row button-row sideGroup">
-        <div class="col-xs button-container sideGroup">
-          <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Six - 6
+            <button type="button" class="btn btn-primary btn-responsive filterButton" onclick="filterImages();"> Filter
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox16" value="option16">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox17" value="option17">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </div>
       <div class="row button-row sideGroup">
         <div class="col-xs button-container sideGroup">
           <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary dropdown-toggle btn-responsive" data-toggle="dropdown"> Seven -
-              7 </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox18" value="option18">
-                  <label class="form-check-label">First</label>
-                </div>
-              </a>
-              <a class="dropdown-item">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox19" value="option19">
-                  <label class="form-check-label">Second</label>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row button-row sideGroup">
-        <div class="col-xs button-container sideGroup">
-          <div class="btn-group sideGroup">
-            <button type="button" class="btn btn-primary btn-responsive filterButton"> Filter </button>
+            <button type="button" class="btn btn-primary btn-responsive filterButton" onclick="resetFilterImages();">
+              Reset filters </button>
           </div>
         </div>
       </div>
@@ -502,6 +371,13 @@
     /* global variable storing exif data of every image */
     var arrEXIF = [];
     var imgID = 0;
+    var imgIndex = [];
+
+    var isoList = [];
+    var expoTimeList = [];
+    var fRatioList = [];
+    var fLengthList = [];
+
     function readURL(input) {
       for (let i = 0; i < input.files.length; i++) {
         var reader = new FileReader();
@@ -532,11 +408,14 @@
           var img = document.createElement("img"); // create new image
           img.src = event.target.result; // source = uploaded file
           imgID++;
+          imgIndex.push(imgID);
           img.setAttribute("id", "photo_" + imgID);
           img.addEventListener("click", function () {
             displayModal(img.id, img);
           });
           newDiv.appendChild(img);
+
+          addToFilterList(img.id);
 
           var sortData = document.createElement("div");
           sortData.className = "sortData";
@@ -612,6 +491,146 @@
           document.getElementById("images").prepend(newDiv); // prepend - insert newDiv to the beginning of "images"
         };
         reader.readAsDataURL(input.files[i]);
+      }
+    }
+  </script>
+  <script>
+    function addToFilterList(photoID) {
+      let id = photoID.substring(6) - 1;
+      try {
+        //ISO filter dropdown list
+        let flag = false;
+
+        for (let i = 0; i < isoList.length; ++i) {
+          if (isoList[i] == arrEXIF[id]["Exif"]["34855"]) {
+            flag = true;
+          }
+        }
+
+        if (flag == false) {
+          isoList.push(arrEXIF[id]["Exif"]["34855"]);
+          let isoMenu = document.getElementById("isoID");
+          let isoItem = document.createElement("a");
+          isoItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["34855"]));
+          isoItem.className = "dropdown-item";
+          let isoDiv = document.createElement("div");
+          isoDiv.className = "form-check form-check-inline";
+          let isoInput = document.createElement("input");
+          isoInput.className = "form-check-input";
+          isoInput.type = "checkbox";
+          isoInput.addEventListener("change", function () {
+            filterISO(this, arrEXIF[id]["Exif"]["34855"]);
+          });
+          isoDiv.appendChild(isoInput);
+          let isoLabel = document.createElement("label");
+          isoLabel.className = "form-check-label";
+          isoLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["34855"]);
+          isoDiv.appendChild(isoLabel);
+          isoItem.appendChild(isoDiv);
+          isoMenu.appendChild(isoItem);
+          $("#isoID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#isoID");
+        }
+
+        //Focal ratio filter dropdown list
+        flag = false;
+
+        for (let i = 0; i < fRatioList.length; ++i) {
+          if (fRatioList[i] == arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]) {
+            flag = true;
+          }
+        }
+
+        if (flag == false) {
+          fRatioList.push(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
+          let fRatioMenu = document.getElementById("fRatioID");
+          let fRatioItem = document.createElement("a");
+          fRatioItem.className = "dropdown-item";
+          fRatioItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]));
+          let fRatioDiv = document.createElement("div");
+          fRatioDiv.className = "form-check form-check-inline";
+          let fRatioInput = document.createElement("input");
+          fRatioInput.className = "form-check-input";
+          fRatioInput.type = "checkbox";
+          fRatioInput.addEventListener("change", function () {
+            filterFocalRatio(this, arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
+          });
+          fRatioDiv.appendChild(fRatioInput);
+          let fRatioLabel = document.createElement("label");
+          fRatioLabel.className = "form-check-label";
+          fRatioLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
+          fRatioDiv.appendChild(fRatioLabel);
+          fRatioItem.appendChild(fRatioDiv);
+          fRatioMenu.appendChild(fRatioItem);
+          $("#fRatioID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#fRatioID");
+        }
+
+        //Exposure time filter dropdown list
+        flag = false;
+
+        for (let i = 0; i < expoTimeList.length; ++i) {
+          if (expoTimeList[i] == arrEXIF[id]["Exif"]["33434"][0] + "/" + arrEXIF[id]["Exif"]["33434"][1] + "sec") {
+            flag = true;
+          }
+        }
+
+        if (flag == false) {
+          expoTimeList.push(arrEXIF[id]["Exif"]["33434"][0] + "/" + arrEXIF[id]["Exif"]["33434"][1] + "sec");
+          let expoTMenu = document.getElementById("expoTimeID");
+          let expoTItem = document.createElement("a");
+          expoTItem.className = "dropdown-item";
+          expoTItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["33434"][0] / arrEXIF[id]["Exif"]["33434"][1]));
+          let expoTDiv = document.createElement("div");
+          expoTDiv.className = "form-check form-check-inline";
+          let expoTInput = document.createElement("input");
+          expoTInput.className = "form-check-input";
+          expoTInput.type = "checkbox";
+          expoTInput.addEventListener("change", function () {
+            filterExposureTime(this, arrEXIF[id]["Exif"]["33434"][0], arrEXIF[id]["Exif"]["33434"][1]);
+          });
+          expoTDiv.appendChild(expoTInput);
+          let expoTLabel = document.createElement("label");
+          expoTLabel.className = "form-check-label";
+          expoTLabel.textContent = arrEXIF[id]["Exif"]["33434"][0] + "/" + arrEXIF[id]["Exif"]["33434"][1] + "sec";
+          expoTDiv.appendChild(expoTLabel);
+          expoTItem.appendChild(expoTDiv);
+          expoTMenu.appendChild(expoTItem);
+          $("#expoTimeID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#expoTimeID");
+        }
+
+        //Focal length filter dropdown list
+        flag = false;
+
+        for (let i = 0; i < fLengthList.length; ++i) {
+          if (fLengthList[i] == arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]) {
+            flag = true;
+          }
+        }
+
+        if (flag == false) {
+          fLengthList.push(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
+          let fLengthMenu = document.getElementById("fLengthID");
+          let fLengthItem = document.createElement("a");
+          fLengthItem.className = "dropdown-item";
+          fLengthItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]));
+          let fLengthDiv = document.createElement("div");
+          fLengthDiv.className = "form-check form-check-inline";
+          let fLengthInput = document.createElement("input");
+          fLengthInput.className = "form-check-input";
+          fLengthInput.type = "checkbox";
+          fLengthInput.addEventListener("change", function () {
+            filterFocalLength(this, arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
+          });
+          fLengthDiv.appendChild(fLengthInput);
+          let fLengthLabel = document.createElement("label");
+          fLengthLabel.className = "form-check-label";
+          fLengthLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
+          fLengthDiv.appendChild(fLengthLabel);
+          fLengthItem.appendChild(fLengthDiv);
+          fLengthMenu.appendChild(fLengthItem);
+          $("#fLengthID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#fLengthID");
+        }
+      } catch (error) {
+        console.log("Undefined data");
       }
     }
   </script>
@@ -1117,6 +1136,10 @@
   <script>
     function deleteImg(photoID, numID) {
       var img = document.getElementById(photoID);
+      for (let i = 0; i < imgIndex.length; i++) {
+        if (imgIndex[i] == numID)
+          imgIndex.splice(i, 1);
+      }
 
       //Deleting from node
       let node = img.parentNode.parentNode;
@@ -1180,7 +1203,6 @@
             case "name":                         /* get number from id */
               var obj = { "id": ID, "name": arrImages[ID.substring(6) - 1].name };
               imageSortData[i].textContent = "Name: " + arrImages[ID.substring(6) - 1].name;
-              console.log(imageSortData[i]);
               break;
             case "date":
               var obj = { "id": ID, "date": arrEXIF[ID.substring(6) - 1]["Exif"]["36867"] };
@@ -1228,9 +1250,6 @@
         }
         parentDivImagesSorted.push(obj);
       }
-      console.log(arrImages)
-      console.log(arrEXIF)
-      console.log(parentDivImagesSorted)
       /* sort with a desired order */
       parentDivImagesSorted.sort(compareValues(sortBy, order));
       for (let img in parentDivImagesSorted) {
@@ -1263,6 +1282,203 @@
           (order === 'desc') ? (comparison * -1) : comparison
         );
       };
+    }
+  </script>
+  <script>
+    checkedISO = [];
+    function filterISO(checkbox, value) {
+      if (checkbox.checked == true)
+        checkedISO.push(value);
+      if (checkbox.checked == false) {
+        for (let i = 0; i < checkedISO.length; i++) {
+          if (checkedISO[i] == value)
+            checkedISO.splice(i, 1);
+        }
+      }
+    } 
+  </script>
+  <script>
+    checkedFocalRatio = [];
+    function filterFocalRatio(checkbox, value) {
+      if (checkbox.checked == true)
+        checkedFocalRatio.push(value);
+      if (checkbox.checked == false) {
+        for (let i = 0; i < checkedFocalRatio.length; i++) {
+          if (checkedFocalRatio[i] == value)
+            checkedFocalRatio.splice(i, 1);
+        }
+      }
+    } 
+  </script>
+  <script>
+    checkedExposureTime1 = []; // eg. 1
+    checkedExposureTime2 = []; // eg. 50 -> 1/50
+
+    function filterExposureTime(checkbox, value1, value2) {
+      if (checkbox.checked == true) {
+        checkedExposureTime1.push(value1);
+        checkedExposureTime2.push(value2);
+      }
+      if (checkbox.checked == false) {
+        for (let i = 0; i < checkedExposureTime2.length; i++) {
+          if (checkedExposureTime2[i] == value2) {
+            checkedExposureTime1.splice(i, 1);
+            checkedExposureTime2.splice(i, 1);
+          }
+        }
+      }
+    } 
+  </script>
+  <script>
+    checkedFocalLength = [];
+    function filterFocalLength(checkbox, value) {
+      if (checkbox.checked == true)
+        checkedFocalLength.push(value);
+      if (checkbox.checked == false) {
+        for (let i = 0; i < checkedFocalLength.length; i++) {
+          if (checkedFocalLength[i] == value)
+            checkedFocalLength.splice(i, 1);
+        }
+      }
+    } 
+  </script>
+  <script>
+    function displayParameters() {
+      // display parameters that has been checked
+      for (let i = 0; i < checkedISO.length; i++) {
+        document.getElementById("filterby").innerHTML += " ISO: " + checkedISO[i] + "<br />";
+      }
+      for (let i = 0; i < checkedFocalRatio.length; i++) {
+        document.getElementById("filterby").innerHTML += " Focal Ratio: " + checkedFocalRatio[i] + "<br />";
+      }
+      for (let i = 0; i < checkedExposureTime1.length; i++) {
+        document.getElementById("filterby").innerHTML += " Exposure time: " + checkedExposureTime1[i] + "/" + checkedExposureTime2[i] + "sec <br />";
+      }
+      for (let i = 0; i < checkedFocalLength.length; i++) {
+        document.getElementById("filterby").innerHTML += " Focal length: " + checkedFocalLength[i] + "<br />";
+      }
+    }
+  </script>
+  <script>
+    counter = 0;
+    function filterImages() {
+      counter++;
+      if (counter == 1) {
+        displayParameters();
+      }
+      else {
+        document.getElementById("filterby").textContent = "";
+        displayParameters();
+      }
+      // for every image which was not deleted (imgIndex) check if... 
+      for (let i = 0; i < imgIndex.length; i++) {
+        let ID = "photo_" + imgIndex[i];
+
+        var hideISO = true;
+        var ISO;
+        try {
+          ISO = arrEXIF[ID.substring(6) - 1]["Exif"]["34855"];
+        } catch (error) {
+          // this image will be hidden while filtering
+        }
+        if (checkedISO.length == 0)
+          hideISO = false;
+        else {
+          for (let i = 0; i < checkedISO.length; i++) {
+            if (ISO == checkedISO[i])
+              hideISO = false;
+          }
+        }
+
+        var hideFocalRatio = true;
+        var focalRatio;
+        try {
+          focalRatio = arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["33437"][1];
+        } catch (error) {
+          // this image will be hidden while filtering
+        }
+        if (checkedFocalRatio.length == 0)
+          hideFocalRatio = false;
+        else {
+          for (let i = 0; i < checkedFocalRatio.length; i++) {
+            if (focalRatio == checkedFocalRatio[i])
+              hideFocalRatio = false;
+          }
+        }
+
+        var exposureTime1;
+        var exposureTime2;
+        var hideExposureTime = true;
+        try {
+          exposureTime1 = arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][0];
+          exposureTime2 = arrEXIF[ID.substring(6) - 1]["Exif"]["33434"][1];
+        } catch (error) {
+          // this image will be hidden while filtering
+        }
+        if (checkedExposureTime1.length == 0 && checkedExposureTime2.length == 0)
+          hideExposureTime = false;
+        else {
+          for (let i = 0; i < checkedExposureTime1.length; i++) {
+            if (exposureTime1 == checkedExposureTime1[i] && exposureTime2 == checkedExposureTime2[i])
+              hideExposureTime = false;
+          }
+        }
+
+        var focalLength;
+        var hideFocalLenght = true;
+        try {
+          focalLength = arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][0] / arrEXIF[ID.substring(6) - 1]["Exif"]["37386"][1];
+        } catch (error) {
+          // this image will be hidden while filtering
+        }
+        if (checkedFocalLength.length == 0)
+          hideFocalLenght = false;
+        else {
+          for (let i = 0; i < checkedFocalLength.length; i++) {
+            if (focalLength == checkedFocalLength[i])
+              hideFocalLenght = false;
+          }
+        }
+        var imgDiv = document.getElementById(ID).parentNode;
+        if (hideISO == true || hideFocalRatio == true || hideExposureTime == true || hideFocalLenght == true)
+          imgDiv.hidden = true; // hide
+        else
+          imgDiv.hidden = false; // do not hide
+      }
+    }
+  </script>
+  <script>
+    function resetFilterImages() {
+      // clear arrays with checked parameters 
+      for (let i = checkedISO.length - 1; i >= 0; i--) {
+        checkedISO.splice(i, 1);
+      }
+      for (let i = checkedFocalRatio.length - 1; i >= 0; i--) {
+        checkedFocalRatio.splice(i, 1);
+      }
+      for (let i = checkedExposureTime1.length - 1; i >= 0; i--) {
+        checkedExposureTime1.splice(i, 1);
+        checkedExposureTime2.splice(i, 1);
+      }
+      for (let i = checkedFocalLength.length - 1; i >= 0; i--) {
+        checkedFocalLength.splice(i, 1);
+      }
+
+      // unhide every image which was not deleted (imgIndex)
+      for (let i = 0; i < imgIndex.length; i++) {
+        let ID = "photo_" + imgIndex[i];
+        var imgDiv = document.getElementById(ID).parentNode;
+        imgDiv.hidden = false;
+      }
+      // clear all the checkboxes
+      var allCheckBoxes = document.getElementsByClassName("form-check-input");
+      for (let i = 0; i < allCheckBoxes.length; i++)
+        allCheckBoxes[i].checked = false;
+
+      // clear info about current filters
+      document.getElementById("filterby").textContent = "";
+
+      counter = 0;
     }
   </script>
 </body>
