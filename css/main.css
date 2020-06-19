@@ -163,7 +163,7 @@ input#photos {
   /* Enable scroll if needed */
   background-color: rgb(0, 0, 0);
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
   /* Black w/ opacity */
 }
 
@@ -238,8 +238,10 @@ input#photos {
 }
 
 #imgPopup {
-  margin-top: 50%;
-  margin-bottom: 50%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-bottom: auto;
   width: 100%;
   display: block;
   margin-left: auto;
