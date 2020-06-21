@@ -2,9 +2,39 @@
 function addToFilterList(photoID) {
     let id = photoID.substring(6) - 1;
     try {
-        //ISO filter dropdown list
+        //Camera filter dropdown list
         let flag = false;
 
+        for (let i = 0; i < cameraList.length; ++i) {
+            if (cameraList[i] == arrEXIF[id]["0th"]["271"] + " " + arrEXIF[id]["0th"]["272"]) {
+                flag = true;
+            }
+        }
+
+        if (flag == false) {
+            cameraList.push(arrEXIF[id]["0th"]["271"] + " " + arrEXIF[id]["0th"]["272"]);
+            let cameraMenu = document.getElementById("cameraID");
+            let cameraItem = document.createElement("a");
+            cameraItem.className = "dropdown-item";
+            cameraItem.setAttribute('value', arrEXIF[id]["0th"]["271"] + " " + arrEXIF[id]["0th"]["272"]);
+            let cameraInput = document.createElement("input");
+            cameraInput.id = "camera" + id;
+            cameraInput.name = "checkbox";
+            cameraInput.type = "checkbox";
+            cameraInput.addEventListener("change", function () {
+                filterCameraModel(this, arrEXIF[id]["0th"]["271"] + " " + arrEXIF[id]["0th"]["272"]);
+            });
+            cameraItem.appendChild(cameraInput);
+            let cameraLabel = document.createElement("label");
+            cameraLabel.className = "checkbox-inline";
+            cameraLabel.setAttribute('for', "camera" + id);
+            cameraLabel.textContent = arrEXIF[id]["0th"]["271"] + " " + arrEXIF[id]["0th"]["272"];
+            cameraItem.appendChild(cameraLabel);
+            cameraMenu.appendChild(cameraItem);
+            $("#cameraID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#cameraID");
+        }
+
+        //ISO filter dropdown list
         for (let i = 0; i < isoList.length; ++i) {
             if (isoList[i] == arrEXIF[id]["Exif"]["34855"]) {
                 flag = true;
@@ -17,20 +47,19 @@ function addToFilterList(photoID) {
             let isoItem = document.createElement("a");
             isoItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["34855"]));
             isoItem.className = "dropdown-item";
-            let isoDiv = document.createElement("div");
-            isoDiv.className = "form-check form-check-inline";
             let isoInput = document.createElement("input");
-            isoInput.className = "form-check-input";
+            isoInput.id = "iso" + id;
+            isoInput.name = "checkbox";
             isoInput.type = "checkbox";
             isoInput.addEventListener("change", function () {
                 filterISO(this, arrEXIF[id]["Exif"]["34855"]);
             });
-            isoDiv.appendChild(isoInput);
+            isoItem.appendChild(isoInput);
             let isoLabel = document.createElement("label");
-            isoLabel.className = "form-check-label";
+            isoLabel.className = "checkbox-inline";
+            isoLabel.setAttribute('for', "iso" + id);
             isoLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["34855"]);
-            isoDiv.appendChild(isoLabel);
-            isoItem.appendChild(isoDiv);
+            isoItem.appendChild(isoLabel);
             isoMenu.appendChild(isoItem);
             $("#isoID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#isoID");
         }
@@ -50,20 +79,19 @@ function addToFilterList(photoID) {
             let fRatioItem = document.createElement("a");
             fRatioItem.className = "dropdown-item";
             fRatioItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]));
-            let fRatioDiv = document.createElement("div");
-            fRatioDiv.className = "form-check form-check-inline";
             let fRatioInput = document.createElement("input");
-            fRatioInput.className = "form-check-input";
+            fRatioInput.id = "fRatio" + id;
+            fRatioInput.name = "checkbox";
             fRatioInput.type = "checkbox";
             fRatioInput.addEventListener("change", function () {
                 filterFocalRatio(this, arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
             });
-            fRatioDiv.appendChild(fRatioInput);
+            fRatioItem.appendChild(fRatioInput);
             let fRatioLabel = document.createElement("label");
-            fRatioLabel.className = "form-check-label";
+            fRatioLabel.className = "checkbox-inline";
+            fRatioLabel.setAttribute('for', "fRatio" + id);
             fRatioLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
-            fRatioDiv.appendChild(fRatioLabel);
-            fRatioItem.appendChild(fRatioDiv);
+            fRatioItem.appendChild(fRatioLabel);
             fRatioMenu.appendChild(fRatioItem);
             $("#fRatioID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#fRatioID");
         }
@@ -83,20 +111,19 @@ function addToFilterList(photoID) {
             let expoTItem = document.createElement("a");
             expoTItem.className = "dropdown-item";
             expoTItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["33434"][0] / arrEXIF[id]["Exif"]["33434"][1]));
-            let expoTDiv = document.createElement("div");
-            expoTDiv.className = "form-check form-check-inline";
             let expoTInput = document.createElement("input");
-            expoTInput.className = "form-check-input";
+            expoTInput.id = "expoTime" + id;
+            expoTInput.name = "checkbox";
             expoTInput.type = "checkbox";
             expoTInput.addEventListener("change", function () {
                 filterExposureTime(this, arrEXIF[id]["Exif"]["33434"][0], arrEXIF[id]["Exif"]["33434"][1]);
             });
-            expoTDiv.appendChild(expoTInput);
+            expoTItem.appendChild(expoTInput);
             let expoTLabel = document.createElement("label");
-            expoTLabel.className = "form-check-label";
+            expoTLabel.className = "checkbox-inline";
+            expoTLabel.setAttribute('for', "expoTime" + id);
             expoTLabel.textContent = arrEXIF[id]["Exif"]["33434"][0] + "/" + arrEXIF[id]["Exif"]["33434"][1] + "sec";
-            expoTDiv.appendChild(expoTLabel);
-            expoTItem.appendChild(expoTDiv);
+            expoTItem.appendChild(expoTLabel);
             expoTMenu.appendChild(expoTItem);
             $("#expoTimeID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#expoTimeID");
         }
@@ -116,20 +143,19 @@ function addToFilterList(photoID) {
             let fLengthItem = document.createElement("a");
             fLengthItem.className = "dropdown-item";
             fLengthItem.setAttribute('value', parseFloat(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]));
-            let fLengthDiv = document.createElement("div");
-            fLengthDiv.className = "form-check form-check-inline";
             let fLengthInput = document.createElement("input");
-            fLengthInput.className = "form-check-input";
+            fLengthInput.id = "fLength" + id;
+            fLengthInput.name = "checkbox";
             fLengthInput.type = "checkbox";
             fLengthInput.addEventListener("change", function () {
                 filterFocalLength(this, arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
             });
-            fLengthDiv.appendChild(fLengthInput);
+            fLengthItem.appendChild(fLengthInput);
             let fLengthLabel = document.createElement("label");
-            fLengthLabel.className = "form-check-label";
+            fLengthLabel.className = "checkbox-inline"
+            fLengthLabel.setAttribute('for', "fLength" + id);
             fLengthLabel.textContent = parseFloat(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
-            fLengthDiv.appendChild(fLengthLabel);
-            fLengthItem.appendChild(fLengthDiv);
+            fLengthItem.appendChild(fLengthLabel);
             fLengthMenu.appendChild(fLengthItem);
             $("#fLengthID a").sort((a, b) => $(a).attr('value') - $(b).attr('value')).appendTo("#fLengthID");
         }
@@ -139,6 +165,19 @@ function addToFilterList(photoID) {
 }
 
 // Filtering by checked params functions below
+checkedCamera = [];
+
+function filterCameraModel(checkbox, value) {
+    if (checkbox.checked == true)
+    checkedCamera.push(value);
+    if (checkbox.checked == false) {
+        for (let i = 0; i < checkedCamera.length; i++) {
+            if (checkedCamera[i] == value)
+            checkedCamera.splice(i, 1);
+        }
+    }
+}
+
 checkedISO = [];
 function filterISO(checkbox, value) {
     if (checkbox.checked == true)
@@ -195,6 +234,9 @@ function filterFocalLength(checkbox, value) {
 
 // Displaying checked params
 function displayParameters() {
+    for (let i = 0; i < checkedCamera.length; i++) {
+        document.getElementById("filterby").innerHTML += " Camera: " + checkedCamera[i] + "<br />";
+    }
     for (let i = 0; i < checkedISO.length; i++) {
         document.getElementById("filterby").innerHTML += " ISO: " + checkedISO[i] + "<br />";
     }
@@ -222,6 +264,22 @@ function filterImages() {
     // for every image which was not deleted (imgIndex) check if... 
     for (let i = 0; i < imgIndex.length; i++) {
         let ID = "photo_" + imgIndex[i];
+
+        var camera;
+        var hideCamera = true;
+        try {
+            camera = arrEXIF[ID.substring(6) - 1]["0th"]["271"] + " " + arrEXIF[ID.substring(6) - 1]["0th"]["272"];
+        } catch (error) {
+            // this image will be hidden while filtering
+        }
+        if (checkedCamera.length == 0)
+            hideCamera = false;
+        else {
+            for (let i = 0; i < checkedCamera.length; i++) {
+                if (camera == checkedCamera[i])
+                    hideCamera = false;
+            }
+        }
 
         var hideISO = true;
         var ISO;
@@ -289,7 +347,7 @@ function filterImages() {
             }
         }
         var imgDiv = document.getElementById(ID).parentNode;
-        if (hideISO == true || hideFocalRatio == true || hideExposureTime == true || hideFocalLenght == true)
+        if (hideCamera == true || hideISO == true || hideFocalRatio == true || hideExposureTime == true || hideFocalLenght == true)
             imgDiv.hidden = true; // hide
         else
             imgDiv.hidden = false; // do not hide
@@ -297,7 +355,10 @@ function filterImages() {
 }
 
 function resetFilterImages() {
-    // clear arrays with checked parameters 
+    // clear arrays with checked parameters
+    for (let i = checkedCamera.length - 1; i >= 0; i--) {
+        checkedCamera.splice(i, 1);
+    }
     for (let i = checkedISO.length - 1; i >= 0; i--) {
         checkedISO.splice(i, 1);
     }
@@ -319,7 +380,7 @@ function resetFilterImages() {
         imgDiv.hidden = false;
     }
     // clear all the checkboxes
-    var allCheckBoxes = document.getElementsByClassName("form-check-input");
+    var allCheckBoxes = document.getElementsByName("checkbox");
     for (let i = 0; i < allCheckBoxes.length; i++)
         allCheckBoxes[i].checked = false;
 

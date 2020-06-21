@@ -4,6 +4,7 @@ var arrEXIF = [];
 var imgID = 0;
 var imgIndex = [];
 
+var cameraList = [];
 var isoList = [];
 var expoTimeList = [];
 var fRatioList = [];
@@ -107,6 +108,7 @@ function readURL(input) {
             document.getElementById("images").prepend(newDiv); // prepend - insert newDiv to the beginning of "images"
         };
         reader.readAsDataURL(input.files[i]);
+        resetFilterImages();
     }
 }
 
