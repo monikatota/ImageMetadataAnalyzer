@@ -11,7 +11,7 @@ function addToFilterList(photoID) {
             }
         }
 
-        if (flag == false) {
+        if (flag == false && typeof arrEXIF[id]["0th"]["271"]!=='undefined') {
             cameraList.push(arrEXIF[id]["0th"]["271"] + " " + arrEXIF[id]["0th"]["272"]);
             let cameraMenu = document.getElementById("cameraID");
             let cameraItem = document.createElement("a");
@@ -35,13 +35,15 @@ function addToFilterList(photoID) {
         }
 
         //ISO filter dropdown list
+        flag = false;
+
         for (let i = 0; i < isoList.length; ++i) {
             if (isoList[i] == arrEXIF[id]["Exif"]["34855"]) {
                 flag = true;
             }
         }
 
-        if (flag == false) {
+        if (flag == false && typeof arrEXIF[id]["Exif"]["34855"]!=='undefined') {
             isoList.push(arrEXIF[id]["Exif"]["34855"]);
             let isoMenu = document.getElementById("isoID");
             let isoItem = document.createElement("a");
@@ -73,7 +75,7 @@ function addToFilterList(photoID) {
             }
         }
 
-        if (flag == false) {
+        if (flag == false && typeof arrEXIF[id]["Exif"]["33437"][0]!=='undefined' && typeof arrEXIF[id]["Exif"]["33437"][1]!=='undefined') {
             fRatioList.push(arrEXIF[id]["Exif"]["33437"][0] / arrEXIF[id]["Exif"]["33437"][1]);
             let fRatioMenu = document.getElementById("fRatioID");
             let fRatioItem = document.createElement("a");
@@ -105,7 +107,7 @@ function addToFilterList(photoID) {
             }
         }
 
-        if (flag == false) {
+        if (flag == false && typeof arrEXIF[id]["Exif"]["33434"][0]!=='undefined' && typeof arrEXIF[id]["Exif"]["33434"][1]!=='undefined') {
             expoTimeList.push(arrEXIF[id]["Exif"]["33434"][0] + "/" + arrEXIF[id]["Exif"]["33434"][1] + "sec");
             let expoTMenu = document.getElementById("expoTimeID");
             let expoTItem = document.createElement("a");
@@ -137,7 +139,7 @@ function addToFilterList(photoID) {
             }
         }
 
-        if (flag == false) {
+        if (flag == false && typeof arrEXIF[id]["Exif"]["37386"][0]!=='undefined' && typeof arrEXIF[id]["Exif"]["37386"][1]!=='undefined') {
             fLengthList.push(arrEXIF[id]["Exif"]["37386"][0] / arrEXIF[id]["Exif"]["37386"][1]);
             let fLengthMenu = document.getElementById("fLengthID");
             let fLengthItem = document.createElement("a");
