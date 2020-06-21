@@ -109,6 +109,7 @@ function readURL(input) {
         };
         reader.readAsDataURL(input.files[i]);
         resetFilterImages();
+        sortImages('defaultSort','desc');
     }
 }
 
